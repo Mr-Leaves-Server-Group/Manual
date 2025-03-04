@@ -26,7 +26,7 @@ CPU升级路线：Intel-E5 < Ryzen2000 < Intel-10th < Ryzen3000 < Ryzen5000 < Ry
 
 ### 2.3.设置世界生成参数
 **文件夹 `/home/container/DoNotStarveTogether/config/server/Master` 和 `Caves`**   
-**配置文件 `leveldataoverride.lua` 和 `worldgenoverride.lua` 控制世界生成设置**，洞穴和地上各一个，内容不一样，可以从客户端的文件把 `leveldataoverride.lua` 内的部分拷贝到 `worldgenoverride.lua` 文件内，**推荐直接把 `leveldataoverride.lua` 整个文件放入文件夹，然后删除 `worldgenoverride.lua` **。  
+**配置文件 `leveldataoverride.lua` 和 `worldgenoverride.lua` 控制世界生成设置**，洞穴和地上各一个，内容不一样，`worldgenoverride.lua` 文件已经弃用，**推荐直接把 `leveldataoverride.lua` 文件拷贝到对应文件夹，然后删除 `worldgenoverride.lua` **。（注：原本这俩文件一个是客户端专用，一个是服务器专用，功能基本上一样，现在leveldataoverride.lua已经可以兼容客户端和服务器，所以推荐直接使用leveldataoverride.lua）
 
 ### 2.4.添加/下载MOD
 **文件夹 `/home/container/mods`**  
@@ -34,7 +34,7 @@ CPU升级路线：Intel-E5 < Ryzen2000 < Intel-10th < Ryzen3000 < Ryzen5000 < Ry
 
 ### 2.5.启用/配置MOD
 **文件夹 `/home/container/DoNotStarveTogether/config/server/Master` 和 `Caves`**  
-**配置文件 `modoverrides.lua` 控制mod开启和设置**，俩shard文件夹（Master和Cave）各一个，可以直接将在客户端设置好的同名文件拷贝过来。  
+**配置文件 `modoverrides.lua` 控制mod开启和设置**，俩shard文件夹（Master和Cave）各一个，直接将在客户端设置好的同名文件，拷贝到对应文件夹即可。（注：由于配置文件没有注释，建议在客户端单机设置好后，直接拷贝到服务器端，强烈不建议在服务器端手动修改，很容易出错）  
 
 **注意：完成以上步骤后，如果提示缺少MOD，请重启后等待5-10分钟，让MOD下载完成**  
 
