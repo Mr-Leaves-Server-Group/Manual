@@ -1014,13 +1014,13 @@ CPU升级路线：Intel-E5 &lt; Ryzen2000 &lt; Intel-10th &lt; Ryzen3000 &lt; Ry
 <p><img alt="Token设置" src="/assets/dontstrave/token-setup.png" />  </p>
 <h3 id="23">2.3.设置世界生成参数</h3>
 <p><strong>文件夹 <code>/home/container/DoNotStarveTogether/config/server/Master</code> 和 <code>Caves</code></strong> <br />
-<strong>配置文件 <code>leveldataoverride.lua</code> 和 <code>worldgenoverride.lua</code> 控制世界生成设置</strong>，洞穴和地上各一个，内容不一样，可以从客户端的文件把 <code>leveldataoverride.lua</code> 内的部分拷贝到 <code>worldgenoverride.lua</code> 文件内，<strong>推荐直接把 <code>leveldataoverride.lua</code> 整个文件放入文件夹，然后删除 <code>worldgenoverride.lua</code> </strong>。  </p>
+<strong>配置文件 <code>leveldataoverride.lua</code> 和 <code>worldgenoverride.lua</code> 控制世界生成设置</strong>，洞穴和地上各一个，内容不一样，<code>worldgenoverride.lua</code> 文件已经弃用，<strong>推荐直接把 <code>leveldataoverride.lua</code> 文件拷贝到对应文件夹，然后删除 <code>worldgenoverride.lua</code> </strong>。（注：原本这俩文件一个是客户端专用，一个是服务器专用，功能基本上一样，现在leveldataoverride.lua已经可以兼容客户端和服务器，所以推荐直接使用leveldataoverride.lua）</p>
 <h3 id="24mod">2.4.添加/下载MOD</h3>
 <p><strong>文件夹 <code>/home/container/mods</code></strong><br />
 <strong>配置文件 <code>dedicated_server_mods_setup.lua</code> 控制mod下载设置</strong>，找到并按照文件上面给出的例子，填写即可（填写后只会下载，不会启用，不填写不下载当然也不会启用）。如这以下两种形式 <code>ServerModSetup("xxxxxxxxx")</code> 和 <code>ServerModCollectionSetup("xxxxxxxxx")</code> 分别对应单一模组和模组包。只需将 <code>modoverride.lua</code> 文件中所有 <code>workshop-xxxxxxxxx</code> 转换成以上对应形式，然后一行行填入文件即可。推荐使用ChatGPT等工具进行批量替换。替换后务必检查是否有错误。</p>
 <h3 id="25mod">2.5.启用/配置MOD</h3>
 <p><strong>文件夹 <code>/home/container/DoNotStarveTogether/config/server/Master</code> 和 <code>Caves</code></strong><br />
-<strong>配置文件 <code>modoverrides.lua</code> 控制mod开启和设置</strong>，俩shard文件夹（Master和Cave）各一个，可以直接将在客户端设置好的同名文件拷贝过来。  </p>
+<strong>配置文件 <code>modoverrides.lua</code> 控制mod开启和设置</strong>，俩shard文件夹（Master和Cave）各一个，直接将在客户端设置好的同名文件，拷贝到对应文件夹即可。（注：由于配置文件没有注释，建议在客户端单机设置好后，直接拷贝到服务器端，强烈不建议在服务器端手动修改，很容易出错）  </p>
 <p><strong>注意：完成以上步骤后，如果提示缺少MOD，请重启后等待5-10分钟，让MOD下载完成</strong>  </p>
 <p><strong>温馨提示：<code>MLSG-Chinese-Guide-and-Manual-for-Server-Admins-Please-READ-ME</code> 文件夹里<br />
 有一些之前开服的Mod模板，包含添加Mod所需的两个文件，用之前建议根据自己需求修改一下</strong>  </p>
