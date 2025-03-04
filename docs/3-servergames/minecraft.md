@@ -128,6 +128,7 @@ Paper的插件可以直接放入**插件文件夹Plugins**里，通常可以从[
 - 赋予玩家OP/管理员（指令权限）：`/op 玩家游戏名称`  
 - 更改游戏模式：`/gamemode 0/1/2/3 玩家游戏名称`  
 - 更改生物破坏权限：`/gamerule mobGriefing true/false`  
+- 死亡掉落物品：`/gamerule keepInventory true/false`
 
 ![MC指令](\assets\minecraft\op1.png)
 ![MC指令](\assets\minecraft\op2.png)

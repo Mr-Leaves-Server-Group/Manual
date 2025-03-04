@@ -25,13 +25,18 @@ CPU升级路线：Intel-E5 < Ryzen2000 < Intel-10th < Ryzen3000 < Ryzen5000 < Ry
 ![Token设置](/assets/dontstrave/token-setup.png)  
 
 ### 2.3.设置世界生成参数
-**文件 `worldgenoverride.lua` 对应世界生成设置**，洞穴和地上各一个，内容不一样，可以从客户端的文件把 `leveldataoverride.lua` 内的部分拷贝到文件内，**也可以直接把 `leveldataoverride.lua` 整个文件放入文件夹，但要删除 `worldgenoverride.lua` **。  
+**文件夹 `/home/container/DoNotStarveTogether/config/server/Master` 和 `Caves`**   
+**配置文件 `leveldataoverride.lua` 和 `worldgenoverride.lua` 控制世界生成设置**，洞穴和地上各一个，内容不一样，可以从客户端的文件把 `leveldataoverride.lua` 内的部分拷贝到 `worldgenoverride.lua` 文件内，**推荐直接把 `leveldataoverride.lua` 整个文件放入文件夹，然后删除 `worldgenoverride.lua` **。  
 
 ### 2.4.添加/下载MOD
-**文件 `dedicated_server_mods_setup.lua` 对应mod下载设置**，按照上面的例子照写工整比较容易找和确认（只会下载，不会启用，不下载当然也不会启用）。  
+**文件夹 `/home/container/mods`**  
+**配置文件 `dedicated_server_mods_setup.lua` 控制mod下载设置**，找到并按照文件上面给出的例子，填写即可（填写后只会下载，不会启用，不填写不下载当然也不会启用）。如这以下两种形式 `ServerModSetup("xxxxxxxxx")` 和 `ServerModCollectionSetup("xxxxxxxxx")` 分别对应单一模组和模组包。只需将 `modoverride.lua` 文件中所有 `workshop-xxxxxxxxx` 转换成以上对应形式，然后一行行填入文件即可。推荐使用ChatGPT等工具进行批量替换。替换后务必检查是否有错误。
 
-### 2.5.服务器启用MOD
-**文件: `modoverrides.lua` 控制对应mod开启和设置**，俩shard文件夹（Master和Cave）各一个，可以直接将在客户端设置好的同名文件拷贝过来。  
+### 2.5.启用/配置MOD
+**文件夹 `/home/container/DoNotStarveTogether/config/server/Master` 和 `Caves`**  
+**配置文件 `modoverrides.lua` 控制mod开启和设置**，俩shard文件夹（Master和Cave）各一个，可以直接将在客户端设置好的同名文件拷贝过来。  
+
+**注意：完成以上步骤后，如果提示缺少MOD，请重启后等待5-10分钟，让MOD下载完成**  
 
 **温馨提示：`MLSG-Chinese-Guide-and-Manual-for-Server-Admins-Please-READ-ME` 文件夹里  
 有一些之前开服的Mod模板，包含添加Mod所需的两个文件，用之前建议根据自己需求修改一下**  
