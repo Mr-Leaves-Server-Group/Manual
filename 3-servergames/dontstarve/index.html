@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../assets/logo.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.a40c8224.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
       
       
 
@@ -217,6 +217,7 @@
   
   <span class="md-ellipsis">
     1.手册简介
+    
   </span>
   
 
@@ -237,6 +238,7 @@
   
   <span class="md-ellipsis">
     2.注册登录
+    
   </span>
   
 
@@ -257,6 +259,7 @@
   
   <span class="md-ellipsis">
     3.基本操作
+    
   </span>
   
 
@@ -306,6 +309,7 @@
   
   <span class="md-ellipsis">
     4.进阶操作
+    
   </span>
   
 
@@ -376,6 +380,7 @@
   
   <span class="md-ellipsis">
     5.游戏教程
+    
   </span>
   
 
@@ -409,6 +414,7 @@
   
   <span class="md-ellipsis">
     我的世界（Minecraft）
+    
   </span>
   
 
@@ -430,6 +436,7 @@
   
   <span class="md-ellipsis">
     幻兽帕鲁（Palworld）
+    
   </span>
   
 
@@ -460,6 +467,7 @@
   
   <span class="md-ellipsis">
     饥荒联机版（Dont Strave）
+    
   </span>
   
 
@@ -471,6 +479,7 @@
   
   <span class="md-ellipsis">
     饥荒联机版（Dont Strave）
+    
   </span>
   
 
@@ -549,7 +558,7 @@
           <li class="md-nav__item">
   <a href="#25mod" class="md-nav__link">
     <span class="md-ellipsis">
-      2.5.服务器启用MOD
+      2.5.启用/配置MOD
     </span>
   </a>
   
@@ -632,6 +641,7 @@
   
   <span class="md-ellipsis">
     腐蚀/部落（Rust）
+    
   </span>
   
 
@@ -653,6 +663,7 @@
   
   <span class="md-ellipsis">
     森林之子（Son of Forest）
+    
   </span>
   
 
@@ -674,6 +685,7 @@
   
   <span class="md-ellipsis">
     方舟生存进化（ARK）
+    
   </span>
   
 
@@ -695,6 +707,7 @@
   
   <span class="md-ellipsis">
     雨中冒险2（RoR2）
+    
   </span>
   
 
@@ -716,6 +729,7 @@
   
   <span class="md-ellipsis">
     英灵神殿（Valheim）
+    
   </span>
   
 
@@ -737,6 +751,7 @@
   
   <span class="md-ellipsis">
     反恐精英（Counter Strike）
+    
   </span>
   
 
@@ -758,6 +773,7 @@
   
   <span class="md-ellipsis">
     僵毁（Project Zombiod）
+    
   </span>
   
 
@@ -779,6 +795,7 @@
   
   <span class="md-ellipsis">
     七日杀（7 Days to Die）
+    
   </span>
   
 
@@ -807,6 +824,7 @@
   
   <span class="md-ellipsis">
     6.关于我们
+    
   </span>
   
 
@@ -899,7 +917,7 @@
           <li class="md-nav__item">
   <a href="#25mod" class="md-nav__link">
     <span class="md-ellipsis">
-      2.5.服务器启用MOD
+      2.5.启用/配置MOD
     </span>
   </a>
   
@@ -976,6 +994,7 @@
                   
 
 
+
 <h1 id="dont-starve-together">饥荒联机版（Don't Starve Together）</h1>
 <p>一款年久失修，但非常经典的2.5D生存游戏。</p>
 <hr />
@@ -994,11 +1013,15 @@ CPU升级路线：Intel-E5 &lt; Ryzen2000 &lt; Intel-10th &lt; Ryzen3000 &lt; Ry
 将Token填在 <code>/home/container/DoNotStarveTogether/config/server/cluster_token.txt</code>  </p>
 <p><img alt="Token设置" src="/assets/dontstrave/token-setup.png" />  </p>
 <h3 id="23">2.3.设置世界生成参数</h3>
-<p><strong>文件 <code>worldgenoverride.lua</code> 对应世界生成设置</strong>，洞穴和地上各一个，内容不一样，可以从客户端的文件把 <code>leveldataoverride.lua</code> 内的部分拷贝到文件内，<strong>也可以直接把 <code>leveldataoverride.lua</code> 整个文件放入文件夹，但要删除 <code>worldgenoverride.lua</code> </strong>。  </p>
+<p><strong>文件夹 <code>/home/container/DoNotStarveTogether/config/server/Master</code> 和 <code>Caves</code></strong> <br />
+<strong>配置文件 <code>leveldataoverride.lua</code> 和 <code>worldgenoverride.lua</code> 控制世界生成设置</strong>，洞穴和地上各一个，内容不一样，可以从客户端的文件把 <code>leveldataoverride.lua</code> 内的部分拷贝到 <code>worldgenoverride.lua</code> 文件内，<strong>推荐直接把 <code>leveldataoverride.lua</code> 整个文件放入文件夹，然后删除 <code>worldgenoverride.lua</code> </strong>。  </p>
 <h3 id="24mod">2.4.添加/下载MOD</h3>
-<p><strong>文件 <code>dedicated_server_mods_setup.lua</code> 对应mod下载设置</strong>，按照上面的例子照写工整比较容易找和确认（只会下载，不会启用，不下载当然也不会启用）。  </p>
-<h3 id="25mod">2.5.服务器启用MOD</h3>
-<p><strong>文件: <code>modoverrides.lua</code> 控制对应mod开启和设置</strong>，俩shard文件夹（Master和Cave）各一个，可以直接将在客户端设置好的同名文件拷贝过来。  </p>
+<p><strong>文件夹 <code>/home/container/mods</code></strong><br />
+<strong>配置文件 <code>dedicated_server_mods_setup.lua</code> 控制mod下载设置</strong>，找到并按照文件上面给出的例子，填写即可（填写后只会下载，不会启用，不填写不下载当然也不会启用）。如这以下两种形式 <code>ServerModSetup("xxxxxxxxx")</code> 和 <code>ServerModCollectionSetup("xxxxxxxxx")</code> 分别对应单一模组和模组包。只需将 <code>modoverride.lua</code> 文件中所有 <code>workshop-xxxxxxxxx</code> 转换成以上对应形式，然后一行行填入文件即可。推荐使用ChatGPT等工具进行批量替换。替换后务必检查是否有错误。</p>
+<h3 id="25mod">2.5.启用/配置MOD</h3>
+<p><strong>文件夹 <code>/home/container/DoNotStarveTogether/config/server/Master</code> 和 <code>Caves</code></strong><br />
+<strong>配置文件 <code>modoverrides.lua</code> 控制mod开启和设置</strong>，俩shard文件夹（Master和Cave）各一个，可以直接将在客户端设置好的同名文件拷贝过来。  </p>
+<p><strong>注意：完成以上步骤后，如果提示缺少MOD，请重启后等待5-10分钟，让MOD下载完成</strong>  </p>
 <p><strong>温馨提示：<code>MLSG-Chinese-Guide-and-Manual-for-Server-Admins-Please-READ-ME</code> 文件夹里<br />
 有一些之前开服的Mod模板，包含添加Mod所需的两个文件，用之前建议根据自己需求修改一下</strong>  </p>
 <p><img alt="世界设置" src="/assets/dontstrave/mod-setup.png" /><br />
@@ -1043,7 +1066,7 @@ CPU升级路线：Intel-E5 &lt; Ryzen2000 &lt; Intel-10th &lt; Ryzen3000 &lt; Ry
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2025年1月21日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2025年3月4日</span>
   </span>
 
     
@@ -1180,7 +1203,7 @@ CPU升级路线：Intel-E5 &lt; Ryzen2000 &lt; Intel-10th &lt; Ryzen3000 &lt; Ry
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.tracking", "navigation.path", "search.suggest", "search.share", "navigation.footer", "navigation.indexes", "navigation.prune", "navigation.top"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
   </body>
