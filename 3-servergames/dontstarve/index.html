@@ -216,7 +216,7 @@
         
   
   <span class="md-ellipsis">
-    1.手册简介
+    1.手册索引
     
   </span>
   
@@ -540,16 +540,16 @@
           <li class="md-nav__item">
   <a href="#23" class="md-nav__link">
     <span class="md-ellipsis">
-      2.3.设置世界生成参数
+      2.3.开服前的准备
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#24mod" class="md-nav__link">
+  <a href="#24" class="md-nav__link">
     <span class="md-ellipsis">
-      2.4.添加/下载MOD
+      2.4.世界生成参数
     </span>
   </a>
   
@@ -558,7 +558,16 @@
           <li class="md-nav__item">
   <a href="#25mod" class="md-nav__link">
     <span class="md-ellipsis">
-      2.5.启用/配置MOD
+      2.5.添加/下载MOD
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26mod" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6.启用/配置MOD
     </span>
   </a>
   
@@ -899,16 +908,16 @@
           <li class="md-nav__item">
   <a href="#23" class="md-nav__link">
     <span class="md-ellipsis">
-      2.3.设置世界生成参数
+      2.3.开服前的准备
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#24mod" class="md-nav__link">
+  <a href="#24" class="md-nav__link">
     <span class="md-ellipsis">
-      2.4.添加/下载MOD
+      2.4.世界生成参数
     </span>
   </a>
   
@@ -917,7 +926,16 @@
           <li class="md-nav__item">
   <a href="#25mod" class="md-nav__link">
     <span class="md-ellipsis">
-      2.5.启用/配置MOD
+      2.5.添加/下载MOD
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26mod" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6.启用/配置MOD
     </span>
   </a>
   
@@ -1007,24 +1025,34 @@ CPU升级路线：Intel-E5 &lt; Ryzen2000 &lt; Intel-10th &lt; Ryzen3000 &lt; Ry
 <h2 id="2">2.开服教程</h2>
 <p><strong>首次设置服务器，请仔细阅读以下内容</strong>  </p>
 <h3 id="21token">2.1.生成服务器Token</h3>
-<p>获取一个服务器Token，用于服务器列表识别，Token生成网址: <a href="https://accounts.klei.com/account/game/servers?game=DontStarveTogether">Klei Account</a>  </p>
+<p>获取一个服务器Token，用于服主身份识别，模组下载等，Token生成网址: <a href="https://accounts.klei.com/account/game/servers?game=DontStarveTogether">Klei Account</a>  </p>
 <h3 id="22token">2.2.填入服务器Token</h3>
 <p>将获取到的Token填在服务器后台的变量栏里, 为避免没能刷入文件内：<br />
 将Token填在 <code>/home/container/DoNotStarveTogether/config/server/cluster_token.txt</code>  </p>
 <p><img alt="Token设置" src="/assets/dontstrave/token-setup.png" />  </p>
-<h3 id="23">2.3.设置世界生成参数</h3>
+<h3 id="23">2.3.开服前的准备</h3>
+<ol>
+<li>在客户端菜单点击 <strong>创建游戏</strong></li>
+<li>根据需要，<strong>调整世界生成参数</strong></li>
+<li>根据需要，<strong>添加并设置MOD</strong></li>
+<li>设置完成后，点击<strong>生成世界</strong></li>
+<li>去客户端首页点击 <strong>数据</strong> 图标</li>
+<li>根据日期，找到刚刚生成的世界</li>
+</ol>
+<p><strong>注：下面的截图有完整的流程，建议对照操作</strong></p>
+<h3 id="24">2.4.世界生成参数</h3>
 <p><strong>文件夹 <code>/home/container/DoNotStarveTogether/config/server/Master</code> 和 <code>Caves</code></strong> <br />
-<strong>配置文件 <code>leveldataoverride.lua</code> 和 <code>worldgenoverride.lua</code> 控制世界生成设置</strong>，洞穴和地上各一个，内容不一样，<code>worldgenoverride.lua</code> 文件已经弃用，<strong>推荐直接把 <code>leveldataoverride.lua</code> 文件拷贝到对应文件夹，然后删除 <code>worldgenoverride.lua</code> </strong>。（注：原本这俩文件一个是客户端专用，一个是服务器专用，功能基本上一样，现在leveldataoverride.lua已经可以兼容客户端和服务器，所以推荐直接使用leveldataoverride.lua）</p>
-<h3 id="24mod">2.4.添加/下载MOD</h3>
+<strong>配置文件 <code>leveldataoverride.lua</code> 和 <code>worldgenoverride.lua</code> 控制世界生成设置</strong>，洞穴和地上各一个，内容不一样，<code>worldgenoverride.lua</code> 文件已经弃用，<strong>推荐在客户端设置好后，直接把 <code>leveldataoverride.lua</code> 文件拷贝到服务器对应文件夹，然后删除 <code>worldgenoverride.lua</code> </strong>。（注：原本这俩文件一个是客户端专用，一个是服务器专用，功能基本上一样，现在leveldataoverride.lua已经可以兼容客户端和服务器，所以推荐直接使用leveldataoverride.lua）</p>
+<h3 id="25mod">2.5.添加/下载MOD</h3>
 <p><strong>文件夹 <code>/home/container/mods</code></strong><br />
 <strong>配置文件 <code>dedicated_server_mods_setup.lua</code> 控制mod下载设置</strong>，找到并按照文件上面给出的例子，填写即可（填写后只会下载，不会启用，不填写不下载当然也不会启用）。如这以下两种形式 <code>ServerModSetup("xxxxxxxxx")</code> 和 <code>ServerModCollectionSetup("xxxxxxxxx")</code> 分别对应单一模组和模组包。只需将 <code>modoverride.lua</code> 文件中所有 <code>workshop-xxxxxxxxx</code> 转换成以上对应形式，然后一行行填入文件即可。推荐使用ChatGPT等工具进行批量替换。替换后务必检查是否有错误。</p>
-<h3 id="25mod">2.5.启用/配置MOD</h3>
+<h3 id="26mod">2.6.启用/配置MOD</h3>
 <p><strong>文件夹 <code>/home/container/DoNotStarveTogether/config/server/Master</code> 和 <code>Caves</code></strong><br />
 <strong>配置文件 <code>modoverrides.lua</code> 控制mod开启和设置</strong>，俩shard文件夹（Master和Cave）各一个，直接将在客户端设置好的同名文件，拷贝到对应文件夹即可。（注：由于配置文件没有注释，建议在客户端单机设置好后，直接拷贝到服务器端，强烈不建议在服务器端手动修改，很容易出错）  </p>
 <p><strong>注意：完成以上步骤后，如果提示缺少MOD，请重启后等待5-10分钟，让MOD下载完成</strong>  </p>
 <p><strong>温馨提示：<code>MLSG-Chinese-Guide-and-Manual-for-Server-Admins-Please-READ-ME</code> 文件夹里<br />
 有一些之前开服的Mod模板，包含添加Mod所需的两个文件，用之前建议根据自己需求修改一下</strong>  </p>
-<p><img alt="世界设置" src="/assets/dontstrave/mod-setup.png" /><br />
+<p><img alt="模组服务器图文教程" src="/assets/dontstrave/mod-setup.png" /><br />
 <br></p>
 <h2 id="3">3.注意事项</h2>
 <p>一些通用的注意事项，强烈建议阅读  </p>
@@ -1066,7 +1094,7 @@ CPU升级路线：Intel-E5 &lt; Ryzen2000 &lt; Intel-10th &lt; Ryzen3000 &lt; Ry
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2025年3月4日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月10日 03:39:18">2025年3月10日</span>
   </span>
 
     
