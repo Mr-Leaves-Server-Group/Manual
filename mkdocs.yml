@@ -3,7 +3,7 @@ site_name: MLSG中文手册
 site_description: "MLSG翼龙面板-中文开服手册"
 site_url: https://manual.mr-leaves.com
 nav:
-  - 1.手册简介: index.md
+  - 1.手册索引: index.md
   - 2.注册登录: 0-serversignup.md
   - 3.基本操作: 1-serverbasics.md
   - 4.进阶操作:
