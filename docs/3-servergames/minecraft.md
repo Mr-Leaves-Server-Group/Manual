@@ -91,7 +91,32 @@ Paper的插件可以直接放入**插件文件夹Plugins**里，通常可以从[
 <center>点击[CurseForge官网](https://www.curseforge.com/download/app)下载客户端安装器，下载完成后，搜索并安装对应的模组包</center>  
 ![CurseForge客户端下载](\assets\minecraft\curseforge-client.png)
 ![CurseForge安装模组包](\assets\minecraft\curseforge-modpack.png)
-![CurseForge其他功能](\assets\minecraft\curseforge-demo.png)
+![CurseForge其他功能](\assets\minecraft\curseforge-demo.png)  
+
+
+### 2.6.Fabric
+
+**警告：强烈不建议新手玩家，自己组装中大型模组包，Debug问题将会非常麻烦**
+![Fabric后台](\assets\minecraft\fabric-1.png)  
+![Fabric后台](\assets\minecraft\fabric-2.png)  
+
+#### 2.3.1.更换版本
+
+> 1. 去 **启动** 页面，更改 **MC游戏版本** 参数
+> 2. 在 **启动** 页面，填写 **Fabric** 和 **Fabric Loader** 参数
+> 3. 在 **启动** 页面，根据对应的版本，在右上角，选择正确的Java
+> 4. 去 **文件** 页面，删除当前服务器所有文件
+> 5. 去 **设置** 页面，点击 重新安装服务器, 等待服务器安装完成
+> 6. 启动服务器，弹窗 选择接受EULA后，服务器会重启正确运行  
+
+#### 2.3.2.添加模组
+
+> 1. 首先在客户端正确添加 Mod
+> 2. 测试 Mod 在本地正常工作
+> 3. 拷贝到服务器 Mod 文件夹内
+> 3. [大文件/多文件传输-图文教程](/2-serveradvanced/filetransfer/)
+> 4. 调整在**config**和**world/severconfig**里的 Mod 配置文件  
+> 5. 分发 Mod 和 资源包 给玩家
 <br>
 
 ## 3.注意事项

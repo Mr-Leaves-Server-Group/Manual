@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>饥荒MOD快速编辑器</title>
+  <style>
+    html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #fafafa;
+    }
+    h2 {
+      margin-top: 20px;
+    }
+    h3 {
+      margin: 5px 0;
+    }
+    .container {
+      flex: 1;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 20px 0;
+    }
+    textarea {
+      flex: 1;
+      min-height: 200px;
+      background: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      overflow: auto;
+      resize: none;
+      height: 200px;
+    }
+    .mod-block {
+      min-height: 200px;
+      background: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px 10px 0 10px;
+      overflow: visible;
+    }
+    button {
+      margin: 10px auto;
+      width: 90%;
+      padding: 10px 20px;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .mod-item {
+      background: #ffffff;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      margin-bottom: 10px;
+    }
+    .mod-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .mod-header a {
+      text-decoration: none;
+      color: #0077cc;
+      font-size: 14px;
+    }
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+      margin-left: 10px;
+      flex-shrink: 0; /* 不压缩开关 */
+    }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 24px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    input:checked + .slider {
+      background-color: #4CAF50;
+    }
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+    .config-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .config-table td {
+      border: 1px solid #ddd;
+      padding: 5px;
+    }
+    .config-table input {
+      width: 100%;
+      padding: 4px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background: #fff;
+      box-sizing: border-box;
+    }
+    .config-table td:first-child {
+        width: 70%;
+        overflow-wrap: break-word;
+    }
+
+    .config-table td:last-child {
+        width: 30%;
+        overflow-wrap: break-word;
+    }
+    #input, #mods, #output {
+      width: 90%;
+      margin: 0 auto;
+    }
+    #output {
+      background-color: #f0f0f0;
+      color: #666;
+      border: 1px solid #ccc;
+      cursor: pointer;
+    }
+    #output::-webkit-scrollbar, #input::-webkit-scrollbar {
+      display: none;
+    }
+
+    .mod-enable {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    }
+
+    .enable-text {
+    font-size: 16px;
+    line-height: 24px; /* 保证和开关高度一致 */
+    }
+  </style>
+</head>
+<body>
+
+<h2>饥荒配置MOD编辑器</h2>
+<button onclick="parseInput()" style="background-color: #394beb;">加载配置</button>
+<div class="container">
+  <textarea id="input" placeholder="粘贴 modoverrides.lua 里的内容"></textarea>
+  <div id="mods" class="mod-block"></div>
+  <button onclick="updateConfigSafe()" style="background-color: #4CAF50;">保存修改</button>
+  <textarea id="output" class="output" placeholder="修改过的 modoverrides.lua 内容" readonly onclick="copyOutput()"></textarea>
+
+  <div id="copy-toast" style="
+  display: none;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  z-index: 9999;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.3);
+  ">
+    复制成功！
+  </div>
+
+</div>
+
+<script>
+    let modsData = [];
+
+    function escapeHtml(text) {
+      return text.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+
+    function parseInput() {
+      const text = document.getElementById('input').value;
+
+      if (!text) {
+        showErrorToast("请先填入 modoverrides.lua 的内容！");
+        return;
+      }
+
+      modsData = [];
+
+      const cleaned = text.replace(/^return\s*{/, '').replace(/}\s*$/, '').trim();
+
+      const modBlocks = cleaned.split(/},\s*\["workshop-/).map((block, index) => {
+        if (index === 0) return block; else return '["workshop-' + block;
+      });
+
+      modBlocks.forEach(block => {
+        const idMatch = /\["workshop-(\d+)"\]/.exec(block);
+        if (!idMatch) return;
+
+        const id = idMatch[1];
+        const enabledMatch = /enabled\s*=\s*(true|false)/.exec(block);
+        const enabled = enabledMatch ? enabledMatch[1] === 'true' : true;
+
+        const configStart = block.indexOf('configuration_options={');
+        let configBody = '';
+
+        if (configStart !== -1) {
+          let braceCount = 0;
+          for (let i = configStart + 'configuration_options={'.length; i < block.length; i++) {
+            if (block[i] === '{') braceCount++;
+            if (block[i] === '}') {
+              if (braceCount === 0) {
+                configBody = block.substring(configStart + 'configuration_options={'.length, i).trim();
+                break;
+              } else {
+                braceCount--;
+              }
+            }
+          }
+        }
+
+        const configEntries = {};
+        configBody.split(/,(?![^{]*})/).forEach(line => {
+          const kvMatch = line.trim().match(/^(.+?)\s*=\s*(.+)$/);
+          if (kvMatch) {
+            let key = kvMatch[1].trim();
+            let value = kvMatch[2].trim();
+            configEntries[key] = value;
+          }
+        });
+
+        modsData.push({ id, toggle: enabled, configuration_options: configEntries });
+      });
+
+      renderMods();
+      updateOutput();
+    }
+
+    function renderMods() {
+      const container = document.getElementById('mods');
+      container.innerHTML = '';
+
+      modsData.forEach(mod => {
+        const div = document.createElement('div');
+        div.className = 'mod-item';
+
+        let configTable = '<table class="config-table">';
+        for (const key in mod.configuration_options) {
+          configTable += `<tr><td>${key}</td><td><input type="text" data-key='${key}' value="${escapeHtml(mod.configuration_options[key])}" onchange="updateConfigSafe('${mod.id}', this)"></td></tr>`;
+        }
+        configTable += '</table>';
+
+        div.innerHTML = `
+        <div class="mod-header">
+            <h3>MOD代码：${mod.id}</h3>
+            <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=${mod.id}" target="_blank" style="font-weight: bold;">在创意工坊里查看</a>
+        </div>
+        <div class="mod-enable">
+            <span class="enable-text">启用</span>
+            <label class="switch">
+            <input type="checkbox" ${mod.toggle ? 'checked' : ''} onchange="toggleEnabled('${mod.id}', this.checked)">
+            <span class="slider"></span>
+            </label>
+        </div>
+        ${configTable}
+        `;
+
+        container.appendChild(div);
+      });
+    }
+
+    function toggleEnabled(id, value) {
+      const mod = modsData.find(m => m.id === id);
+      if (mod) {
+        mod.toggle = value;
+        updateOutput();
+      }
+    }
+
+    function updateConfigSafe(id, el) {
+      const mod = modsData.find(m => m.id === id);
+      if (mod) {
+        const key = el.dataset.key;
+        const value = el.value;
+        mod.configuration_options[key] = value;
+        updateOutput();
+      }
+    }
+
+    function updateOutput() {
+      let output = 'return {\n';
+
+      modsData.forEach(mod => {
+        const entries = [];
+        for (const key in mod.configuration_options) {
+          entries.push(`    ${key}=${mod.configuration_options[key]}`);
+        }
+
+        if (entries.length === 0) {
+          output += `  [\"workshop-${mod.id}\"]={ configuration_options={ }, enabled=${mod.toggle ? 'true' : 'false'} },\n`;
+        } else {
+          output += `  [\"workshop-${mod.id}\"]={\n    configuration_options={\n${entries.join(',\n')}\n    },\n    enabled=${mod.toggle ? 'true' : 'false'}\n  },\n`;
+        }
+      });
+
+      output += '}';
+
+      document.getElementById('output').value = output;
+    }
+
+    function copyOutput() {
+        const output = document.getElementById('output');
+        const input = document.getElementById('input').value.trim(); // 拿到 input 的内容
+
+        if (!input) {
+            showErrorToast("请先填入 modoverrides.lua 的内容！");
+            return;
+        }
+        
+        if (!output.value.trim()) {
+            showErrorToast("请先点击生成或您填入的内容无效！");
+            return;
+        }
+        
+        output.select(); // 选中内容
+        output.setSelectionRange(0, 99999); // 手机端兼容
+        
+        try {
+            document.execCommand('copy');
+            showToastOverOutput();
+        } catch (err) {
+            alert('复制失败，请手动复制');
+        }
+    }
+
+    function showToastOverOutput() {
+        const toast = document.getElementById('copy-toast');
+        const output = document.getElementById('output');
+        const rect = output.getBoundingClientRect(); // 获取 output 位置
+
+        toast.style.display = 'block';
+        toast.style.position = 'fixed';
+        toast.style.userSelect = 'none'; // 不允许选中内容
+        toast.style.pointerEvents = 'none'; // 禁用鼠标事件
+        
+        // 计算居中位置
+        toast.style.top = `${rect.top + rect.height / 2}px`;
+        toast.style.left = `${rect.left + rect.width / 2}px`;
+        toast.style.transform = 'translate(-50%, -50%)';
+        
+        setTimeout(() => {
+            toast.style.display = 'none';
+        }, 1500); // 1.5秒后消失
+    }
+
+    function showErrorToast(message) {
+        const toast = document.getElementById('copy-toast');
+        const output = document.getElementById('output');
+        const rect = output.getBoundingClientRect(); // output 位置
+
+        toast.textContent = message; // 设置错误提示内容
+        toast.style.backgroundColor = '#f44336'; // 红色背景
+        toast.style.display = 'block';
+        toast.style.position = 'fixed';
+        toast.style.top = `${rect.top + rect.height / 2}px`;
+        toast.style.left = `${rect.left + rect.width / 2}px`;
+        toast.style.transform = 'translate(-50%, -50%)';
+        toast.style.userSelect = 'none'; // 不允许选中内容
+        toast.style.pointerEvents = 'none'; // 禁用鼠标事件
+        
+        setTimeout(() => {
+            toast.style.display = 'none';
+            toast.textContent = '复制成功！'; // 恢复回默认的“复制成功”
+            toast.style.backgroundColor = '#4CAF50'; // 恢复绿色
+        }, 1500); // 1.5秒后消失
+    }
+</script>
+
+</body>
+</html>
