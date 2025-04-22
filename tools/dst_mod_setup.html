@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>饥荒MOD下载配置生成器</title>
+  <style>
+    textarea {
+      width: 45%;
+      height: 300px;
+      margin: 10px;
+      resize: none;
+      min-width: 0px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: nowrap;
+    }
+    textarea::-webkit-scrollbar {
+      display: none;
+    }
+    #output {
+      background-color: #f0f0f0;
+      color: #666;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      resize: none;
+    }
+  </style>
+</head>
+<body>
+
+<h2 style="text-align:center;">下载Mod配置生成器</h2>
+
+<div class="container">
+  <textarea id="input" placeholder="粘贴 modoverrides.lua 里的内容"></textarea>
+  <textarea id="output" placeholder="生成的 dedicated_server_mods_setup.lua 内容" readonly onclick="copyOutput()"></textarea>
+</div>
+
+<div id="copy-toast" style="
+  display: none;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  z-index: 9999;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.3);
+">
+复制成功！
+</div>
+
+<button onclick="extractMods()">点击生成</button>
+
+<script>
+function extractMods() {
+  const input = document.getElementById('input').value;
+  const output = document.getElementById('output');
+  
+  // 匹配所有 workshop-123456789 的ID
+  const regex = /workshop-(\d+)/g;
+  let match;
+  const ids = [];
+
+  while ((match = regex.exec(input)) !== null) {
+    ids.push(match[1]);
+  }
+
+  // 去重（有些文件可能重复）
+  const uniqueIds = [...new Set(ids)];
+
+  // 格式化输出
+  const result = uniqueIds.map(id => `ServerModSetup("${id}")`).join('\n');
+
+  output.value = result;
+}
+
+function copyOutput() {
+  const output = document.getElementById('output');
+  const input = document.getElementById('input').value.trim(); // 拿到 input 的内容
+
+  if (!input) {
+    showErrorToast("请先在左侧填入 modoverrides.lua 的内容！");
+    return;
+  }
+  
+  if (!output.value.trim()) {
+    showErrorToast("请先点击生成或您填入的内容无效！");
+    return;
+  }
+  
+  output.select(); // 选中内容
+  output.setSelectionRange(0, 99999); // 手机端兼容
+  
+  try {
+    document.execCommand('copy');
+    showToastOverOutput();
+  } catch (err) {
+    alert('复制失败，请手动复制');
+  }
+}
+
+function showToastOverOutput() {
+  const toast = document.getElementById('copy-toast');
+  const output = document.getElementById('output');
+  const rect = output.getBoundingClientRect(); // 获取 output 位置
+
+  toast.style.display = 'block';
+  toast.style.position = 'fixed';
+  toast.style.userSelect = 'none'; // 不允许选中内容
+  toast.style.pointerEvents = 'none'; // 禁用鼠标事件
+  
+  // 计算居中位置
+  toast.style.top = `${rect.top + rect.height / 2}px`;
+  toast.style.left = `${rect.left + rect.width / 2}px`;
+  toast.style.transform = 'translate(-50%, -50%)';
+  
+  setTimeout(() => {
+    toast.style.display = 'none';
+  }, 1500); // 1.5秒后消失
+}
+
+function showErrorToast(message) {
+  const toast = document.getElementById('copy-toast');
+  const output = document.getElementById('output');
+  const rect = output.getBoundingClientRect(); // output 位置
+
+  toast.textContent = message; // 设置错误提示内容
+  toast.style.backgroundColor = '#f44336'; // 红色背景
+  toast.style.display = 'block';
+  toast.style.position = 'fixed';
+  toast.style.top = `${rect.top + rect.height / 2}px`;
+  toast.style.left = `${rect.left + rect.width / 2}px`;
+  toast.style.transform = 'translate(-50%, -50%)';
+  toast.style.userSelect = 'none'; // 不允许选中内容
+  toast.style.pointerEvents = 'none'; // 禁用鼠标事件
+  
+  setTimeout(() => {
+    toast.style.display = 'none';
+    toast.textContent = '复制成功！'; // 恢复回默认的“复制成功”
+    toast.style.backgroundColor = '#4CAF50'; // 恢复绿色
+  }, 1500); // 1.5秒后消失
+}
+</script>
+
+</body>
+</html>
