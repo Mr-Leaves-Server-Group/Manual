@@ -40,7 +40,13 @@ CPU升级路线：Intel-E5 < Ryzen2000 < Intel-10th < Ryzen3000 < Ryzen5000 < Ry
 
 ### 2.5.添加/下载MOD
 **文件夹 `/home/container/mods`**  
-**配置文件 `dedicated_server_mods_setup.lua` 控制mod下载设置**，找到并按照文件上面给出的例子，填写即可（填写后只会下载，不会启用，不填写不下载当然也不会启用）。如这以下两种形式 `ServerModSetup("xxxxxxxxx")` 和 `ServerModCollectionSetup("xxxxxxxxx")` 分别对应单一模组和模组包。只需将 `modoverride.lua` 文件中所有 `workshop-xxxxxxxxx` 转换成以上对应形式，然后一行行填入文件即可。推荐使用ChatGPT等工具进行批量替换。替换后务必检查是否有错误。
+**配置文件 `dedicated_server_mods_setup.lua` 控制mod下载设置**，找到并按照文件上面给出的例子，填写即可（填写后只会下载，不会启用，不填写不下载当然也不会启用）。如这以下两种形式 `ServerModSetup("xxxxxxxxx")` 和 `ServerModCollectionSetup("xxxxxxxxx")` 分别对应单一模组和模组包。只需将 `modoverride.lua` 文件中所有 `workshop-xxxxxxxxx` 转换成以上对应形式，然后一行行填入文件即可。推荐使用下面的转换器，或ChatGPT等工具进行批量替换。替换后务必检查是否有错误。
+<iframe src="/tools/dst_mod_setup.html" 
+    width="100%" 
+    height="500" 
+    style="border: 1px solid #ccc; border-radius: 8px; overflow: hidden;" 
+    scrolling="no">
+</iframe>
 
 ### 2.6.启用/配置MOD
 **文件夹 `/home/container/DoNotStarveTogether/config/server/Master` 和 `Caves`**  
@@ -76,4 +82,15 @@ CPU升级路线：Intel-E5 < Ryzen2000 < Intel-10th < Ryzen3000 < Ryzen5000 < Ry
 
 直接删除master和cave文件夹里面的Save和Backup文件夹就可以了，这样服务器开机的时候就会重新生成所有东西。
 由于饥荒的Mod文件配置比较繁琐，**不建议删除所有文件重装**，把 `modoverride.lua` 里的字段删了就好，当然也可以利用 
-`MLSG-Chinese-Guide-and-Manual-for-Server-Admins-Please-READ-ME` 文件夹里面的饥荒Mod模板。
+`MLSG-Chinese-Guide-and-Manual-for-Server-Admins-Please-READ-ME` 文件夹里面的饥荒Mod模板。  
+<br>
+
+
+## 5.模组配置编辑器（高级）
+用于快速手动编辑模组的配置文件，**不提供添加MOD的功能**，添加MOD强烈建议在客户端操作，以避免MOD兼容性问题，**也不提供添加MOD设置的功能**，因为太容易导致报错。**如果您是新手，强烈不推荐使用该模组编辑器，不正确的操作会导致服务器崩溃，或者模组无法使用。**可以直接在下方的窗口使用，也可以点击<a href="/tools/dst_mod_edit.html" target="_blank">使用网页版模组编辑器(全屏)</a>。  
+<iframe src="/tools/dst_mod_edit.html" 
+    width="100%" 
+    height="1000" 
+    style="border: 1px solid #ccc; border-radius: 8px;" 
+>
+</iframe>
