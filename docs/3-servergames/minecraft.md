@@ -73,12 +73,12 @@ Paper的插件可以直接放入**插件文件夹Plugins**里，通常可以从[
 #### 2.5.1.服务器端自动安装  
 **MLSG支持服务器端自动安装，只需用户填入 Project-ID 和 File-ID 服务器就会安装对应服务器端。**  
 <hr/>
-<center>**填写完成后，删除服务器所有文件，然后在 设置 选项卡，点击重装服务器**</center>  
+**填写完成后，删除服务器所有文件，然后在 设置 选项卡，点击重装服务器**  
 ![CurseForge后台](\assets\minecraft\curseforge-panel.png)  
 
 <hr/>
-<center>**[CurseForge模组包列表](https://curseforge.com/minecraft/modpacks)，Project-ID在对应模组包主页右侧找到**  
-**File-ID则在，具体文件页面的顶部URL最后部分（服务器必须要Server Pack的File-ID）**</center>  
+**[CurseForge模组包列表](https://curseforge.com/minecraft/modpacks)，Project-ID在对应模组包主页右侧找到**  
+**File-ID则在，具体文件页面的顶部URL最后部分（服务器必须要Server Pack的File-ID）**  
 ![CurseForge-IDs](\assets\minecraft\curseforge-1.png)
 ![CurseForge-IDs](\assets\minecraft\curseforge-2.png)
 ![CurseForge-IDs](\assets\minecraft\curseforge-3.png)
@@ -88,7 +88,7 @@ Paper的插件可以直接放入**插件文件夹Plugins**里，通常可以从[
 #### 2.5.2.客户端安装模组包  
 **客户端使用CurseForge教程如下，同样以上面的ATM9为例：**  
 <hr/>
-<center>点击[CurseForge官网](https://www.curseforge.com/download/app)下载客户端安装器，下载完成后，搜索并安装对应的模组包</center>  
+点击[CurseForge官网](https://www.curseforge.com/download/app)下载客户端安装器，下载完成后，搜索并安装对应的模组包  
 ![CurseForge客户端下载](\assets\minecraft\curseforge-client.png)
 ![CurseForge安装模组包](\assets\minecraft\curseforge-modpack.png)
 ![CurseForge其他功能](\assets\minecraft\curseforge-demo.png)  
@@ -150,17 +150,29 @@ Paper的插件可以直接放入**插件文件夹Plugins**里，通常可以从[
 
 ## 5.游戏内指令和权限
 
-- 赋予玩家OP/管理员（指令权限）：`/op 玩家游戏名称`  
-- 更改游戏模式：`/gamemode 0/1/2/3 玩家游戏名称`  
+- 赋予玩家OP/管理员（指令权限）：`/op 玩家游戏名称`
+- 更改游戏模式：`/gamemode creative/survival/adventure/spectator`
 - 更改生物破坏权限：`/gamerule mobGriefing true/false`  
 - 死亡掉落物品：`/gamerule keepInventory true/false`
+- 查看当前地图种子：`/seed`
+- 显示全部指令：`/help`
 
 ![MC指令](\assets\minecraft\op1.png)
 ![MC指令](\assets\minecraft\op2.png)
-<center>**[更多指令请参考MC官方Wiki](https://minecraft.fandom.com/zh/wiki/%E5%91%BD%E4%BB%A4)**</center>  
-<br>
+[更多指令请参考MC官方Wiki](https://minecraft.fandom.com/zh/wiki/%E5%91%BD%E4%BB%A4){:target="_blank", style="font-weight: bold; display: inline-block; margin: 0 auto;"}
 
-## 6.网页地图Dynmap设置
+
+## 6.服务器属性设置
+**服务器属性设置文件 `server.properties`，可以在后台的文件管理器中找到，可调整的参数如下：**
+- `online-mode`：是否开启在线验证，默认true，建议关闭（false），否则会导致部分玩家无法进入游戏
+- `level-name`：地图名称，不可使用中文，不要使用空格，建议使用下划线或连字符，默认是world
+- `level-seed`：地图种子，默认是随机（空值），可以在[chunkbase](https://www.chunkbase.com/apps/seed-map)上根据种子id查看种子地形
+- `enable-command-block`：是否开启指令方块，如果要使用指令方块，设置为true
+- `allow-flight`：是否允许飞行，默认false，如果有加装飞行模组，修改为true
+- `view-distance`：视距，默认10，建议设置为8-12，过大会导致服务器卡顿
+- `max-players`：最大玩家数量，默认20，建议设置为10-20，过大会导致服务器卡顿
+
+## 7.网页地图Dynmap设置
 
 Dynmap需要额外的端口分配，如果只有一个首选（游戏端口）请联系管理员开通更多端口  
 同时也可以为您配置反向代理来提供https和纯地址访问（无需端口号）  

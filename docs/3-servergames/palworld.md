@@ -19,42 +19,43 @@ CPU升级路线：Intel-E5 < Ryzen2000 < Intel-10th < Ryzen3000 < Ryzen5000 < Ry
 **注意：未关闭服务器修改配置文件，或错误配置文件，将导致配置文件将被刷回默认值**
 
 ### 2.1.方法一：使用在线配置工具
-点击使用 **[Palworld 服务器设置工具](https://pal-conf.bluefissure.com/)**
-<center>![配置生成器](/assets/palworld/configer.png)</center>
-<center>**使用配置生成器**</center>  
+点击使用 **[Palworld 服务器设置工具](https://pal-conf.bluefissure.com/)**  
 
-<center>![配置生成器](/assets/palworld/configer-result.png)</center>
-<center>**拷贝生成的代码**</center>  
+<div align="center"><img src="/assets/palworld/configer.png" alt="配置生成器"></div>
+<div align="center"><strong>使用配置生成器</strong></div>  
 
-<center>![配置文件位置](/assets/palworld/setting.png)</center>
-<center>**粘贴在设置文件**</center>  
+<div align="center"><img src="/assets/palworld/configer-result.png" alt="配置生成器"></div>
+<div align="center"><strong>拷贝生成的代码</strong></div>  
+
+<div align="center"><img src="/assets/palworld/setting.png" alt="配置文件位置"></div>
+<div align="center"><strong>粘贴在设置文件</strong></div>  
 
 ### 2.2.方法二：手动修改配置文件
-请从根目录 **`DefaultPalWorldSettings.ini`** 模板文件内，拷贝代码模板，并黏贴到对应的设置文件  
+请从根目录 **`DefaultPalWorldSettings.ini`** 模板文件内，拷贝代码模板，并黏贴到对应设置文件  
 **Linux（默认）: /home/container/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini**  
 **Windows（模组）: /home/container/Pal/Saved/Config/WindowsServer/PalWorldSettings.ini**  
 
-<center>![设置模板](/assets/palworld/defualt_config.png)</center>
-<center>**找到设置模板**</center>  
+<div align="center"><img src="/assets/palworld/defualt_config.png" alt="设置模板"></div>
+<div align="center"><strong>找到设置模板</strong></div>  
 
-<center>![拷贝代码](/assets/palworld/copy_default.png)</center>
-<center>**拷贝设置代码**</center>  
+<div align="center"><img src="/assets/palworld/copy_default.png" alt="拷贝代码"></div>
+<div align="center"><strong>拷贝设置代码</strong></div>  
 
-<center>![设置文件](/assets/palworld/setting.png)</center>
-<center>**粘贴在设置文件**</center>  
+<div align="center"><img src="/assets/palworld/setting.png" alt="设置文件"></div>
+<div align="center"><strong>粘贴在设置文件</strong></div>  
 
 ### 2.3.游戏内：管理员登录和指令
 **要使用控制台指令**，**请在游戏内输入`/adminpassword <Admin密码>`**，如下图：  
 **注：管理员密码在后台“启动”分页，找 AdminPassword 值**  
-<center>![管理员登陆](/assets/palworld/enter_password.png)</center>
-<center>**管理员登陆指令**</center>  
 
-<center>![管理员登陆成功](/assets/palworld/password_success.png)</center>
-<center>**成功登录管理员账户提示”**</center>
+<div align="center"><img src="/assets/palworld/enter_password.png" alt="管理员登陆"></div>
+<div align="center"><strong>管理员登陆指令</strong></div>  
+
+<div align="center"><img src="/assets/palworld/password_success.png" alt="管理员登陆成功"></div>
+<div align="center"><strong>成功登录管理员账户提示</strong></div>
 <br>
 
 **控制台指令，如下**  
-<center>
 
 | 指令语法                            | 指令说明                           |
 |------------------------------------|-------------------------------------------------|
@@ -69,20 +70,19 @@ CPU升级路线：Intel-E5 < Ryzen2000 < Intel-10th < Ryzen3000 < Ryzen5000 < Ry
 | `/Info`                               | 显示有关服务器的信息。                             |
 | `/Save`                               | 此命令强制保存世界数据。                          |
 
-</center>
 
 ## 3.进入服务器（教程）
 **要加入独立服务器**，**请按照以下流程**，如下图：
-<center>![连接服务器](/assets/palworld/connect1.png)</center>
-<center>**选择菜单第二个**</center>  
 
-<center>![连接服务器](/assets/palworld/connect2.png)</center>
-<center>**输入地址，并点“联系”**</center>
+<div align="center"><img src="/assets/palworld/connect1.png" alt="连接服务器"></div>
+<div align="center"><strong>选择菜单第二个</strong></div>  
+
+<div align="center"><img src="/assets/palworld/connect2.png" alt="连接服务器"></div>
+<div align="center"><strong>输入地址，并点“联系”</strong></div>
 <br>
 
 ## 4.已知游戏BUG
 **存档损坏无法修复，请格外注意会丢档的BUG**  
-<center>
 
 | 已知问题                           | 解决方法 / 当前状态         |
 |---------------------------------------------|-----------------------|
@@ -96,20 +96,20 @@ CPU升级路线：Intel-E5 < Ryzen2000 < Intel-10th < Ryzen3000 < Ryzen5000 < Ry
 | 使用近期连接过的列表加入，会提示创建角色 | 已修复          |
 | 各种卡地形，看起来像是服务器卡顿          | 请以Server FPS为准       |
 
-</center>
 <br>
 
 ## 5.服务器存档位置
 **存档文件位置：`/home/container/Pal` 里的 `Saved` 文件夹**  
 **如果要下载整个存档**，**压缩整个文件夹并下载压缩文件**，如下图：  
-<center>![存档文件夹](/assets/palworld/save_folder.png)</center>
-<center>**游戏存档，设置都在里面**</center>  
 
-<center>![压缩存档文件夹](/assets/palworld/save.png)</center>
-<center>**压缩整个文件夹，以搬运**</center>
+<div align="center"><img src="/assets/palworld/save_folder.png" alt="存档文件夹"></div>
+<div align="center"><strong>游戏存档，设置都在里面</strong></div>  
 
-<center>![下载压缩文件](/assets/palworld/download_save.png)</center>
-<center>**下载压缩后的存档文件夹**</center>
+<div align="center"><img src="/assets/palworld/save.png" alt="压缩存档文件夹"></div>
+<div align="center"><strong>压缩整个文件夹，以搬运</strong></div>
+
+<div align="center"><img src="/assets/palworld/download_save.png" alt="下载压缩文件"></div>
+<div align="center"><strong>下载压缩后的存档文件夹</strong></div>
 
 **如果要重新开始游戏，可以删除整个`Saved`文件夹**
 **如果想保存设置，但删除存档，可以删除`Saved/SaveGames`文件夹**
