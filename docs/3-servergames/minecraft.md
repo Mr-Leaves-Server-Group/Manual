@@ -148,23 +148,24 @@ Paper的插件可以直接放入**插件文件夹Plugins**里，通常可以从[
 - 模组服务器（通常地图生成都是单核心渲染），所以都会很慢，可以使用对应版本的pregen模组来预生成地图，以提升玩家体验。（部分版本可能只能在客户端运行，请在客户端运行后上传地图到后台） 
 <br>
 
-## 5.游戏内指令和权限
+## 5.游戏指令和权限
+**在后台输入所有指令时**，**前面不需要加斜杠 `/`**，如下图所示 `/op 玩家游戏名称`，**后台直接输入 `op 玩家游戏名称` 即可**，**游戏内则需要正常输入 `/op 玩家游戏名称` （带斜杠）**。游戏内输入指令时，按下Tab键可以自动补全指令。**更多指令请参考[MC官方Wiki](https://minecraft.fandom.com/zh/wiki/%E5%91%BD%E4%BB%A4)**。
 
 - 赋予玩家OP/管理员（指令权限）：`/op 玩家游戏名称`
+- 显示全部可用指令：`/help`
+- 查看当前地图种子：`/seed`
 - 更改游戏模式：`/gamemode creative/survival/adventure/spectator`
 - 更改生物破坏权限：`/gamerule mobGriefing true/false`  
 - 死亡掉落物品：`/gamerule keepInventory true/false`
-- 查看当前地图种子：`/seed`
-- 显示全部指令：`/help`
 
 ![MC指令](\assets\minecraft\op1.png)
 ![MC指令](\assets\minecraft\op2.png)
-[更多指令请参考MC官方Wiki](https://minecraft.fandom.com/zh/wiki/%E5%91%BD%E4%BB%A4){:target="_blank", style="font-weight: bold; display: inline-block; margin: 0 auto;"}
 
 
 ## 6.服务器属性设置
-**服务器属性设置文件 `server.properties`，可以在后台的文件管理器中找到，可调整的参数如下：**
-- `online-mode`：是否开启在线验证，默认true，建议关闭（false），否则会导致部分玩家无法进入游戏
+**服务器属性设置文件 `server.properties`，可以在后台的文件管理器中找到，可调整的参数如下：**  
+
+- `online-mode`：正版验证，默认true，改成false允许盗版玩家进入（皮肤全部失效）
 - `level-name`：地图名称，不可使用中文，不要使用空格，建议使用下划线或连字符，默认是world
 - `level-seed`：地图种子，默认是随机（空值），可以在[chunkbase](https://www.chunkbase.com/apps/seed-map)上根据种子id查看种子地形
 - `enable-command-block`：是否开启指令方块，如果要使用指令方块，设置为true
