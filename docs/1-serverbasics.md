@@ -24,7 +24,7 @@
 <center>文件管理和传输</center>
 <center>（小于100M且少于50个文件）</center>
 ![文件页](\assets\1.0\file-page.png)  
-<center>**注：超过50个，或超过100M请按照[该教程](/2-serveradvanced/filetransfer/)传输文件**</center>  
+<div align="center"><strong>注：超过50个文件，或超过100M请使用<a href="/2-serveradvanced/filetransfer/">该教程</a>传输文件</strong></div>
 
 <br>
 ### <center>2.3.数据库</center>

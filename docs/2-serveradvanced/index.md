@@ -5,17 +5,17 @@
 ---
 
 ## 1.官方文档
-<center>**[翼龙官网](https://pterodactyl.io)**</center>
+**[翼龙官网](https://pterodactyl.io)**
 [![翼龙官网](\assets\2.0\pterodactyl-official.png)](https://pterodactyl.io)
 
 <br>
-<center>**[翼龙中国](https://pterodactyl.top)**</center>
+**[翼龙中国](https://pterodactyl.top)**
 [![翼龙中国](\assets\2.0\pterodactyl-china.png)](https://pterodactyl.top)
 
 <br>
 
 ## 2.官方论坛
-<center>**[翼龙中国论坛（境外访问很慢）](https://bbs.pterodactyl.top/)**</center>
+**[翼龙中国论坛（境外访问很慢）](https://bbs.pterodactyl.top/)**
 [![翼龙中国论坛](\assets\2.0\pterodactyl-china-bbs.png)](https://bbs.pterodactyl.top/)
 
 
