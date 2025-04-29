@@ -949,93 +949,157 @@ CPU升级路线：Intel-E5 &lt; Ryzen2000 &lt; Intel-10th &lt; Ryzen3000 &lt; Ry
 <strong>Windows（模组）</strong><code>/home/container/Pal/Saved/Config/WindowsServer/PalWorldSettings.ini</code><br />
 <strong>注意：未关闭服务器修改配置文件，或错误配置文件，将导致配置文件将被刷回默认值</strong></p>
 <h3 id="21">2.1.方法一：使用在线配置工具</h3>
-<p>点击使用 <strong><a href="https://pal-conf.bluefissure.com/">Palworld 服务器设置工具</a></strong></p>
-<center>![配置生成器](/assets/palworld/configer.png)</center>
-<center>**使用配置生成器**</center>
+<p>点击使用 <strong><a href="https://pal-conf.bluefissure.com/">Palworld 服务器设置工具</a></strong>  </p>
+<div align="center"><img src="/assets/palworld/configer.png" alt="配置生成器"></div>
+<div align="center"><strong>使用配置生成器</strong></div>
 
-<center>![配置生成器](/assets/palworld/configer-result.png)</center>
-<center>**拷贝生成的代码**</center>
+<div align="center"><img src="/assets/palworld/configer-result.png" alt="配置生成器"></div>
+<div align="center"><strong>拷贝生成的代码</strong></div>
 
-<center>![配置文件位置](/assets/palworld/setting.png)</center>
-<center>**粘贴在设置文件**</center>
+<div align="center"><img src="/assets/palworld/setting.png" alt="配置文件位置"></div>
+<div align="center"><strong>粘贴在设置文件</strong></div>
 
 <h3 id="22">2.2.方法二：手动修改配置文件</h3>
-<p>请从根目录 <strong><code>DefaultPalWorldSettings.ini</code></strong> 模板文件内，拷贝代码模板，并黏贴到对应的设置文件<br />
+<p>请从根目录 <strong><code>DefaultPalWorldSettings.ini</code></strong> 模板文件内，拷贝代码模板，并黏贴到对应设置文件<br />
 <strong>Linux（默认）: /home/container/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini</strong><br />
 <strong>Windows（模组）: /home/container/Pal/Saved/Config/WindowsServer/PalWorldSettings.ini</strong>  </p>
-<center>![设置模板](/assets/palworld/defualt_config.png)</center>
-<center>**找到设置模板**</center>
+<div align="center"><img src="/assets/palworld/defualt_config.png" alt="设置模板"></div>
+<div align="center"><strong>找到设置模板</strong></div>
 
-<center>![拷贝代码](/assets/palworld/copy_default.png)</center>
-<center>**拷贝设置代码**</center>
+<div align="center"><img src="/assets/palworld/copy_default.png" alt="拷贝代码"></div>
+<div align="center"><strong>拷贝设置代码</strong></div>
 
-<center>![设置文件](/assets/palworld/setting.png)</center>
-<center>**粘贴在设置文件**</center>
+<div align="center"><img src="/assets/palworld/setting.png" alt="设置文件"></div>
+<div align="center"><strong>粘贴在设置文件</strong></div>
 
 <h3 id="23">2.3.游戏内：管理员登录和指令</h3>
 <p><strong>要使用控制台指令</strong>，<strong>请在游戏内输入<code>/adminpassword &lt;Admin密码&gt;</code></strong>，如下图：<br />
 <strong>注：管理员密码在后台“启动”分页，找 AdminPassword 值</strong>  </p>
-<center>![管理员登陆](/assets/palworld/enter_password.png)</center>
-<center>**管理员登陆指令**</center>
+<div align="center"><img src="/assets/palworld/enter_password.png" alt="管理员登陆"></div>
+<div align="center"><strong>管理员登陆指令</strong></div>
 
-<center>![管理员登陆成功](/assets/palworld/password_success.png)</center>
-<center>**成功登录管理员账户提示”**</center>
+<div align="center"><img src="/assets/palworld/password_success.png" alt="管理员登陆成功"></div>
+<div align="center"><strong>成功登录管理员账户提示</strong></div>
 <p><br></p>
 <p><strong>控制台指令，如下</strong>  </p>
-<center>
-
-| 指令语法                            | 指令说明                           |
-|------------------------------------|-------------------------------------------------|
-| `/Shutdown [Seconds] [Message Text]` | 此命令将在指定秒数延迟过后，带有指定消息关闭服务器。    |
-| `/DoExit`                            | 使用此命令立即停止服务器。                        |
-| `/Broadcast [Message Text]`          | 从服务器向所有连接的玩家广播一条消息。              |
-| `/KickPlayer [Player ID or Steam ID]` | 将指定玩家从服务器断开连接。                       |
-| `/BanPlayer [Player ID or Steam ID]`  | 禁止指定玩家进入服务器。                          |
-| `/TeleportToPlayer [Player ID or Steam ID]` | 将你传送到指定玩家的位置。该命令不能从控制台运行。  |
-| `/TeleportToMe [Player ID or Steam ID]`   | 将指定玩家传送到你的位置。这个命令也不能从控制台使用。 |
-| `/ShowPlayers`                        | 显示所有连接玩家的玩家ID和Steam ID等信息。          |
-| `/Info`                               | 显示有关服务器的信息。                             |
-| `/Save`                               | 此命令强制保存世界数据。                          |
-
-</center>
-
+<table>
+<thead>
+<tr>
+<th>指令语法</th>
+<th>指令说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/Shutdown [Seconds] [Message Text]</code></td>
+<td>此命令将在指定秒数延迟过后，带有指定消息关闭服务器。</td>
+</tr>
+<tr>
+<td><code>/DoExit</code></td>
+<td>使用此命令立即停止服务器。</td>
+</tr>
+<tr>
+<td><code>/Broadcast [Message Text]</code></td>
+<td>从服务器向所有连接的玩家广播一条消息。</td>
+</tr>
+<tr>
+<td><code>/KickPlayer [Player ID or Steam ID]</code></td>
+<td>将指定玩家从服务器断开连接。</td>
+</tr>
+<tr>
+<td><code>/BanPlayer [Player ID or Steam ID]</code></td>
+<td>禁止指定玩家进入服务器。</td>
+</tr>
+<tr>
+<td><code>/TeleportToPlayer [Player ID or Steam ID]</code></td>
+<td>将你传送到指定玩家的位置。该命令不能从控制台运行。</td>
+</tr>
+<tr>
+<td><code>/TeleportToMe [Player ID or Steam ID]</code></td>
+<td>将指定玩家传送到你的位置。这个命令也不能从控制台使用。</td>
+</tr>
+<tr>
+<td><code>/ShowPlayers</code></td>
+<td>显示所有连接玩家的玩家ID和Steam ID等信息。</td>
+</tr>
+<tr>
+<td><code>/Info</code></td>
+<td>显示有关服务器的信息。</td>
+</tr>
+<tr>
+<td><code>/Save</code></td>
+<td>此命令强制保存世界数据。</td>
+</tr>
+</tbody>
+</table>
 <h2 id="3">3.进入服务器（教程）</h2>
 <p><strong>要加入独立服务器</strong>，<strong>请按照以下流程</strong>，如下图：</p>
-<center>![连接服务器](/assets/palworld/connect1.png)</center>
-<center>**选择菜单第二个**</center>
+<div align="center"><img src="/assets/palworld/connect1.png" alt="连接服务器"></div>
+<div align="center"><strong>选择菜单第二个</strong></div>
 
-<center>![连接服务器](/assets/palworld/connect2.png)</center>
-<center>**输入地址，并点“联系”**</center>
+<div align="center"><img src="/assets/palworld/connect2.png" alt="连接服务器"></div>
+<div align="center"><strong>输入地址，并点“联系”</strong></div>
 <p><br></p>
 <h2 id="4bug">4.已知游戏BUG</h2>
 <p><strong>存档损坏无法修复，请格外注意会丢档的BUG</strong>  </p>
-<center>
-
-| 已知问题                           | 解决方法 / 当前状态         |
-|---------------------------------------------|-----------------------|
-| 独立服务器，直接连接无法输入密码              | 已修复    |
-| 工会中玩家退出，会导致其他未退出玩家烂档     | 已修复            |
-| 独立服务器，无法在游戏列表显示服务器          | 已修复            |
-| 营地内的最大Pal数量上限设置无效              | 无效设置            |
-| 无法调整Boss刷新时间，默认为1小时            | 已修复            |
-| 内存泄漏，游戏每隔一段时间会爆内存重启   | 已修复       |
-| 卡Bug抓高塔Boss可能导致后期烂档              | 已修复          |
-| 使用近期连接过的列表加入，会提示创建角色 | 已修复          |
-| 各种卡地形，看起来像是服务器卡顿          | 请以Server FPS为准       |
-
-</center>
+<table>
+<thead>
+<tr>
+<th>已知问题</th>
+<th>解决方法 / 当前状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>独立服务器，直接连接无法输入密码</td>
+<td>已修复</td>
+</tr>
+<tr>
+<td>工会中玩家退出，会导致其他未退出玩家烂档</td>
+<td>已修复</td>
+</tr>
+<tr>
+<td>独立服务器，无法在游戏列表显示服务器</td>
+<td>已修复</td>
+</tr>
+<tr>
+<td>营地内的最大Pal数量上限设置无效</td>
+<td>无效设置</td>
+</tr>
+<tr>
+<td>无法调整Boss刷新时间，默认为1小时</td>
+<td>已修复</td>
+</tr>
+<tr>
+<td>内存泄漏，游戏每隔一段时间会爆内存重启</td>
+<td>已修复</td>
+</tr>
+<tr>
+<td>卡Bug抓高塔Boss可能导致后期烂档</td>
+<td>已修复</td>
+</tr>
+<tr>
+<td>使用近期连接过的列表加入，会提示创建角色</td>
+<td>已修复</td>
+</tr>
+<tr>
+<td>各种卡地形，看起来像是服务器卡顿</td>
+<td>请以Server FPS为准</td>
+</tr>
+</tbody>
+</table>
 <p><br></p>
 <h2 id="5">5.服务器存档位置</h2>
 <p><strong>存档文件位置：<code>/home/container/Pal</code> 里的 <code>Saved</code> 文件夹</strong><br />
 <strong>如果要下载整个存档</strong>，<strong>压缩整个文件夹并下载压缩文件</strong>，如下图：  </p>
-<center>![存档文件夹](/assets/palworld/save_folder.png)</center>
-<center>**游戏存档，设置都在里面**</center>
+<div align="center"><img src="/assets/palworld/save_folder.png" alt="存档文件夹"></div>
+<div align="center"><strong>游戏存档，设置都在里面</strong></div>
 
-<center>![压缩存档文件夹](/assets/palworld/save.png)</center>
-<center>**压缩整个文件夹，以搬运**</center>
+<div align="center"><img src="/assets/palworld/save.png" alt="压缩存档文件夹"></div>
+<div align="center"><strong>压缩整个文件夹，以搬运</strong></div>
 
-<center>![下载压缩文件](/assets/palworld/download_save.png)</center>
-<center>**下载压缩后的存档文件夹**</center>
+<div align="center"><img src="/assets/palworld/download_save.png" alt="下载压缩文件"></div>
+<div align="center"><strong>下载压缩后的存档文件夹</strong></div>
 
 <p><strong>如果要重新开始游戏，可以删除整个<code>Saved</code>文件夹</strong>
 <strong>如果想保存设置，但删除存档，可以删除<code>Saved/SaveGames</code>文件夹</strong>
@@ -1060,7 +1124,7 @@ CPU升级路线：Intel-E5 &lt; Ryzen2000 &lt; Intel-10th &lt; Ryzen3000 &lt; Ry
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年4月22日 22:31:20">2025年4月22日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年4月29日 05:09:07">2025年4月29日</span>
   </span>
 
     
