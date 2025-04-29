@@ -672,7 +672,7 @@
         <li class="md-nav__item">
   <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
-      5.游戏内指令和权限
+      5.游戏指令和权限
     </span>
   </a>
   
@@ -1194,7 +1194,7 @@
         <li class="md-nav__item">
   <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
-      5.游戏内指令和权限
+      5.游戏指令和权限
     </span>
   </a>
   
@@ -1394,27 +1394,29 @@ Paper的插件可以直接放入<strong>插件文件夹Plugins</strong>里，通
 <li>模组服务器（通常地图生成都是单核心渲染），所以都会很慢，可以使用对应版本的pregen模组来预生成地图，以提升玩家体验。（部分版本可能只能在客户端运行，请在客户端运行后上传地图到后台） 
 <br></li>
 </ul>
-<h2 id="5">5.游戏内指令和权限</h2>
+<h2 id="5">5.游戏指令和权限</h2>
+<p><strong>在后台输入所有指令时</strong>，<strong>前面不需要加斜杠 <code>/</code></strong>，如下图所示 <code>/op 玩家游戏名称</code>，<strong>后台直接输入 <code>op 玩家游戏名称</code> 即可</strong>，<strong>游戏内则需要正常输入 <code>/op 玩家游戏名称</code> （带斜杠）</strong>。游戏内输入指令时，按下Tab键可以自动补全指令。<strong>更多指令请参考<a href="https://minecraft.fandom.com/zh/wiki/%E5%91%BD%E4%BB%A4">MC官方Wiki</a></strong>。</p>
 <ul>
 <li>赋予玩家OP/管理员（指令权限）：<code>/op 玩家游戏名称</code></li>
+<li>显示全部可用指令：<code>/help</code></li>
+<li>查看当前地图种子：<code>/seed</code></li>
 <li>更改游戏模式：<code>/gamemode creative/survival/adventure/spectator</code></li>
 <li>更改生物破坏权限：<code>/gamerule mobGriefing true/false</code>  </li>
 <li>死亡掉落物品：<code>/gamerule keepInventory true/false</code></li>
-<li>查看当前地图种子：<code>/seed</code></li>
-<li>显示全部指令：<code>/help</code></li>
 </ul>
 <p><img alt="MC指令" src="\assets\minecraft\op1.png" />
-<img alt="MC指令" src="\assets\minecraft\op2.png" />
-<a _="," href="https://minecraft.fandom.com/zh/wiki/%E5%91%BD%E4%BB%A4" style="font-weight: bold; display: inline-block; margin: 0 auto;" target="_blank">更多指令请参考MC官方Wiki</a></p>
+<img alt="MC指令" src="\assets\minecraft\op2.png" /></p>
 <h2 id="6">6.服务器属性设置</h2>
-<p><strong>服务器属性设置文件 <code>server.properties</code>，可以在后台的文件管理器中找到，可调整的参数如下：</strong>
-- <code>online-mode</code>：是否开启在线验证，默认true，建议关闭（false），否则会导致部分玩家无法进入游戏
-- <code>level-name</code>：地图名称，不可使用中文，不要使用空格，建议使用下划线或连字符，默认是world
-- <code>level-seed</code>：地图种子，默认是随机（空值），可以在<a href="https://www.chunkbase.com/apps/seed-map">chunkbase</a>上根据种子id查看种子地形
-- <code>enable-command-block</code>：是否开启指令方块，如果要使用指令方块，设置为true
-- <code>allow-flight</code>：是否允许飞行，默认false，如果有加装飞行模组，修改为true
-- <code>view-distance</code>：视距，默认10，建议设置为8-12，过大会导致服务器卡顿
-- <code>max-players</code>：最大玩家数量，默认20，建议设置为10-20，过大会导致服务器卡顿</p>
+<p><strong>服务器属性设置文件 <code>server.properties</code>，可以在后台的文件管理器中找到，可调整的参数如下：</strong>  </p>
+<ul>
+<li><code>online-mode</code>：正版验证，默认true，改成false允许盗版玩家进入（皮肤全部失效）</li>
+<li><code>level-name</code>：地图名称，不可使用中文，不要使用空格，建议使用下划线或连字符，默认是world</li>
+<li><code>level-seed</code>：地图种子，默认是随机（空值），可以在<a href="https://www.chunkbase.com/apps/seed-map">chunkbase</a>上根据种子id查看种子地形</li>
+<li><code>enable-command-block</code>：是否开启指令方块，如果要使用指令方块，设置为true</li>
+<li><code>allow-flight</code>：是否允许飞行，默认false，如果有加装飞行模组，修改为true</li>
+<li><code>view-distance</code>：视距，默认10，建议设置为8-12，过大会导致服务器卡顿</li>
+<li><code>max-players</code>：最大玩家数量，默认20，建议设置为10-20，过大会导致服务器卡顿</li>
+</ul>
 <h2 id="7dynmap">7.网页地图Dynmap设置</h2>
 <p>Dynmap需要额外的端口分配，如果只有一个首选（游戏端口）请联系管理员开通更多端口<br />
 同时也可以为您配置反向代理来提供https和纯地址访问（无需端口号）<br />
@@ -1439,7 +1441,7 @@ Paper的插件可以直接放入<strong>插件文件夹Plugins</strong>里，通
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年4月29日 05:09:07">2025年4月29日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年4月29日 05:23:39">2025年4月29日</span>
   </span>
 
     
