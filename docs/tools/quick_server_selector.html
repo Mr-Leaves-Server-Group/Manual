@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>菜菜云MLSG配置推荐</title>
+  <style>
+    html { overflow: hidden; height: 100%; }
+    body { font-family: system-ui, -apple-system, "Helvetica Neue", Arial; padding: 20px; max-width:900px; margin:0 auto; display:flex; justify-content:center; align-items:center; flex-direction: column; min-height:100vh; box-sizing:border-box; overflow: hidden; height: 100%;}
+    h2 { text-align:center; margin-bottom:4px; margin-top: 12px; }
+    p { text-align:center; color:#666; margin-top:0; margin-bottom:12px; }
+    .row { display:flex; align-items:center; margin:10px 0; flex-wrap:wrap; width:100%; justify-content:center }
+    label { width:140px; min-width:140px; text-align:center }
+    select,input[type=range],input[type=number] { width:200px }
+    .game-grid { display:flex; gap:12px; margin:12px 0; box-sizing: border-box; overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; padding: 0 10px;}
+    .game-grid::-webkit-scrollbar { display: none; }
+    .game-card { flex:0 0 auto; display:flex; gap:8px; align-items:center; padding:10px; border-radius:8px; border:1px solid #e6e6e6; cursor:pointer; background:#fff; min-width: 140px;}
+    .game-card.selected { border-color:#1976d2; box-shadow:0 2px 8px rgba(25,118,210,0.12); }
+    .game-icon { font-size:24px; width:40px; text-align:center }
+    .slider-val { min-width:48px; text-align:right; color:#333 }
+    .toggle-block { padding:8px 14px; border-radius:8px; border:1px solid #ddd; cursor:pointer; user-select:none; background:#fff; transition: all .12s ease }
+    .toggle-block.on { background:#43a047; color:#fff; border-color:#43a047; box-shadow: inset 0 2px 4px rgba(0,0,0,0.12); transform: translateY(1px) }
+    button { background:#1976d2;color:#fff;padding:8px 14px;border:none;border-radius:6px;cursor:pointer }
+    #result { margin-top:16px; padding:12px; border-radius:8px; background:#fff; border:1px solid #eee; font-weight:600 }
+    .hint { color:#666; font-size:13px }
+    .box { border:1px solid #ddd; padding:12px; border-radius:8px; background:#fafafa; max-width:90%; width:100%; margin:20px; box-sizing:border-box; text-align:center; }
+    @media (max-width: 768px) {
+      body { padding: 10px; font-size: 16px; }
+      .box { padding: 16px; max-width: 95%; }
+      h2 { font-size: 22px; }
+      .game-card { padding: 12px; max-width: none; flex: 1; }
+      .game-icon { font-size: 28px; }
+      label { font-size: 15px; }
+      .toggle-block { padding: 10px 16px; font-size: 15px; }
+      #result { font-size: 16px; padding: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+<h2>菜菜云MLSG配置推荐</h2>
+<p>选择游戏和设置，快速获取推荐服务器方案</p>
+</div>
+
+<div class="box">
+  <div class="row">
+    <div class="game-grid" id="gameGrid">
+      <div class="game-card" data-game="palu" onclick="setGame('palu', this)">
+        <div class="game-icon">🐉</div>
+        <div>
+          <div>幻兽帕鲁</div>
+          <div class="hint">掉帧/倍率</div>
+        </div>
+      </div>
+      <div class="game-card selected" data-game="minecraft" onclick="setGame('minecraft', this)">
+        <div class="game-icon">⛏️</div>
+        <div>
+          <div>我的世界</div>
+          <div class="hint">Mod 支持</div>
+        </div>
+      </div>
+      <div class="game-card" data-game="dst" onclick="setGame('dst', this)">
+        <div class="game-icon">🔥</div>
+        <div>
+          <div>饥荒联机版</div>
+          <div class="hint">Mod 支持</div>
+        </div>
+      </div>
+    </div>
+    <input type="hidden" id="game" value="minecraft">
+  </div>
+
+  <div id="options"></div>
+
+  <hr style="border:none;border-top:1px solid #eee;margin:18px 0">
+  <div id="result">推荐：—</div>
+</div>
+
+<script>
+function el(html){ const d=document.createElement('div'); d.innerHTML=html.trim(); return d.firstChild }
+
+function setGame(name, elCard){
+  document.getElementById('game').value = name;
+  document.querySelectorAll('.game-card').forEach(c=>c.classList.remove('selected'));
+  if(elCard) elCard.classList.add('selected');
+  renderOptions();
+  recommend();
+}
+
+const config_table_json = {
+    "EPC":{
+        "4G":"✅特惠EPC【4G】",
+        "8G":"✅特惠EPC【8G】",
+        "16G":"✅特惠EPC【16G】"
+    },
+    "R3K":{
+        "6G":"⬆️性能R3K【6G】",
+        "12G":"⬆️性能R3K【12G】"
+    },
+    "R5K":{
+        "8G":"⭐尊享R5K【8G】",
+        "16G":"⭐尊享R5K【16G】"
+    },
+    "R7K":{
+        "16G":"⚡顶配R7K【16G】",
+        "32G":"⚡顶配R7K【32G】"
+    }
+};
+
+function findLabelBySizeAndPref(size, prefGroups){
+  // try preferred groups first
+  for(const g of prefGroups){
+    if(config_table_json[g] && config_table_json[g][size]) return config_table_json[g][size];
+  }
+  // fallback: search any group for the size
+  for(const g of Object.keys(config_table_json)){
+    if(config_table_json[g] && config_table_json[g][size]) return config_table_json[g][size];
+  }
+  return null;
+}
+
+function lookupLabel(category, size){
+  const map = {
+    '特惠':['EPC'],
+    '性能':['R3K','R5K'],
+    '尊享':['R5K','R7K'],
+    '顶配':['R7K'],
+    '原版':['EPC']
+  };
+  const prefs = map[category] || ['R5K','R3K','EPC','R7K'];
+  return findLabelBySizeAndPref(size, prefs);
+}
+
+function sliderRow(id,label,min,max,init){
+  const row = document.createElement('div'); row.className='row';
+  const lab = document.createElement('label'); lab.textContent = label; row.appendChild(lab);
+  const wrap = document.createElement('div'); wrap.style.display='flex'; wrap.style.alignItems='center'; wrap.style.gap='8px'; wrap.style.flex='0 1 60%'; wrap.style.justifyContent='center';
+  const input = document.createElement('input'); input.type='range'; input.id=id; input.min=min; input.max=max; input.value=init; input.oninput = ()=>{ updateSliderDisplay(id); recommend(); };
+  input.style.width='80%';
+  const val = document.createElement('div'); val.className='slider-val'; val.id = id+'_val'; val.textContent = formatVal(init,max);
+  wrap.appendChild(input); wrap.appendChild(val); row.appendChild(wrap);
+  return row;
+}
+
+function toggleRow(id,onText,offText,def){
+  const row = document.createElement('div'); row.className='row';
+  const wrap = document.createElement('div'); wrap.style.display='flex'; wrap.style.alignItems='center'; wrap.style.justifyContent='center'; wrap.style.gap='8px'; wrap.style.flex='0 1 60%';
+  const btn = document.createElement('div'); btn.className='toggle-block'; btn.id = id; btn.style.width='80%';
+  btn.dataset.on = def ? '1' : '0';
+  btn.dataset.onText = onText; btn.dataset.offText = offText;
+  btn.textContent = def ? onText : offText;
+  if(def) btn.classList.add('on');
+  btn.onclick = function(){ btn.dataset.on = (btn.dataset.on==='1') ? '0' : '1'; if(btn.dataset.on==='1'){ btn.classList.add('on'); btn.textContent = btn.dataset.onText } else { btn.classList.remove('on'); btn.textContent = btn.dataset.offText } recommend(); };
+  wrap.appendChild(btn);
+  row.appendChild(wrap);
+  return row;
+}
+
+function getToggleVal(id){ const el=document.getElementById(id); return el && el.dataset && el.dataset.on==='1'; }
+
+function formatVal(v,max){ v=parseInt(v,10); return (v>=max? (max+'+') : v) }
+
+function updateSliderDisplay(id){ const el=document.getElementById(id); const val=document.getElementById(id+'_val'); if(!el||!val) return; val.textContent = formatVal(el.value, parseInt(el.max,10)); }
+
+function renderOptions(){
+  const g=document.getElementById('game').value;
+  const out=document.getElementById('options'); out.innerHTML='';
+
+  if(g==='minecraft'){
+    out.appendChild(sliderRow('mc_mods','模组数量',0,300,0));
+    out.appendChild(sliderRow('mc_players','玩家人数',1,30,1));
+  }
+
+  if(g==='palu'){
+    out.appendChild(sliderRow('palu_players','玩家人数',1,20,1));
+    out.appendChild(toggleRow('palu_high','大于5倍掉落物','小于5倍掉落物',false));
+    out.appendChild(toggleRow('palu_care','不接受后期掉帧','能接受后期掉帧',false));
+  }
+
+  if(g==='dst'){
+    out.appendChild(sliderRow('dst_players','玩家人数',1,10,1));
+    out.appendChild(toggleRow('dst_vanilla','有模组','纯原版',true));
+    out.appendChild(toggleRow('dst_large_mods','有大型模组','无大型模组',false));
+  }
+
+  // 初始化 slider 显示
+  document.querySelectorAll('input[type=range]').forEach(i=> updateSliderDisplay(i.id));
+}
+
+function recommend(){
+  const g=document.getElementById('game').value;
+  let category='', size='';
+
+  if(g==='minecraft'){
+    const mods = parseInt(document.getElementById('mc_mods').value||0,10);
+    const players = parseInt(document.getElementById('mc_players').value||1,10);
+
+    switch(true){
+      case (mods===0):
+        if(players<6){ category='特惠'; size='4G' }
+        else if(players<=10){ category='特惠'; size='4G' }
+        else if(players<=15){ category='性能'; size='6G' }
+        else if(players<=20){ category='特惠'; size='8G' }
+        else if(players<30){ category='性能'; size='12G' }
+        else { category='尊享'; size='16G' };
+        break;
+      case (mods<50):
+        if (players<4){ category='特惠'; size='4G' }
+        else if(players<6){ category='性能'; size='6G' }
+        else if(players<8){ category='尊享'; size='8G' }
+        else if(players<12){ category='性能'; size='12G' }
+        else if(players<20){ category='尊享'; size='16G' }
+        else if(players<=25){ category='顶配'; size='16G' }
+        else { category='顶配'; size='32G' };
+        break;
+      case (mods<100):
+        if(players<4){ category='特惠'; size='8G' }
+        else if(players<8){ category='尊享'; size='8G' }
+        else if(players<10){ category='性能'; size='12G' }
+        else if(players<15){ category='尊享'; size='16G' }
+        else if(players<=25){ category='顶配'; size='16G' }
+        else { category='顶配'; size='32G' };
+        break;
+      case (mods>=100 && mods<=250):
+        if(players<4){ category='性能'; size='6G' }
+        else if(players<6){ category='尊享'; size='8G' }
+        else if(players<8){ category='性能'; size='12G' }
+        else if(players<=12){ category='尊享'; size='16G' }
+        else if(players<=20){ category='顶配'; size='16G' }
+        else { category='顶配'; size='32G' };
+        break;
+      case (mods>250):
+        if(players<5){ category='尊享'; size='8G' }
+        else if(players<=10){ category='尊享'; size='16G' }
+        else { category='顶配'; size='32G' };
+        break;
+      default:
+        category='特惠'; size='8G';
+    }
+  }
+
+  if(g==='palu'){
+    const players = parseInt(document.getElementById('palu_players').value||1,10);
+    const care = getToggleVal('palu_care'); // true = 不能接受偶尔掉帧 (在乎)
+    const high = getToggleVal('palu_high'); // true = 使用高倍率
+
+    if(!care){
+      // 不在乎后期/高倍率掉帧
+      category = '特惠';
+      size = players < 5 ? '8G' : '16G';
+    } else {
+      // 在乎后期/高倍率掉帧
+      if(high){
+        if(players < 4) { category='尊享'; size='8G' }
+        else if(players <= 8) { category='尊享'; size='16G' }
+        else if(players <= 12) { category='顶配'; size='16G' }
+        else { category='顶配'; size='32G' }
+      } else {
+        if (players < 2) { category='特惠'; size='8G' }
+        else if(players <= 6) { category='尊享'; size='8G' }
+        else if(players <= 8) { category='尊享'; size='16G' }
+        else if(players <= 20) { category='顶配'; size='16G' }
+        else { category='顶配'; size='32G' }
+      }
+    }
+  }
+
+  if(g==='dst'){
+    const players = parseInt(document.getElementById('dst_players').value||1,10);
+    const hasMod = getToggleVal('dst_vanilla'); // true = 含mod, false = 原版
+    const largeMods = getToggleVal('dst_large_mods'); // true = 含大型mod
+
+    if(!hasMod){
+      // 原版不含mod
+      if (players < 6) { category='特惠'; size='4G' }
+      else if(players < 8) { category='性能'; size='6G' }
+      else { category='尊享'; size='8G' }
+    } else {
+      // 含 mod
+      if(largeMods){
+        // 含大型 mod
+        if(players < 4) { category='性能'; size='6G' }
+        else if(players < 9) { category='尊享'; size='8G' }
+        else { category='顶配'; size='16G' }
+      } else {
+        // 含 mod 但不含大型 mod
+        if(players < 4) { category='特惠'; size='4G' }
+        else if(players < 7) { category='性能'; size='6G' }
+        else if(players <= 10) { category='尊享'; size='8G' }
+        else { category='顶配'; size='16G' }
+      }
+    }
+  }
+
+  let finalLabel = '—';
+  if(category && size){
+    const looked = lookupLabel(category, size);
+    finalLabel = looked || (category + ' ' + size);
+  }
+
+  document.getElementById('result').textContent = '推荐：' + finalLabel;
+}
+
+function copyResult(){
+  const text = document.getElementById('result').textContent;
+  navigator.clipboard && navigator.clipboard.writeText(text).then(()=>{
+    const hint=document.getElementById('copy-hint'); hint.textContent='已复制到剪贴板'; setTimeout(()=>hint.textContent='',1400);
+  }).catch(()=>{ alert('复制失败，请手动复制：\n'+text) });
+}
+
+// 初始渲染并自动生成推荐
+renderOptions();
+recommend();
+
+// 页面加载后居中显示选中的游戏卡片
+window.addEventListener('load', function() {
+  const gameGrid = document.getElementById('gameGrid');
+  const selectedCard = gameGrid.querySelector('.game-card.selected');
+  if (selectedCard && gameGrid) {
+    const cardRect = selectedCard.getBoundingClientRect();
+    const gridRect = gameGrid.getBoundingClientRect();
+    const scrollLeft = selectedCard.offsetLeft - (gridRect.width - cardRect.width) / 2;
+    gameGrid.scrollLeft = scrollLeft;
+  }
+});
+</script>
+
+</body>
+</html>
