@@ -6,8 +6,7 @@
 ## 1.推荐配置
 
 **2C/4G起跳，适合最多6-8人，4C/8G顶配，适合8-20人。**  
-**由于该游戏几乎是单核心为主的，所以单核心性能对于多人的模组服影响非常大。**  
-CPU升级路线：Intel-E5 < Ryzen2000 < Intel-10th < Ryzen3000 < Ryzen5000 < Ryzen7000  
+**由于该游戏几乎是单核心为主的，单核心性能对于多人的模组服影响巨大。**  
 由于游戏的本身设计问题，人数超过单核心性能后，会出现明显的回溯现象。  
 <br>
 
@@ -30,17 +29,33 @@ CPU升级路线：Intel-E5 < Ryzen2000 < Intel-10th < Ryzen3000 < Ryzen5000 < Ry
 3. 根据需要，**添加并设置MOD**
 4. 设置完成后，点击**生成世界**
 5. 去客户端首页点击 **数据** 图标
-6. 根据日期，找到刚刚生成的世界
+6. 根据日期，找到刚创建的世界文件夹
 
 **注：下面的截图有完整的流程，建议对照操作**
 
 ### 2.4.世界生成参数
 **文件夹 `/home/container/DoNotStarveTogether/config/server/Master` 和 `Caves`**   
-**配置文件 `leveldataoverride.lua` 和 `worldgenoverride.lua` 控制世界生成设置**，洞穴和地上各一个，内容不一样，`worldgenoverride.lua` 文件已经弃用，**推荐在客户端设置好后，直接把 `leveldataoverride.lua` 文件拷贝到服务器对应文件夹，然后删除 `worldgenoverride.lua` **。（注：原本这俩文件一个是客户端专用，一个是服务器专用，功能基本上一样，现在leveldataoverride.lua已经可以兼容客户端和服务器，所以推荐直接使用leveldataoverride.lua）
+**配置文件 `leveldataoverride.lua` 控制世界生成设置**，主世界和洞穴各自有一个，**把刚本地创建的 `leveldataoverride.lua` 文件拷贝到服务器对应文件夹，然后删除文件夹内的 `worldgenoverride.lua` **。  
+（注：原本leveldataoverride.lua是客户端专用，worldgenoverride.lua是服务器专用，功能基本上一样，现在服务器已经可以读取leveldataoverride.lua，所以删除worldgenoverride.lua即可）
 
-### 2.5.添加/下载MOD
+### 2.5.启用/配置MOD
+**文件夹 `/home/container/DoNotStarveTogether/config/server/Master` 和 `Caves`**  
+**配置文件 `modoverrides.lua` 控制mod开启和设置**，主世界Master和地洞Caves文件夹各有一个，把刚本地创建的同名文件，拷贝到对应文件夹即可。（注：由于配置文件为全英文，且参数名称和游戏内不一致，建议在客户端设置好后，把刚本地创建的拷贝到服务器端，在服务器端手动修改很容易出错）  
+
+**注意：完成以上步骤后，如果提示缺少MOD，请重启后等待5-10分钟，让MOD下载完成**  
+
+**温馨提示：`MLSG-Chinese-Guide-and-Manual-for-Server-Admins-Please-READ-ME` 文件夹里  
+有一些之前开服的Mod模板，包含添加Mod所需的两个文件，用之前建议根据自己需求修改一下**  
+
+![模组服务器图文教程](/assets/dontstrave/mod-setup-1.png)  
+![模组服务器图文教程](/assets/dontstrave/mod-setup-2.png)  
+
+**接下来，需要设置Mod的自动下载更新文件。首先复制 `modoverrides.lua` 里面的全部内容**
+![模组服务器图文教程](/assets/dontstrave/mod-setup-3.png)  
+
+### 2.6.添加/下载MOD
 **文件夹 `/home/container/mods`**  
-**配置文件 `dedicated_server_mods_setup.lua` 控制mod下载设置**，找到并按照文件上面给出的例子，填写即可（填写后只会下载，不会启用，不填写不下载当然也不会启用）。如这以下两种形式 `ServerModSetup("xxxxxxxxx")` 和 `ServerModCollectionSetup("xxxxxxxxx")` 分别对应单一模组和模组包。只需将 `modoverride.lua` 文件中所有 `workshop-xxxxxxxxx` 转换成以上对应形式，然后一行行填入文件即可。推荐使用下面的转换器，或ChatGPT等工具进行批量替换。替换后务必检查是否有错误。
+**配置文件 `dedicated_server_mods_setup.lua` 控制mod下载设置**，找到并按照文件上面给出的例子填写（填写后只会下载，不会启用！不填写=不下载，当然也不会启用）。以下两种形式 `ServerModSetup("xxxxxxxxx")` 和 `ServerModCollectionSetup("xxxxxxxxx")` 分别对应单一模组和模组包。只需将 `modoverrides.lua` 文件中所有 `workshop-xxxxxxxxx` 使用下面的转换器，转换成以上对应形式，然后黏贴到服务器对应文件。替换后务必检查是否有错误。
 <iframe src="/tools/dst_mod_setup.html" 
     width="100%" 
     height="500" 
@@ -48,16 +63,8 @@ CPU升级路线：Intel-E5 < Ryzen2000 < Intel-10th < Ryzen3000 < Ryzen5000 < Ry
     scrolling="no">
 </iframe>
 
-### 2.6.启用/配置MOD
-**文件夹 `/home/container/DoNotStarveTogether/config/server/Master` 和 `Caves`**  
-**配置文件 `modoverrides.lua` 控制mod开启和设置**，俩shard文件夹（Master和Cave）各一个，直接将在客户端设置好的同名文件，拷贝到对应文件夹即可。（注：由于配置文件没有注释，建议在客户端单机设置好后，直接拷贝到服务器端，强烈不建议在服务器端手动修改，很容易出错）  
-
-**注意：完成以上步骤后，如果提示缺少MOD，请重启后等待5-10分钟，让MOD下载完成**  
-
-**温馨提示：`MLSG-Chinese-Guide-and-Manual-for-Server-Admins-Please-READ-ME` 文件夹里  
-有一些之前开服的Mod模板，包含添加Mod所需的两个文件，用之前建议根据自己需求修改一下**  
-
-![模组服务器图文教程](/assets/dontstrave/mod-setup.png)  
+**将生成的 `dedicated_server_mods_setup.lua` 文件内容，粘贴到服务器对应文件即可, 如下图**
+![模组服务器图文教程](/assets/dontstrave/mod-setup-4.png)  
 <br>
 
 ## 3.注意事项
@@ -78,15 +85,39 @@ CPU升级路线：Intel-E5 < Ryzen2000 < Intel-10th < Ryzen3000 < Ryzen5000 < Ry
 - **请记得在 `server.ini` 中更改 Cave 的 Server ID 避免重复无法识别多Shard**  
 <br>
 
-## 4.重装服务器
+## 4.重置服务器（世界）
 
-直接删除master和cave文件夹里面的Save和Backup文件夹就可以了，这样服务器开机的时候就会重新生成所有东西。
-由于饥荒的Mod文件配置比较繁琐，**不建议删除所有文件重装**，把 `modoverride.lua` 里的字段删了就好，当然也可以利用 
-`MLSG-Chinese-Guide-and-Manual-for-Server-Admins-Please-READ-ME` 文件夹里面的饥荒Mod模板。  
+如果只是重置游戏世界，请在游戏后台使用指令 `c_regenerateworld()` 重置世界即可  
+回到原生模式最新版本，请在 `文件` 页面勾选删除所有文件，然后在 `设置` 页面点击重装服务器
 <br>
 
 
-## 5.模组配置编辑器（高级）
+## 5.服务器指令（作弊）
+
+**服务器后台输入指令位置，[请看本页](/1-serverbasics/#21)（部分指令需要在服务器后台使用）**  
+**游戏内使用指令：按下 `~` 键（ESC下面的键），或 `shift + ~` 键打开控制台**  
+**（游戏内使用指令需管理员/房主身份，且确保控制台显示为remote模式）**  
+
+| 常用指令 | 说明 |
+| ---- | ---- |
+| c_shutdown() | 【关闭服务器】关闭会自动存档 |
+| c_freecrafting() | 【创造模式】免费制作物品 |
+| c_godmode() | 【上帝模式】不掉血不会死 |
+| c_supergodmode() | 【超级上帝】满状态且上帝 |
+| c_speedmult(倍数) | 【速度倍数】调整移动速度 |
+| c_regenerateworld() | 【重置世界】重新生成世界 |
+| c_listallplayers() | 【列出所有玩家】显示在服务器后台 |
+| c_announce("内容") | 【公告】向所有玩家发送公告 |
+| c_save() | 【保存游戏】可在一天任意时刻保存 |
+| c_rollback(天数) | 【回档】警告！超过快照天数会重置世界 |
+| c_goto(AllPlayers[玩家编号]) | 【传送到玩家】游戏内按Tab看玩家顺序 |
+  
+
+更多指令推荐参考[灰机Wiki的指令列表](https://dontstarve.huijiwiki.com/wiki/%E6%95%99%E7%A8%8B/%E5%B8%B8%E7%94%A8%E6%8E%A7%E5%88%B6%E5%8F%B0%E6%8C%87%E4%BB%A4)  
+<br>
+
+
+## 6.模组配置器（高级）
 用于快速手动编辑模组的配置文件，**不提供添加MOD的功能**，添加MOD强烈建议在客户端操作，以避免MOD兼容性问题，**也不提供添加MOD设置的功能**，因为太容易导致报错。**如果您是新手，强烈不推荐使用该模组编辑器，不正确的操作会导致服务器崩溃，或者模组无法使用。**可以直接在下方的窗口使用，也可以点击<a href="/tools/dst_mod_edit.html" target="_blank">使用网页版模组编辑器(全屏)</a>。  
 <iframe src="/tools/dst_mod_edit.html" 
     width="100%" 

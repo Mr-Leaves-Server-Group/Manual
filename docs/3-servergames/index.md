@@ -31,7 +31,16 @@
 
 - **[七日杀  -  7 Days to Die](/3-servergames/7dd/)**
 
-## 2.更多教程
+## 2.配置选择
+您可以使用下面的工具，快速选择适合您需求的服务器配置。也可以点击<a href="/tools/quick_server_selector.html" target="_blank">这里打开新页面使用</a> 。
+<iframe src="/tools/quick_server_selector.html"
+    width="100%" 
+    height="550px" 
+    style="border: 1px solid #ccc; border-radius: 8px;" 
+>
+</iframe>
+
+## 3.更多教程
 - 如需更多教程可以在我们的 [Github页面](https://github.com/Mr-Leaves-Server-Group/Manual/issues) 添加Issue，我们会酌情整理添加。
 - 您也可以加入我们的 [Discord](https://discord.gg/5GbdjRVY55) 频道，我们会在频道内发布最新的教程和更新。
 - 您如果有其他较为紧急的问题，可以在平台创建工单，我们会在48小时内回复您。
