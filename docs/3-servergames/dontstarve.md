@@ -50,10 +50,10 @@
 ![模组服务器图文教程](/assets/dontstrave/mod-setup-1.png)  
 ![模组服务器图文教程](/assets/dontstrave/mod-setup-2.png)  
 
-**接下来，需要设置Mod的自动下载更新文件。首先复制 `modoverrides.lua` 里面的全部内容**
-![模组服务器图文教程](/assets/dontstrave/mod-setup-3.png)  
-
 ### 2.6.添加/下载MOD
+**后台已全面升级，不再需要编辑 `dedicated_server_mods_setup.lua` 文件，只需上传 `modoverrides.lua` 文件即可，服务器会自动下载所需MOD。**
+  
+<hr>
 **文件夹 `/home/container/mods`**  
 **配置文件 `dedicated_server_mods_setup.lua` 控制mod下载设置**，找到并按照文件上面给出的例子填写（填写后只会下载，不会启用！不填写=不下载，当然也不会启用）。以下两种形式 `ServerModSetup("xxxxxxxxx")` 和 `ServerModCollectionSetup("xxxxxxxxx")` 分别对应单一模组和模组包。只需将 `modoverrides.lua` 文件中所有 `workshop-xxxxxxxxx` 使用下面的转换器，转换成以上对应形式，然后黏贴到服务器对应文件。替换后务必检查是否有错误。
 <iframe src="/tools/dst_mod_setup.html" 
