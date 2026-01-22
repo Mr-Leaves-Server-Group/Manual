@@ -9,30 +9,43 @@ APP_ID="322330"
 OVERRIDES_FILE="./DoNotStarveTogether/config/server/Master/modoverrides.lua"
 
 # Destination Paths
-SRC="./steamapps/workshop/content/$APP_ID"
+SRC="./Steam/steamapps/workshop/content/$APP_ID"
 MODS_DIR="./mods"
 MASTER_UGC="./ugc_mods/server/Master/content/$APP_ID"
 CAVES_UGC="./ugc_mods/server/Caves/content/$APP_ID"
 
-# --- Step 1: Extract IDs from modoverrides.lua ---
+# ---------------------------------------------------------
+# Phase 1: ID Extraction
+# ---------------------------------------------------------
+echo ""
+echo "========================================================="
+echo "PHASE 1: Extracting IDs from Master modoverrides"
+echo "========================================================="
+
 if [ ! -f "$OVERRIDES_FILE" ]; then
-    echo "Error: Overrides file not found at $OVERRIDES_FILE"
+    echo "ERROR: Overrides file not found at $OVERRIDES_FILE"
     exit 1
 fi
 
-echo "--- Phase 1: Extracting IDs from Master modoverrides ---"
 # Extracts numbers inside ["workshop-12345678"]
 mapfile -t UNIQUE_IDS < <(grep -oE 'workshop-[0-9]+' "$OVERRIDES_FILE" | grep -oE '[0-9]+' | sort -u)
 
 if [ ${#UNIQUE_IDS[@]} -eq 0 ]; then
-    echo "No workshop IDs found in modoverrides.lua. Check your formatting."
+    echo "ERROR: No workshop IDs found in modoverrides.lua."
     exit 1
 fi
 
-echo "Found ${#UNIQUE_IDS[@]} unique mods: ${UNIQUE_IDS[*]}"
+echo "Found ${#UNIQUE_IDS[@]} unique mods to process."
+echo "---------------------------------------------------------"
+echo ""
 
-# --- Step 2: Download via SteamCMD ---
-echo "--- Phase 2: Downloading via SteamCMD ---"
+# ---------------------------------------------------------
+# Phase 2: SteamCMD Download
+# ---------------------------------------------------------
+echo "========================================================="
+echo "PHASE 2: Downloading via SteamCMD"
+echo "========================================================="
+
 CMD="+force_install_dir $INSTALL_DIR +login anonymous"
 for id in "${UNIQUE_IDS[@]}"; do
     CMD="$CMD +workshop_download_item $APP_ID $id"
@@ -40,39 +53,62 @@ done
 CMD="$CMD +quit"
 
 eval "$STEAMCMD_PATH $CMD"
+echo ""
+echo "Download phase finished."
+echo "---------------------------------------------------------"
+echo ""
 
-# --- Step 3: Align & Sync ---
-echo "--- Phase 3: Syncing and Unpacking ---"
+# ---------------------------------------------------------
+# Phase 3: Alignment & Syncing
+# ---------------------------------------------------------
+echo "========================================================="
+echo "PHASE 3: Syncing and Unpacking"
+echo "========================================================="
+
 mkdir -p "$MODS_DIR" "$MASTER_UGC" "$CAVES_UGC"
 
 for id in "${UNIQUE_IDS[@]}"; do
     mod_path="$SRC/$id"
     
     if [ ! -d "$mod_path" ]; then
-        echo "Warning: Mod $id folder not found in steamapps. Skipping..."
+        echo "[SKIP] Mod $id: Folder not found in $SRC"
         continue
     fi
 
-    # Scenario A: Legacy Bin (.bin file exists)
+    # Handle Legacy Bin (.bin file exists)
     if ls "$mod_path"/*.bin >/dev/null 2>&1; then
-        echo "Mod $id: Legacy Bin -> Extracting to $MODS_DIR/workshop-$id"
+        echo "[LEGACY] Mod $id -> Extracting to $MODS_DIR/workshop-$id"
         TARGET_MOD_FOLDER="$MODS_DIR/workshop-$id"
+        
+        # Clean old folder and re-extract
+        rm -rf "$TARGET_MOD_FOLDER"
         mkdir -p "$TARGET_MOD_FOLDER"
         bin_file=$(ls "$mod_path"/*.bin | head -n 1)
-        unzip -o "$bin_file" -d "$TARGET_MOD_FOLDER"
+        unzip -q -o "$bin_file" -d "$TARGET_MOD_FOLDER"
         
-    # Scenario B: UGC Folder (Already extracted)
+    # Handle UGC Folder (Already extracted)
     else
-        echo "Mod $id: UGC Folder -> Syncing to Shard UGC directories"
+        echo "[UGC]    Mod $id -> Syncing to Shard folders"
+        
         # Master Shard
+        rm -rf "$MASTER_UGC/$id"
         mkdir -p "$MASTER_UGC/$id"
         cp -R "$mod_path"/* "$MASTER_UGC/$id/"
+        
         # Caves Shard
+        rm -rf "$CAVES_UGC/$id"
         mkdir -p "$CAVES_UGC/$id"
         cp -R "$mod_path"/* "$CAVES_UGC/$id/"
     fi
 done
 
-# --- Step 4: Final Permissions ---
+# --- Final Step: Cleanup & Finish ---
+echo ""
+echo "Setting permissions..."
 chmod -R 777 "$MODS_DIR" "./ugc_mods"
-echo "--- SUCCESS: All mods aligned and ready ---"
+
+echo ""
+echo "========================================================="
+echo "SUCCESS: All mods aligned and ready for launch!"
+echo "========================================================="
+echo ""
