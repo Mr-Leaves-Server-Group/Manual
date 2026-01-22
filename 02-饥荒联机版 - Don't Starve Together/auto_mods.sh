@@ -2,6 +2,7 @@
 
 # --- Configuration (Relative Paths) ---
 STEAMCMD_PATH="./steamcmd/steamcmd.sh"
+ZIP_PATH="./7zz"
 INSTALL_DIR="."
 APP_ID="322330"
 
@@ -27,7 +28,6 @@ if [ ! -f "$OVERRIDES_FILE" ]; then
     exit 1
 fi
 
-# Extracts numbers inside ["workshop-12345678"]
 mapfile -t UNIQUE_IDS < <(grep -oE 'workshop-[0-9]+' "$OVERRIDES_FILE" | grep -oE '[0-9]+' | sort -u)
 
 if [ ${#UNIQUE_IDS[@]} -eq 0 ]; then
@@ -65,6 +65,14 @@ echo "========================================================="
 echo "PHASE 3: Syncing and Unpacking"
 echo "========================================================="
 
+# Ensure 7zz is executable
+if [ -f "$ZIP_PATH" ]; then
+    chmod +x "$ZIP_PATH"
+else
+    echo "ERROR: 7zz binary not found at $ZIP_PATH"
+    exit 1
+fi
+
 mkdir -p "$MODS_DIR" "$MASTER_UGC" "$CAVES_UGC"
 
 for id in "${UNIQUE_IDS[@]}"; do
@@ -77,25 +85,24 @@ for id in "${UNIQUE_IDS[@]}"; do
 
     # Handle Legacy Bin (.bin file exists)
     if ls "$mod_path"/*.bin >/dev/null 2>&1; then
-        echo "[LEGACY] Mod $id -> Extracting to $MODS_DIR/workshop-$id"
+        echo "[LEGACY] Mod $id -> Extracting via 7zz to $MODS_DIR/workshop-$id"
         TARGET_MOD_FOLDER="$MODS_DIR/workshop-$id"
         
-        # Clean old folder and re-extract
         rm -rf "$TARGET_MOD_FOLDER"
         mkdir -p "$TARGET_MOD_FOLDER"
         bin_file=$(ls "$mod_path"/*.bin | head -n 1)
-        unzip -q -o "$bin_file" -d "$TARGET_MOD_FOLDER"
+        
+        # 7zz x (extract) -o (output directory) -y (assume yes to all)
+        "$ZIP_PATH" x "$bin_file" -o"$TARGET_MOD_FOLDER" -y > /dev/null
         
     # Handle UGC Folder (Already extracted)
     else
         echo "[UGC]    Mod $id -> Syncing to Shard folders"
         
-        # Master Shard
         rm -rf "$MASTER_UGC/$id"
         mkdir -p "$MASTER_UGC/$id"
         cp -R "$mod_path"/* "$MASTER_UGC/$id/"
         
-        # Caves Shard
         rm -rf "$CAVES_UGC/$id"
         mkdir -p "$CAVES_UGC/$id"
         cp -R "$mod_path"/* "$CAVES_UGC/$id/"
