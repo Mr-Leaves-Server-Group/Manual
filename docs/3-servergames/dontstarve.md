@@ -36,13 +36,14 @@
 ### 2.4.世界生成参数
 **文件夹 `/home/container/DoNotStarveTogether/config/server/Master` 和 `Caves`**   
 **配置文件 `leveldataoverride.lua` 控制世界生成设置**，主世界和洞穴各自有一个，**把刚本地创建的 `leveldataoverride.lua` 文件拷贝到服务器对应文件夹，然后删除文件夹内的 `worldgenoverride.lua` **。  
-（注：原本leveldataoverride.lua是客户端专用，worldgenoverride.lua是服务器专用，功能基本上一样，现在服务器已经可以读取leveldataoverride.lua，所以删除worldgenoverride.lua即可）
+  
+**注：原本 `leveldataoverride.lua` 是客户端专用，`worldgenoverride.lua` 是服务器专用，功能基本一样，现在服务器已可读取前者，故删除后者即可**  
 
 ### 2.5.启用/配置MOD
 **文件夹 `/home/container/DoNotStarveTogether/config/server/Master` 和 `Caves`**  
-**配置文件 `modoverrides.lua` 控制mod开启和设置**，主世界Master和地洞Caves文件夹各有一个，把刚本地创建的同名文件，拷贝到对应文件夹即可。（注：由于配置文件为全英文，且参数名称和游戏内不一致，建议在客户端设置好后，把刚本地创建的拷贝到服务器端，在服务器端手动修改很容易出错）  
-
-**注意：完成以上步骤后，如果提示缺少MOD，请重启后等待5-10分钟，让MOD下载完成**  
+**配置文件 `modoverrides.lua` 控制mod开启和设置**，主世界Master和地洞Caves文件夹各有一个，把刚本地创建的同名文件，拷贝到对应文件夹即可。  
+  
+**注：由于配置文件为全英文，且设置名称和游戏内不一致，故不推荐在服务器端手动修改**   
 
 **温馨提示：`MLSG-Chinese-Guide-and-Manual-for-Server-Admins-Please-READ-ME` 文件夹里  
 有一些之前开服的Mod模板，包含添加Mod所需的两个文件，用之前建议根据自己需求修改一下**  
