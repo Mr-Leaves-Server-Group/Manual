@@ -1,40 +1,78 @@
-# Define paths
-SRC="/mnt/server/steamapps/workshop/content/322330"
-MODS_DIR="/mnt/server/mods"
-MASTER_UGC="/mnt/server/ugc_mods/server/Master/content/322330"
-CAVES_UGC="/mnt/server/ugc_mods/server/Caves/content/322330"
+#!/bin/bash
 
-# Ensure target directories exist
-mkdir -p "$MODS_DIR"
-mkdir -p "$MASTER_UGC"
-mkdir -p "$CAVES_UGC"
+# --- Configuration (Relative Paths) ---
+STEAMCMD_PATH="./steamcmd/steamcmd.sh"
+INSTALL_DIR="."
+APP_ID="322330"
 
-for mod_path in "$SRC"/*; do
-    mod_id=$(basename "$mod_path")
+# Source of Truth: Your Master Shard modoverrides
+OVERRIDES_FILE="./DoNotStarveTogether/config/server/Master/modoverrides.lua"
+
+# Destination Paths
+SRC="./steamapps/workshop/content/$APP_ID"
+MODS_DIR="./mods"
+MASTER_UGC="./ugc_mods/server/Master/content/$APP_ID"
+CAVES_UGC="./ugc_mods/server/Caves/content/$APP_ID"
+
+# --- Step 1: Extract IDs from modoverrides.lua ---
+if [ ! -f "$OVERRIDES_FILE" ]; then
+    echo "Error: Overrides file not found at $OVERRIDES_FILE"
+    exit 1
+fi
+
+echo "--- Phase 1: Extracting IDs from Master modoverrides ---"
+# Extracts numbers inside ["workshop-12345678"]
+mapfile -t UNIQUE_IDS < <(grep -oE 'workshop-[0-9]+' "$OVERRIDES_FILE" | grep -oE '[0-9]+' | sort -u)
+
+if [ ${#UNIQUE_IDS[@]} -eq 0 ]; then
+    echo "No workshop IDs found in modoverrides.lua. Check your formatting."
+    exit 1
+fi
+
+echo "Found ${#UNIQUE_IDS[@]} unique mods: ${UNIQUE_IDS[*]}"
+
+# --- Step 2: Download via SteamCMD ---
+echo "--- Phase 2: Downloading via SteamCMD ---"
+CMD="+force_install_dir $INSTALL_DIR +login anonymous"
+for id in "${UNIQUE_IDS[@]}"; do
+    CMD="$CMD +workshop_download_item $APP_ID $id"
+done
+CMD="$CMD +quit"
+
+eval "$STEAMCMD_PATH $CMD"
+
+# --- Step 3: Align & Sync ---
+echo "--- Phase 3: Syncing and Unpacking ---"
+mkdir -p "$MODS_DIR" "$MASTER_UGC" "$CAVES_UGC"
+
+for id in "${UNIQUE_IDS[@]}"; do
+    mod_path="$SRC/$id"
     
-    # Check if this specific mod folder contains a .bin file
+    if [ ! -d "$mod_path" ]; then
+        echo "Warning: Mod $id folder not found in steamapps. Skipping..."
+        continue
+    fi
+
+    # Scenario A: Legacy Bin (.bin file exists)
     if ls "$mod_path"/*.bin >/dev/null 2>&1; then
-        echo "Mod $mod_id: Detected Legacy Bin. Extracting to /mods/workshop-$mod_id..."
-        
-        TARGET_MOD_FOLDER="$MODS_DIR/workshop-$mod_id"
+        echo "Mod $id: Legacy Bin -> Extracting to $MODS_DIR/workshop-$id"
+        TARGET_MOD_FOLDER="$MODS_DIR/workshop-$id"
         mkdir -p "$TARGET_MOD_FOLDER"
-        
-        bin_file=$(ls "$mod_path"/*.bin)
+        bin_file=$(ls "$mod_path"/*.bin | head -n 1)
         unzip -o "$bin_file" -d "$TARGET_MOD_FOLDER"
         
+    # Scenario B: UGC Folder (Already extracted)
     else
-        echo "Mod $mod_id: Detected UGC Folder. Copying to Shard UGC directories..."
-        
-        # Create and copy to Master Shard UGC
-        mkdir -p "$MASTER_UGC/$mod_id"
-        cp -R "$mod_path"/* "$MASTER_UGC/$mod_id/"
-        
-        # Create and copy to Caves Shard UGC
-        mkdir -p "$CAVES_UGC/$mod_id"
-        cp -R "$mod_path"/* "$CAVES_UGC/$mod_id/"
+        echo "Mod $id: UGC Folder -> Syncing to Shard UGC directories"
+        # Master Shard
+        mkdir -p "$MASTER_UGC/$id"
+        cp -R "$mod_path"/* "$MASTER_UGC/$id/"
+        # Caves Shard
+        mkdir -p "$CAVES_UGC/$id"
+        cp -R "$mod_path"/* "$CAVES_UGC/$id/"
     fi
 done
 
-# Cleanup permissions
-chmod -R 777 "$MODS_DIR"
-chmod -R 777 /mnt/server/ugc_mods
+# --- Step 4: Final Permissions ---
+chmod -R 777 "$MODS_DIR" "./ugc_mods"
+echo "--- SUCCESS: All mods aligned and ready ---"
