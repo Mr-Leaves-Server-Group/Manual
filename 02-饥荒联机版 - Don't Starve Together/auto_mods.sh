@@ -65,14 +65,7 @@ echo "========================================================="
 echo "PHASE 3: Syncing and Unpacking"
 echo "========================================================="
 
-# Ensure 7zz is executable
-if [ -f "$ZIP_PATH" ]; then
-    chmod +x "$ZIP_PATH"
-else
-    echo "ERROR: 7zz binary not found at $ZIP_PATH"
-    exit 1
-fi
-
+chmod +x "$ZIP_PATH"
 mkdir -p "$MODS_DIR" "$MASTER_UGC" "$CAVES_UGC"
 
 for id in "${UNIQUE_IDS[@]}"; do
@@ -83,7 +76,7 @@ for id in "${UNIQUE_IDS[@]}"; do
         continue
     fi
 
-    # Handle Legacy Bin (.bin file exists)
+    # Handle Legacy Bin
     if ls "$mod_path"/*.bin >/dev/null 2>&1; then
         echo "[LEGACY] Mod $id -> Extracting via 7zz to $MODS_DIR/workshop-$id"
         TARGET_MOD_FOLDER="$MODS_DIR/workshop-$id"
@@ -92,21 +85,27 @@ for id in "${UNIQUE_IDS[@]}"; do
         mkdir -p "$TARGET_MOD_FOLDER"
         bin_file=$(ls "$mod_path"/*.bin | head -n 1)
         
-        # Extract
+        # Extract via 7zz
         "$ZIP_PATH" x "$bin_file" -o"$TARGET_MOD_FOLDER" -y > /dev/null
         
-        # --- FIX FOR WINDOWS BACKSLASHES ---
-        # This looks for files with \ in the name and creates the real directory structure
+        # --- PATH FIXER (No 'find' needed) ---
+        # We loop through every file in the folder
+        # If the filename contains a backslash, we convert it to a path
         (
             cd "$TARGET_MOD_FOLDER"
-            find . -name "*\\*" | while read -r file; do
-                newfile=$(echo "$file" | tr '\\' '/')
-                mkdir -p "$(dirname "$newfile")"
-                mv "$file" "$newfile"
+            for file in *; do
+                if [[ "$file" == *"\\"* ]]; then
+                    # Create the real path by replacing \ with /
+                    new_path=$(echo "$file" | tr '\\' '/')
+                    # Create the subdirectory (e.g., scripts/prefabs)
+                    mkdir -p "$(dirname "$new_path")"
+                    # Move the file to the new location
+                    mv "$file" "$new_path"
+                fi
             done
         )
         
-    # Handle UGC Folder
+    # Handle UGC Folder (These are already healthy)
     else
         echo "[UGC]    Mod $id -> Syncing to Shard folders"
         
