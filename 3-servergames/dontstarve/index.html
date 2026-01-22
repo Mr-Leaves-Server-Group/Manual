@@ -1305,12 +1305,12 @@
 <p><strong>注：下面的截图有完整的流程，建议对照操作</strong></p>
 <h3 id="24">2.4.世界生成参数</h3>
 <p><strong>文件夹 <code>/home/container/DoNotStarveTogether/config/server/Master</code> 和 <code>Caves</code></strong> <br />
-<strong>配置文件 <code>leveldataoverride.lua</code> 控制世界生成设置</strong>，主世界和洞穴各自有一个，<strong>把刚本地创建的 <code>leveldataoverride.lua</code> 文件拷贝到服务器对应文件夹，然后删除文件夹内的 <code>worldgenoverride.lua</code> </strong>。<br />
-（注：原本leveldataoverride.lua是客户端专用，worldgenoverride.lua是服务器专用，功能基本上一样，现在服务器已经可以读取leveldataoverride.lua，所以删除worldgenoverride.lua即可）</p>
+<strong>配置文件 <code>leveldataoverride.lua</code> 控制世界生成设置</strong>，主世界和洞穴各自有一个，<strong>把刚本地创建的 <code>leveldataoverride.lua</code> 文件拷贝到服务器对应文件夹，然后删除文件夹内的 <code>worldgenoverride.lua</code> </strong>。  </p>
+<p><strong>注：原本 <code>leveldataoverride.lua</code> 是客户端专用，<code>worldgenoverride.lua</code> 是服务器专用，功能基本一样，现在服务器已可读取前者，故删除后者即可</strong>  </p>
 <h3 id="25mod">2.5.启用/配置MOD</h3>
 <p><strong>文件夹 <code>/home/container/DoNotStarveTogether/config/server/Master</code> 和 <code>Caves</code></strong><br />
-<strong>配置文件 <code>modoverrides.lua</code> 控制mod开启和设置</strong>，主世界Master和地洞Caves文件夹各有一个，把刚本地创建的同名文件，拷贝到对应文件夹即可。（注：由于配置文件为全英文，且参数名称和游戏内不一致，建议在客户端设置好后，把刚本地创建的拷贝到服务器端，在服务器端手动修改很容易出错）  </p>
-<p><strong>注意：完成以上步骤后，如果提示缺少MOD，请重启后等待5-10分钟，让MOD下载完成</strong>  </p>
+<strong>配置文件 <code>modoverrides.lua</code> 控制mod开启和设置</strong>，主世界Master和地洞Caves文件夹各有一个，把刚本地创建的同名文件，拷贝到对应文件夹即可。  </p>
+<p><strong>注：由于配置文件为全英文，且设置名称和游戏内不一致，故不推荐在服务器端手动修改</strong>   </p>
 <p><strong>温馨提示：<code>MLSG-Chinese-Guide-and-Manual-for-Server-Admins-Please-READ-ME</code> 文件夹里<br />
 有一些之前开服的Mod模板，包含添加Mod所需的两个文件，用之前建议根据自己需求修改一下</strong>  </p>
 <p><img alt="模组服务器图文教程" src="/assets/dontstrave/mod-setup-1.png" /><br />
@@ -1438,7 +1438,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年1月22日 22:35:38 UTC">2026年1月22日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年1月22日 22:51:23 UTC">2026年1月22日</span>
   </span>
 
     
