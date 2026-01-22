@@ -1315,9 +1315,9 @@
 有一些之前开服的Mod模板，包含添加Mod所需的两个文件，用之前建议根据自己需求修改一下</strong>  </p>
 <p><img alt="模组服务器图文教程" src="/assets/dontstrave/mod-setup-1.png" /><br />
 <img alt="模组服务器图文教程" src="/assets/dontstrave/mod-setup-2.png" />  </p>
-<p><strong>接下来，需要设置Mod的自动下载更新文件。首先复制 <code>modoverrides.lua</code> 里面的全部内容</strong>
-<img alt="模组服务器图文教程" src="/assets/dontstrave/mod-setup-3.png" />  </p>
 <h3 id="26mod">2.6.添加/下载MOD</h3>
+<p><strong>后台已全面升级，不再需要编辑 <code>dedicated_server_mods_setup.lua</code> 文件，只需上传 <code>modoverrides.lua</code> 文件即可，服务器会自动下载所需MOD。</strong></p>
+<hr>
 <p><strong>文件夹 <code>/home/container/mods</code></strong><br />
 <strong>配置文件 <code>dedicated_server_mods_setup.lua</code> 控制mod下载设置</strong>，找到并按照文件上面给出的例子填写（填写后只会下载，不会启用！不填写=不下载，当然也不会启用）。以下两种形式 <code>ServerModSetup("xxxxxxxxx")</code> 和 <code>ServerModCollectionSetup("xxxxxxxxx")</code> 分别对应单一模组和模组包。只需将 <code>modoverrides.lua</code> 文件中所有 <code>workshop-xxxxxxxxx</code> 使用下面的转换器，转换成以上对应形式，然后黏贴到服务器对应文件。替换后务必检查是否有错误。</p>
 <iframe src="/tools/dst_mod_setup.html" 
@@ -1438,7 +1438,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年1月14日 16:38:02 UTC">2026年1月14日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年1月22日 22:35:38 UTC">2026年1月22日</span>
   </span>
 
     
