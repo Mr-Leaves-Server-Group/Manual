@@ -59,7 +59,7 @@ echo "---------------------------------------------------------"
 echo ""
 
 # ---------------------------------------------------------
-# Phase 3: Alignment & Syncing
+# PHASE 3: Syncing and Unpacking
 # ---------------------------------------------------------
 echo "========================================================="
 echo "PHASE 3: Syncing and Unpacking"
@@ -92,10 +92,21 @@ for id in "${UNIQUE_IDS[@]}"; do
         mkdir -p "$TARGET_MOD_FOLDER"
         bin_file=$(ls "$mod_path"/*.bin | head -n 1)
         
-        # 7zz x (extract) -o (output directory) -y (assume yes to all)
+        # Extract
         "$ZIP_PATH" x "$bin_file" -o"$TARGET_MOD_FOLDER" -y > /dev/null
         
-    # Handle UGC Folder (Already extracted)
+        # --- FIX FOR WINDOWS BACKSLASHES ---
+        # This looks for files with \ in the name and creates the real directory structure
+        (
+            cd "$TARGET_MOD_FOLDER"
+            find . -name "*\\*" | while read -r file; do
+                newfile=$(echo "$file" | tr '\\' '/')
+                mkdir -p "$(dirname "$newfile")"
+                mv "$file" "$newfile"
+            done
+        )
+        
+    # Handle UGC Folder
     else
         echo "[UGC]    Mod $id -> Syncing to Shard folders"
         
