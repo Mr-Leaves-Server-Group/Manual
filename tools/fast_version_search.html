@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>快速版本查询</title>
+    <style>
+        :root {
+            --primary: #4a90e2;
+            --bg: #f8f9fa;
+            --border: #e0e4e8;
+            --text: #334155;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 10px; /* 进一步压缩外边距 */
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 750px;
+            background: #fff;
+            padding: 15px; /* 压缩内边距 */
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        /* 紧凑居中布局 */
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        select {
+            padding: 6px 30px 6px 10px; /* 压缩选择框高度 */
+            font-size: 13px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            background: #fff url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22/%3E%3C/svg%3E") no-repeat right 10px top 50%;
+            background-size: 9px auto;
+            appearance: none;
+            min-width: 140px;
+            cursor: pointer;
+        }
+
+        select:focus { outline: none; border-color: var(--primary); }
+
+        #statusText {
+            text-align: center;
+            font-size: 12px;
+            color: #64748b;
+            margin-bottom: 10px;
+            min-height: 18px;
+        }
+
+        /* 紧凑型 Build 列表 */
+        .build-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); /* 更小的方格 */
+            gap: 6px;
+            max-height: 380px; /* 配合 iframe 高度限制 */
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        .build-item {
+            background: #fff;
+            border: 1px solid var(--border);
+            padding: 5px 2px;
+            text-align: center;
+            font-size: 12px;
+            border-radius: 3px;
+            transition: all 0.15s;
+            cursor: pointer;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .build-item:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background-color: #f0f7ff;
+        }
+
+        /* 滚动条细化 */
+        .build-grid::-webkit-scrollbar { width: 4px; }
+        .build-grid::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="controls">
+            <select id="projectSelect" onchange="handleProjectChange()">
+                <option value="">项目...</option>
+                <option value="paper">Paper</option>
+                <option value="forge">Forge</option>
+                <option value="neoforge">NeoForge</option>
+                <option value="fabric">Fabric</option>
+            </select>
+
+            <select id="versionSelect" onchange="handleVersionChange()" disabled>
+                <option value="">版本...</option>
+            </select>
+        </div>
+
+        <div id="statusText">准备就绪</div>
+
+        <div class="build-grid" id="buildList"></div>
+    </div>
+
+    <script>
+        const projectSelect = document.getElementById('projectSelect');
+        const versionSelect = document.getElementById('versionSelect');
+        const statusText = document.getElementById('statusText');
+        const buildList = document.getElementById('buildList');
+
+        let rawData = {};
+
+        async function handleProjectChange() {
+            const project = projectSelect.value;
+            resetUI(true);
+            if (!project) return;
+
+            statusText.innerText = "获取中...";
+            try {
+                if (project === 'paper') {
+                    const res = await fetch('https://api.papermc.io/v2/projects/paper');
+                    const data = await res.json();
+                    populateVersions(data.versions.reverse());
+                } 
+                else if (project === 'forge') {
+                    const res = await fetch('https://maven.minecraftforge.net/net/minecraftforge/forge/maven-metadata.xml');
+                    const text = await res.text();
+                    const xml = new DOMParser().parseFromString(text, "text/xml");
+                    const versions = Array.from(xml.querySelectorAll('version')).map(v => v.textContent).reverse();
+                    const grouped = {};
+                    versions.forEach(v => {
+                        const parts = v.split('-');
+                        const mcVer = parts[0];
+                        if (!grouped[mcVer]) grouped[mcVer] = [];
+                        grouped[mcVer].push(parts[1]);
+                    });
+                    rawData = grouped;
+                    populateVersions(Object.keys(grouped));
+                }
+                else if (project === 'neoforge') {
+                    const res = await fetch('https://maven.neoforged.net/releases/net/neoforged/neoforge/maven-metadata.xml');
+                    const text = await res.text();
+                    const xml = new DOMParser().parseFromString(text, "text/xml");
+                    const versions = Array.from(xml.querySelectorAll('version')).map(v => v.textContent).reverse();
+                    populateVersions(versions);
+                }
+                else if (project === 'fabric') {
+                    const res = await fetch('https://meta.fabricmc.net/v2/versions/loader');
+                    const data = await res.json();
+                    populateVersions(data.map(i => i.version));
+                }
+                statusText.innerText = "请选择版本";
+            } catch (e) {
+                statusText.innerText = "加载失败";
+            }
+        }
+
+        async function handleVersionChange() {
+            const project = projectSelect.value;
+            const version = versionSelect.value;
+            if (!version) return;
+
+            resetUI(false);
+            statusText.innerText = "读取 Build 号...";
+
+            try {
+                let builds = [];
+                if (project === 'paper') {
+                    const res = await fetch(`https://api.papermc.io/v2/projects/paper/versions/${version}`);
+                    const data = await res.json();
+                    builds = data.builds.reverse();
+                } 
+                else if (project === 'forge') {
+                    builds = rawData[version] || [];
+                }
+                else if (project === 'neoforge' || project === 'fabric') {
+                    builds = [version];
+                }
+
+                renderBuilds(builds);
+                statusText.innerText = `找到 ${builds.length} 个结果`;
+            } catch (e) {
+                statusText.innerText = "错误";
+            }
+        }
+
+        function populateVersions(versions) {
+            versionSelect.innerHTML = '<option value="">版本...</option>';
+            versions.forEach(v => {
+                const opt = document.createElement('option');
+                opt.value = v; opt.innerText = v;
+                versionSelect.appendChild(opt);
+            });
+            versionSelect.disabled = false;
+        }
+
+        function renderBuilds(builds) {
+            buildList.innerHTML = '';
+            builds.forEach(b => {
+                const div = document.createElement('div');
+                div.className = 'build-item';
+                div.innerText = b;
+                div.title = b;
+                buildList.appendChild(div);
+            });
+        }
+
+        function resetUI(full) {
+            if (full) {
+                versionSelect.innerHTML = '<option value="">版本...</option>';
+                versionSelect.disabled = true;
+            }
+            buildList.innerHTML = '';
+        }
+    </script>
+</body>
+</html>
