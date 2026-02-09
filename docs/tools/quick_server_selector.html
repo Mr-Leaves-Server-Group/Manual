@@ -80,6 +80,28 @@
 <script>
 function el(html){ const d=document.createElement('div'); d.innerHTML=html.trim(); return d.firstChild }
 
+function getQueryParam(name){
+  const params = new URLSearchParams(window.location.search);
+  const val = params.get(name);
+  return val ? val.trim().toLowerCase() : '';
+}
+
+function applyGameFilter(game){
+  if(!game) return;
+  const cards = document.querySelectorAll('.game-card');
+  let found = false;
+  cards.forEach(c=>{
+    const isMatch = c.dataset.game === game;
+    c.style.display = isMatch ? '' : 'none';
+    if(isMatch) found = true;
+  });
+  if(found){
+    setGame(game, document.querySelector('.game-card[data-game="'+game+'"]'));
+    const grid = document.getElementById('gameGrid');
+    if(grid) grid.style.justifyContent = 'center';
+  }
+}
+
 function setGame(name, elCard){
   document.getElementById('game').value = name;
   document.querySelectorAll('.game-card').forEach(c=>c.classList.remove('selected'));
@@ -99,8 +121,8 @@ const config_table_json = {
         "12G":"⬆️性能R3K【12G】"
     },
     "R5K":{
-        "8G":"⭐尊享R5K【8G】",
-        "16G":"⭐尊享R5K【16G】"
+        "8G":"⭐至尊R5K【8G】",
+        "16G":"⭐至尊R5K【16G】"
     },
     "R7K":{
         "16G":"⚡顶配R7K【16G】",
@@ -124,7 +146,7 @@ function lookupLabel(category, size){
   const map = {
     '特惠':['EPC'],
     '性能':['R3K','R5K'],
-    '尊享':['R5K','R7K'],
+    '至尊':['R5K','R7K'],
     '顶配':['R7K'],
     '原版':['EPC']
   };
@@ -203,36 +225,36 @@ function recommend(){
         else if(players<=15){ category='性能'; size='6G' }
         else if(players<=20){ category='特惠'; size='8G' }
         else if(players<30){ category='性能'; size='12G' }
-        else { category='尊享'; size='16G' };
+        else { category='至尊'; size='16G' };
         break;
       case (mods<50):
         if (players<4){ category='特惠'; size='4G' }
         else if(players<6){ category='性能'; size='6G' }
-        else if(players<8){ category='尊享'; size='8G' }
+        else if(players<8){ category='至尊'; size='8G' }
         else if(players<12){ category='性能'; size='12G' }
-        else if(players<20){ category='尊享'; size='16G' }
+        else if(players<20){ category='至尊'; size='16G' }
         else if(players<=25){ category='顶配'; size='16G' }
         else { category='顶配'; size='32G' };
         break;
       case (mods<100):
         if(players<4){ category='特惠'; size='8G' }
-        else if(players<8){ category='尊享'; size='8G' }
+        else if(players<8){ category='至尊'; size='8G' }
         else if(players<10){ category='性能'; size='12G' }
-        else if(players<15){ category='尊享'; size='16G' }
+        else if(players<15){ category='至尊'; size='16G' }
         else if(players<=25){ category='顶配'; size='16G' }
         else { category='顶配'; size='32G' };
         break;
       case (mods>=100 && mods<=250):
         if(players<4){ category='性能'; size='6G' }
-        else if(players<6){ category='尊享'; size='8G' }
+        else if(players<6){ category='至尊'; size='8G' }
         else if(players<8){ category='性能'; size='12G' }
-        else if(players<=12){ category='尊享'; size='16G' }
+        else if(players<=12){ category='至尊'; size='16G' }
         else if(players<=20){ category='顶配'; size='16G' }
         else { category='顶配'; size='32G' };
         break;
       case (mods>250):
-        if(players<5){ category='尊享'; size='8G' }
-        else if(players<=10){ category='尊享'; size='16G' }
+        if(players<5){ category='至尊'; size='8G' }
+        else if(players<=10){ category='至尊'; size='16G' }
         else { category='顶配'; size='32G' };
         break;
       default:
@@ -252,14 +274,14 @@ function recommend(){
     } else {
       // 在乎后期/高倍率掉帧
       if(high){
-        if(players < 4) { category='尊享'; size='8G' }
-        else if(players <= 8) { category='尊享'; size='16G' }
+        if(players < 4) { category='至尊'; size='8G' }
+        else if(players <= 8) { category='至尊'; size='16G' }
         else if(players <= 12) { category='顶配'; size='16G' }
         else { category='顶配'; size='32G' }
       } else {
         if (players < 2) { category='特惠'; size='8G' }
-        else if(players <= 6) { category='尊享'; size='8G' }
-        else if(players <= 8) { category='尊享'; size='16G' }
+        else if(players <= 6) { category='至尊'; size='8G' }
+        else if(players <= 8) { category='至尊'; size='16G' }
         else if(players <= 20) { category='顶配'; size='16G' }
         else { category='顶配'; size='32G' }
       }
@@ -275,19 +297,19 @@ function recommend(){
       // 原版不含mod
       if (players < 6) { category='特惠'; size='4G' }
       else if(players < 8) { category='性能'; size='6G' }
-      else { category='尊享'; size='8G' }
+      else { category='至尊'; size='8G' }
     } else {
       // 含 mod
       if(largeMods){
         // 含大型 mod
         if(players < 4) { category='性能'; size='6G' }
-        else if(players < 9) { category='尊享'; size='8G' }
+        else if(players < 9) { category='至尊'; size='8G' }
         else { category='顶配'; size='16G' }
       } else {
         // 含 mod 但不含大型 mod
         if(players < 4) { category='特惠'; size='4G' }
         else if(players < 7) { category='性能'; size='6G' }
-        else if(players <= 10) { category='尊享'; size='8G' }
+        else if(players <= 10) { category='至尊'; size='8G' }
         else { category='顶配'; size='16G' }
       }
     }
@@ -312,6 +334,9 @@ function copyResult(){
 // 初始渲染并自动生成推荐
 renderOptions();
 recommend();
+
+// 通过 URL 传参固定游戏，如 ?game=minecraft|palu|dst
+applyGameFilter(getQueryParam('game'));
 
 // 页面加载后居中显示选中的游戏卡片
 window.addEventListener('load', function() {

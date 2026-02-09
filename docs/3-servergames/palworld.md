@@ -5,9 +5,13 @@
 
 ## 1.推荐配置
 
-**4C/8G起跳，适合最多16人，8C/32G顶配，适合16-32人。**  
-**该游戏由于后台优化不佳，内存占用极高，CPU占用基本保持在2-3核心**  
 **后期流畅度，主要依靠CPU核心性能来支撑，人多推荐高配置**  
+<iframe src="/tools/quick_server_selector.html?game=palu"
+    width="100%" 
+    height="550px" 
+    style="border: 1px solid #ccc; border-radius: 8px;" 
+>
+</iframe>
 <br>
 
 ## 2.开服教程
