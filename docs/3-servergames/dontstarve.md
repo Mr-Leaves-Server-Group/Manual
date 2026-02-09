@@ -5,9 +5,13 @@
 
 ## 1.推荐配置
 
-**2C/4G起跳，适合最多6-8人，4C/8G顶配，适合8-20人。**  
 **由于该游戏几乎是单核心为主的，单核心性能对于多人的模组服影响巨大。**  
-由于游戏的本身设计问题，人数超过单核心性能后，会出现明显的回溯现象。  
+<iframe src="/tools/quick_server_selector.html?game=dst"
+    width="100%" 
+    height="550px" 
+    style="border: 1px solid #ccc; border-radius: 8px;" 
+>
+</iframe>
 <br>
 
 ## 2.开服教程
