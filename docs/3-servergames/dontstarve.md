@@ -7,8 +7,8 @@
 
 **由于该游戏几乎是单核心为主的，单核心性能对于多人的模组服影响巨大。**  
 <iframe src="/tools/quick_server_selector.html?game=dst"
-    width="100%" 
-    height="550px" 
+    width="510px" 
+    height="370px" 
     style="border: 1px solid #ccc; border-radius: 8px;" 
 >
 </iframe>

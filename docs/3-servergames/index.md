@@ -2,12 +2,6 @@
 
 ## 1.快速索引
 - **[我的世界  -  Minecraft](/3-servergames/minecraft)**
-    - [Vanilla](/3-servergames/minecraft/#21vanilla)
-    - [Paper](/3-servergames/minecraft/#22paper)
-    - [Forge/NeoForge](/3-servergames/minecraft/#23forge)
-    - [Spigot](/3-servergames/minecraft/#24spigot)
-    - [CurseForge](/3-servergames/minecraft/#25curseforge)
-    - [Fabric](/3-servergames/minecraft/#26fabric)
 
 - **[我的世界(旧版)  -  Minecraft](/3-servergames/minecraft-old)**
 
@@ -36,8 +30,8 @@
 ## 2.配置选择
 您可以使用下面的工具，快速选择适合您需求的服务器配置。也可以点击<a href="/tools/quick_server_selector.html" target="_blank">这里打开新页面使用</a> 。
 <iframe src="/tools/quick_server_selector.html"
-    width="100%" 
-    height="550px" 
+    width="510px" 
+    height="440px" 
     style="border: 1px solid #ccc; border-radius: 8px;" 
 >
 </iframe>
