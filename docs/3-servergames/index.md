@@ -3,8 +3,6 @@
 ## 1.快速索引
 - **[我的世界  -  Minecraft](/3-servergames/minecraft)**
 
-- **[我的世界(旧版)  -  Minecraft](/3-servergames/minecraft-old)**
-
 - **[幻兽帕鲁  -  Palworld](/3-servergames/palworld/)**
 
 - **[饥荒联机版  -  Don't Starve Together](/3-servergames/dontstarve/)**
