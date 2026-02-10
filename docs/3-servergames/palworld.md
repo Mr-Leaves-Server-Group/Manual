@@ -19,10 +19,12 @@
 **配置文件位置如下**，每次修改务必 **关闭服务器修改，改完再启动服务器**  
 **Linux（默认）**```/home/container/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini```  
 **Windows（模组）**```/home/container/Pal/Saved/Config/WindowsServer/PalWorldSettings.ini```  
-**注意：未关闭服务器修改配置文件，或错误配置文件，将导致配置文件将被刷回默认值**
 
-### 2.1.方法一：使用在线配置工具
-点击使用 **[Palworld 服务器设置工具](https://pal-conf.bluefissure.com/)**  
+ℹ️因该游戏配置文件复杂，请使用下方工具生成配置文件，再复制粘贴到服务器对应位置。  
+
+✅点击使用➡ **[幻兽帕鲁Palworld 服务器配置工具](https://pal-conf.bluefissure.com/)**  
+
+**⚠️注意：未关闭服务器修改配置文件，或错误配置文件，将导致配置文件将被刷回默认值**  
 
 <div align="center"><img src="/assets/palworld/configer.png" alt="配置生成器"></div>
 <div align="center"><strong>使用配置生成器</strong></div>  
@@ -33,23 +35,9 @@
 <div align="center"><img src="/assets/palworld/setting.png" alt="配置文件位置"></div>
 <div align="center"><strong>粘贴在设置文件</strong></div>  
 
-### 2.2.方法二：手动修改配置文件
-请从根目录 **`DefaultPalWorldSettings.ini`** 模板文件内，拷贝代码模板，并黏贴到对应设置文件  
-**Linux（默认）: /home/container/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini**  
-**Windows（模组）: /home/container/Pal/Saved/Config/WindowsServer/PalWorldSettings.ini**  
-
-<div align="center"><img src="/assets/palworld/defualt_config.png" alt="设置模板"></div>
-<div align="center"><strong>找到设置模板</strong></div>  
-
-<div align="center"><img src="/assets/palworld/copy_default.png" alt="拷贝代码"></div>
-<div align="center"><strong>拷贝设置代码</strong></div>  
-
-<div align="center"><img src="/assets/palworld/setting.png" alt="设置文件"></div>
-<div align="center"><strong>粘贴在设置文件</strong></div>  
-
-### 2.3.游戏内：管理员登录和指令
-**要使用控制台指令**，**请在游戏内输入`/adminpassword <Admin密码>`**，如下图：  
-**注：管理员密码在后台“启动”分页，找 AdminPassword 值**  
+## 3.管理指令
+**要使用控制台指令**，**请在游戏内输入`/adminpassword <Admin密码>`**，见下图：  
+**⚠️注：修改管理员密码请在后台 “启动” 分页，修改 `管理员密码` 值**  
 
 <div align="center"><img src="/assets/palworld/enter_password.png" alt="管理员登陆"></div>
 <div align="center"><strong>管理员登陆指令</strong></div>  
@@ -74,17 +62,17 @@
 | `/Save`                               | 此命令强制保存世界数据。                          |
 
 
-## 3.进入服务器（教程）
-**要加入独立服务器**，**请按照以下流程**，如下图：
+## 3.加入游戏
+**要加入独立服务器**，**请按照以下流程**，见下图：
 
 <div align="center"><img src="/assets/palworld/connect1.png" alt="连接服务器"></div>
 <div align="center"><strong>选择菜单第二个</strong></div>  
 
 <div align="center"><img src="/assets/palworld/connect2.png" alt="连接服务器"></div>
-<div align="center"><strong>输入地址，并点“联系”</strong></div>
+<div align="center"><strong>输入地址，并点“连接”</strong></div>
 <br>
 
-## 4.已知游戏BUG
+## 4.已知BUG
 **存档损坏无法修复，请格外注意会丢档的BUG**  
 
 | 已知问题                           | 解决方法 / 当前状态         |
@@ -101,9 +89,10 @@
 
 <br>
 
-## 5.服务器存档位置
+## 5.存档位置
 **存档文件位置：`/home/container/Pal` 里的 `Saved` 文件夹**  
-**如果要下载整个存档**，**压缩整个文件夹并下载压缩文件**，如下图：  
+
+- **如果要下载整个存档**，**压缩整个文件夹并下载压缩文件**，见下图：  
 
 <div align="center"><img src="/assets/palworld/save_folder.png" alt="存档文件夹"></div>
 <div align="center"><strong>游戏存档，设置都在里面</strong></div>  
@@ -114,6 +103,26 @@
 <div align="center"><img src="/assets/palworld/download_save.png" alt="下载压缩文件"></div>
 <div align="center"><strong>下载压缩后的存档文件夹</strong></div>
 
-**如果要重新开始游戏，可以删除整个`Saved`文件夹**
-**如果想保存设置，但删除存档，可以删除`Saved/SaveGames`文件夹**
+- **如果要重新开始游戏，可以删除整个`Saved`文件夹**  
+- **如果想保存设置，但删除存档，可以删除`Saved/SaveGames`文件夹**
 <br>
+
+## 6.存档转换
+该游戏**小四人存档，Linux存档，Windows存档互不相通**，需要转换存档才能使用。  
+**⚠️注：该操作非常复杂，且存在存档损坏风险，不推荐使用。强烈推荐联系客服完成**
+
+> 1. 确保所有需要转档的玩家都在线配合操作
+
+> 2. 将原始存档上传到对应服务器文件夹
+
+> 3. 启动服务器，每个玩家都需进入并创建新角色
+
+> 4. 关闭服务器，下载新生成的存档
+
+> 5. 使用转换工具将**新存档**的**老角色转到新角色**上
+
+> 6. 将转换后的存档上传到服务器并启动
+
+> 7. 所有玩家进入游戏，确认存档无误
+
+✅点击查看➡ **[幻兽帕鲁Palworld 存档编辑器](https://github.com/deafdudecomputers/PalWorldSaveTools)**

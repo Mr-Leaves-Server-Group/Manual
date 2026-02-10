@@ -28,39 +28,55 @@
 ![Token设置](/assets/dontstrave/token-setup.png)  
 
 ### 2.3.开服前的准备
-1. 在客户端菜单点击 **创建游戏**
-2. 根据需要，**调整世界生成参数**
-3. 根据需要，**添加并设置MOD**
-4. 设置完成后，点击**生成世界**
-5. 去客户端首页点击 **数据** 图标
-6. 根据日期，找到刚创建的世界文件夹
+> 1. 在客户端菜单点击 **创建游戏**
+> 2. 根据需要，**调整世界生成参数**
+> 3. 根据需要，**添加并设置MOD**
+> 4. 设置完成后，点击**生成世界**
+> 5. 去客户端首页点击 **数据** 图标
+> 6. 根据日期，找到刚创建的世界文件夹
 
-**注：下面的截图有完整的流程，建议对照操作**
+**⚠️注：下面的截图有完整的流程，建议对照操作**
 
 ### 2.4.世界生成参数
-**文件夹 `/home/container/DoNotStarveTogether/config/server/Master` 和 `Caves`**   
-**配置文件 `leveldataoverride.lua` 控制世界生成设置**，主世界和洞穴各自有一个，**把刚本地创建的 `leveldataoverride.lua` 文件拷贝到服务器对应文件夹，然后删除文件夹内的 `worldgenoverride.lua` **。  
+> 1. 文件 **`worldgenoverride.lua`** 控制世界生成参数
+
+> 2. 在服务器上找到 **`/home/container/DoNotStarveTogether/config/server/Master`** 和 **`Caves`**文件夹  
+
+> 3. 在本地找到配置文件 **`leveldataoverride.lua`** （刚创建的世界生成的对应配置文件）
+
+> 4. 把主世界和地洞两个 **`leveldataoverride.lua`** 上传到服务器对应文件夹（Master和Caves）
   
-**注：原本 `leveldataoverride.lua` 是客户端专用，`worldgenoverride.lua` 是服务器专用，功能基本一样，现在服务器已可读取前者，故删除后者即可**  
+**⚠️注：该文件主世界和洞穴各有一个，且内容不同。原本 `leveldataoverride.lua` 是客户端专用，`worldgenoverride.lua` 是服务器专用，功能基本一样，现在服务器已可读取前者，故删除后者即可**  
 
 ### 2.5.启用/配置MOD
-**文件夹 `/home/container/DoNotStarveTogether/config/server/Master` 和 `Caves`**  
-**配置文件 `modoverrides.lua` 控制mod开启和设置**，主世界Master和地洞Caves文件夹各有一个，把刚本地创建的同名文件，拷贝到对应文件夹即可。  
-  
-**注：由于配置文件为全英文，且设置名称和游戏内不一致，故不推荐在服务器端手动修改**   
+> 1. 文件 **`modoverrides.lua`** 控制mod开启和设置
 
-**温馨提示：`MLSG-Chinese-Guide-and-Manual-for-Server-Admins-Please-READ-ME` 文件夹里  
-有一些之前开服的Mod模板，包含添加Mod所需的两个文件，用之前建议根据自己需求修改一下**  
+> 2. 在服务器上找到 **`/home/container/DoNotStarveTogether/config/server/Master`** 和 **`Caves`**文件夹  
+
+> 3. 在本地找到配置文件 **`modoverrides.lua`** （刚创建的世界生成的对应配置文件）
+
+> 4. 把主世界和地洞两个 **`modoverrides.lua`** 上传到服务器对应文件夹（Master和Caves）
+  
+**⚠️注：该文件主世界和洞穴各有一个，且内容不同。由于该配置文件为全英文，且设置名称和游戏内不一致，故不推荐在服务器端手动修改，强烈建议在客户端操作修改mod的配置**   
 
 ![模组服务器图文教程](/assets/dontstrave/mod-setup-1.png)  
 ![模组服务器图文教程](/assets/dontstrave/mod-setup-2.png)  
 
 ### 2.6.添加/下载MOD
-**后台已全面升级，不再需要编辑 `dedicated_server_mods_setup.lua` 文件，只需上传 `modoverrides.lua` 文件即可，服务器会自动下载所需MOD。**
+**✅后台已全面升级，不再需要编辑 `dedicated_server_mods_setup.lua` 文件，只需上传 `modoverrides.lua` 文件即可，服务器会自动下载所需MOD。**
   
 <hr>
-**文件夹 `/home/container/mods`**  
-**配置文件 `dedicated_server_mods_setup.lua` 控制mod下载设置**，找到并按照文件上面给出的例子填写（填写后只会下载，不会启用！不填写=不下载，当然也不会启用）。以下两种形式 `ServerModSetup("xxxxxxxxx")` 和 `ServerModCollectionSetup("xxxxxxxxx")` 分别对应单一模组和模组包。只需将 `modoverrides.lua` 文件中所有 `workshop-xxxxxxxxx` 使用下面的转换器，转换成以上对应形式，然后黏贴到服务器对应文件。替换后务必检查是否有错误。
+
+> 1. 文件 **`dedicated_server_mods_setup.lua`** 控制mod下载设置
+
+> 2. 在服务器上找到 **`/home/container/mods`** 文件夹
+
+> 3. 使用下面的转换器，黏贴 **`modoverrides.lua`** 文件内容
+
+> 4. 点击生成对应的 **`dedicated_server_mods_setup.lua`** 文件内容
+
+> 5. 将生成的内容，粘贴到服务器 **`/home/container/mods`** 对应文件
+
 <iframe src="/tools/dst_mod_setup.html" 
     width="100%" 
     height="500" 
