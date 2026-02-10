@@ -195,9 +195,9 @@ Paper的插件可以直接放入**插件文件夹Plugins**里，通常可以从[
 > 5. 等待安装完成后，选择右侧安装好的模组包
 > 6. 返回主界面，点击 **启动游戏**
 
-![PCL2客户端下载](\assets\minecraft\pcl2-1.png)
-![PCL2版本选择](\assets\minecraft\pcl2-2.png)
-![PCL2安装模组包](\assets\minecraft\pcl2-3.png)
+![PCL2客户端下载](\assets\minecraft\PCL2-1.png)
+![PCL2版本选择](\assets\minecraft\PCL2-2.png)
+![PCL2安装模组包](\assets\minecraft\PCL2-3.png)
 
 ## 4.模组相关
 ### 4.1.安装模组
