@@ -6,9 +6,9 @@
 ## 1.推荐配置
 
 **后期流畅度，主要依靠CPU核心性能来支撑，人多推荐高配置**  
-<iframe src="/tools/quick_server_selector.html?game=palu"
-    width="100%" 
-    height="550px" 
+<iframe src="/tools/quick_server_selector.html?game=palworld"
+    width="510px" 
+    height="370px" 
     style="border: 1px solid #ccc; border-radius: 8px;" 
 >
 </iframe>

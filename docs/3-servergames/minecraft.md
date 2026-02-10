@@ -6,8 +6,8 @@
 ## 1.推荐配置
 **不同版本差异较大，使用下面的工具，快速选择适合您需求的服务器配置。**  
 <iframe src="/tools/quick_server_selector.html?game=minecraft"
-    width="100%" 
-    height="550px" 
+    width="510px" 
+    height="370px" 
     style="border: 1px solid #ccc; border-radius: 8px;" 
 >
 </iframe>
@@ -26,29 +26,29 @@
 | **CurseForge (整合包)** | 国际大作 (如 RLCraft) | 自动从CF下载整合包，无需手动上传 | 完整整合包 |
 | **GuoChan (整合包)** | 国内流行整合包 | 预设国内热门包，一键安装，新手友好 | 完整整合包 |
 
-- **🔴【高级】服务器 Jar 文件名** 用于运行服务器的核心文件名
-> <small>注：默认为 `server.jar`，通常无需修改，第三方自定义模组包可根据需要修改。</small>
+- **🔴【高级】服务器 Jar 文件名** 用于运行服务器的核心文件名  
+<small>注：默认为 `server.jar`，通常无需修改，第三方自定义模组包可根据需要修改。</small>
   
-- **⭐️【常用】MC游戏版本** 选择主流版本(1.7.10 - latest)
-> <small>注：填写手动版本后此项失效，修改版本后请务必同步更改右上角的 Java 镜像版本。</small>
+- **⭐️【常用】MC游戏版本** 选择主流版本(1.7.10 - latest)  
+<small>注：填写手动版本后此项失效，修改版本后请务必同步更改右上角的 Java 镜像版本。</small>
 
-- **🔴【高级】手动游戏版本** 填写不包含在常用列表中的版本（如 1.20.6）
-> <small>注：留空不生效，修改版本后请务必同步更改右上角的 Java 镜像版本。</small>
+- **🔴【高级】手动游戏版本** 填写不包含在常用列表中的版本（如 1.20.6）  
+<small>注：留空不生效，修改版本后请务必同步更改右上角的 Java 镜像版本。</small>
 
-- **🧩【模组】具体版本号** 用于确定 Loader 版本，请务必与客户端对齐
-> <small>填写格式示例：Paper：`100`，Fabric：`0.16.13`，Forge：`47.4.2`，NeoForge：`20.4.194`</small>
+- **🧩【模组】具体版本号** 用于确定 Loader 版本，请务必与客户端对齐  
+<small>填写格式示例：Paper：`100`，Fabric：`0.16.13`，Forge：`47.4.2`，NeoForge：`20.4.194`</small>
 
-- **🧩【模组】Fabric版本（Fabric API模组）** 自动安装 API 模组
-> <small>Fabric 模式专用。填写格式示例：`0.92.0+1.20.1`</small>
+- **🧩【模组】Fabric版本（Fabric API模组）** 自动安装 API 模组  
+<small>Fabric 模式专用。填写格式示例：`0.92.0+1.20.1`</small>
 
-- **📦【整合包】CF模组包-Project ID** CurseForge 模组包项目 ID（位于页面右侧）
-> <small>例如：RL-Craft 为 `285109` <a href="#36curseforge">点击查看获取方法</a></small>
+- **📦【整合包】CF模组包-Project ID** 填写 CurseForge 模组包项目ID（位于页面右侧）  
+<small>例如：RL-Craft 为 `285109` <a href="#36curseforge">点击查看获取方法</a></small>
 
-- **📦【整合包】CF模组包-File ID** CurseForge 模组包文件 ID（位于文件 URL 最后）
-> <small>例如：RL-Craft 最新版服务器包为 `4612990` <a href="#36curseforge">点击查看获取方法</a></small>
+- **📦【整合包】CF模组包-File ID** 填写 CurseForge 模组包文件ID（位于文件URL最后）  
+<small>例如：RL-Craft 最新版服务器包为 `4612990` <a href="#36curseforge">点击查看获取方法</a></small>
 
-- **📦【整合包】国产模组包-服务端** GuoChan 模式专用。选择预设好的国产整合包服务端
-> <small>如《愚者》或《乌托邦》<a href="#37guochan">点击查看模组包列表</a></small>
+- **📦【整合包】国产模组包-ModPack** 选择预设好的国产整合包服务端  
+<small>如《愚者》或《乌托邦》<a href="#37guochan">点击查看模组包列表</a></small>
 
 ![后台界面](\assets\minecraft\minecraft-egg-backend.png)  
 
@@ -67,8 +67,8 @@
 - **🎮【游戏】最大玩家数量** 设置服务器最大同时在线人数， 不推荐设置过高
 
 
-- **🎮【游戏】地图种子** 自定义世界生成种子。若填写错误可能导致无法启动
-> <small>注：留空则使用随机种子，推荐使用<a href="https://www.chunkbase.com/apps/seed-map">Chunkbase Seed Map</a>查看种子地形。</small>
+- **🎮【游戏】地图种子** 自定义世界生成种子。若填写错误可能导致无法启动  
+<small>注：留空则使用随机种子，推荐使用<a href="https://www.chunkbase.com/apps/seed-map">Chunkbase Seed Map</a>查看种子地形。</small>
 
 - **🎮【游戏】允许飞行** 是否允许玩家在生存模式下飞行。模组服建议开启此项
 
