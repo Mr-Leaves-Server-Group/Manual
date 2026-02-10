@@ -1298,6 +1298,7 @@
 将Token填在 <code>/home/container/DoNotStarveTogether/config/server/cluster_token.txt</code>  </p>
 <p><img alt="Token设置" src="/assets/dontstrave/token-setup.png" />  </p>
 <h3 id="23">2.3.开服前的准备</h3>
+<blockquote>
 <ol>
 <li>在客户端菜单点击 <strong>创建游戏</strong></li>
 <li>根据需要，<strong>调整世界生成参数</strong></li>
@@ -1306,24 +1307,69 @@
 <li>去客户端首页点击 <strong>数据</strong> 图标</li>
 <li>根据日期，找到刚创建的世界文件夹</li>
 </ol>
-<p><strong>注：下面的截图有完整的流程，建议对照操作</strong></p>
+</blockquote>
+<p><strong>⚠️注：下面的截图有完整的流程，建议对照操作</strong></p>
 <h3 id="24">2.4.世界生成参数</h3>
-<p><strong>文件夹 <code>/home/container/DoNotStarveTogether/config/server/Master</code> 和 <code>Caves</code></strong> <br />
-<strong>配置文件 <code>leveldataoverride.lua</code> 控制世界生成设置</strong>，主世界和洞穴各自有一个，<strong>把刚本地创建的 <code>leveldataoverride.lua</code> 文件拷贝到服务器对应文件夹，然后删除文件夹内的 <code>worldgenoverride.lua</code> </strong>。  </p>
-<p><strong>注：原本 <code>leveldataoverride.lua</code> 是客户端专用，<code>worldgenoverride.lua</code> 是服务器专用，功能基本一样，现在服务器已可读取前者，故删除后者即可</strong>  </p>
+<blockquote>
+<ol>
+<li>
+<p>文件 <strong><code>worldgenoverride.lua</code></strong> 控制世界生成参数</p>
+</li>
+<li>
+<p>在服务器上找到 <strong><code>/home/container/DoNotStarveTogether/config/server/Master</code></strong> 和 <strong><code>Caves</code></strong>文件夹  </p>
+</li>
+<li>
+<p>在本地找到配置文件 <strong><code>leveldataoverride.lua</code></strong> （刚创建的世界生成的对应配置文件）</p>
+</li>
+<li>
+<p>把主世界和地洞两个 <strong><code>leveldataoverride.lua</code></strong> 上传到服务器对应文件夹（Master和Caves）</p>
+</li>
+</ol>
+</blockquote>
+<p><strong>⚠️注：该文件主世界和洞穴各有一个，且内容不同。原本 <code>leveldataoverride.lua</code> 是客户端专用，<code>worldgenoverride.lua</code> 是服务器专用，功能基本一样，现在服务器已可读取前者，故删除后者即可</strong>  </p>
 <h3 id="25mod">2.5.启用/配置MOD</h3>
-<p><strong>文件夹 <code>/home/container/DoNotStarveTogether/config/server/Master</code> 和 <code>Caves</code></strong><br />
-<strong>配置文件 <code>modoverrides.lua</code> 控制mod开启和设置</strong>，主世界Master和地洞Caves文件夹各有一个，把刚本地创建的同名文件，拷贝到对应文件夹即可。  </p>
-<p><strong>注：由于配置文件为全英文，且设置名称和游戏内不一致，故不推荐在服务器端手动修改</strong>   </p>
-<p><strong>温馨提示：<code>MLSG-Chinese-Guide-and-Manual-for-Server-Admins-Please-READ-ME</code> 文件夹里<br />
-有一些之前开服的Mod模板，包含添加Mod所需的两个文件，用之前建议根据自己需求修改一下</strong>  </p>
+<blockquote>
+<ol>
+<li>
+<p>文件 <strong><code>modoverrides.lua</code></strong> 控制mod开启和设置</p>
+</li>
+<li>
+<p>在服务器上找到 <strong><code>/home/container/DoNotStarveTogether/config/server/Master</code></strong> 和 <strong><code>Caves</code></strong>文件夹  </p>
+</li>
+<li>
+<p>在本地找到配置文件 <strong><code>modoverrides.lua</code></strong> （刚创建的世界生成的对应配置文件）</p>
+</li>
+<li>
+<p>把主世界和地洞两个 <strong><code>modoverrides.lua</code></strong> 上传到服务器对应文件夹（Master和Caves）</p>
+</li>
+</ol>
+</blockquote>
+<p><strong>⚠️注：该文件主世界和洞穴各有一个，且内容不同。由于该配置文件为全英文，且设置名称和游戏内不一致，故不推荐在服务器端手动修改，强烈建议在客户端操作修改mod的配置</strong>   </p>
 <p><img alt="模组服务器图文教程" src="/assets/dontstrave/mod-setup-1.png" /><br />
 <img alt="模组服务器图文教程" src="/assets/dontstrave/mod-setup-2.png" />  </p>
 <h3 id="26mod">2.6.添加/下载MOD</h3>
-<p><strong>后台已全面升级，不再需要编辑 <code>dedicated_server_mods_setup.lua</code> 文件，只需上传 <code>modoverrides.lua</code> 文件即可，服务器会自动下载所需MOD。</strong></p>
+<p><strong>✅后台已全面升级，不再需要编辑 <code>dedicated_server_mods_setup.lua</code> 文件，只需上传 <code>modoverrides.lua</code> 文件即可，服务器会自动下载所需MOD。</strong></p>
 <hr>
-<p><strong>文件夹 <code>/home/container/mods</code></strong><br />
-<strong>配置文件 <code>dedicated_server_mods_setup.lua</code> 控制mod下载设置</strong>，找到并按照文件上面给出的例子填写（填写后只会下载，不会启用！不填写=不下载，当然也不会启用）。以下两种形式 <code>ServerModSetup("xxxxxxxxx")</code> 和 <code>ServerModCollectionSetup("xxxxxxxxx")</code> 分别对应单一模组和模组包。只需将 <code>modoverrides.lua</code> 文件中所有 <code>workshop-xxxxxxxxx</code> 使用下面的转换器，转换成以上对应形式，然后黏贴到服务器对应文件。替换后务必检查是否有错误。</p>
+
+<blockquote>
+<ol>
+<li>
+<p>文件 <strong><code>dedicated_server_mods_setup.lua</code></strong> 控制mod下载设置</p>
+</li>
+<li>
+<p>在服务器上找到 <strong><code>/home/container/mods</code></strong> 文件夹</p>
+</li>
+<li>
+<p>使用下面的转换器，黏贴 <strong><code>modoverrides.lua</code></strong> 文件内容</p>
+</li>
+<li>
+<p>点击生成对应的 <strong><code>dedicated_server_mods_setup.lua</code></strong> 文件内容</p>
+</li>
+<li>
+<p>将生成的内容，粘贴到服务器 <strong><code>/home/container/mods</code></strong> 对应文件</p>
+</li>
+</ol>
+</blockquote>
 <iframe src="/tools/dst_mod_setup.html" 
     width="100%" 
     height="500" 
@@ -1442,7 +1488,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月10日 08:43:50 UTC">2026年2月10日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年2月10日 19:08:47 UTC">2026年2月10日</span>
   </span>
 
     
