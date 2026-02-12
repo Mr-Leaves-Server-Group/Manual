@@ -7,6 +7,7 @@
     <style>
         :root {
             --primary: #4a90e2;
+            --primary-hover: #357abd;
             --bg: #f8f9fa;
             --border: #e2e8f0;
             --text-main: #1e293b;
@@ -27,7 +28,7 @@
             width: 100%;
             max-width: 800px;
             background: #fff;
-            padding: 12px 0; /* 上下内边距，左右由滑动容器控制 */
+            padding: 12px 0;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             overflow: hidden;
@@ -38,7 +39,7 @@
             justify-content: space-between;
             align-items: flex-end;
             margin-bottom: 12px;
-            padding: 0 20px; /* 标题对齐左侧间距 */
+            padding: 0 20px;
         }
 
         .main-title {
@@ -52,38 +53,54 @@
             color: var(--text-sub);
         }
 
-        /* 横向滑动容器 */
         .pack-scroll-wrapper {
             display: flex;
             gap: 12px;
             overflow-x: auto;
-            padding: 5px 20px 15px 20px; /* 关键：左侧 20px 留白让第一张卡片不贴边 */
-            scroll-snap-type: x mandatory;
+            padding: 5px 20px 10px 20px;
+            scroll-snap-type: x proximity; 
             -webkit-overflow-scrolling: touch;
         }
 
-        /* 模组包卡片 - 更加紧凑 */
         .pack-card {
-            flex: 0 0 260px; /* 宽度从 320 缩小到 260 */
-            scroll-snap-align: start;
+            flex: 0 0 260px;
+            scroll-snap-align: none;
             border: 1px solid var(--border);
             border-radius: 8px;
             padding: 14px;
             background: #fff;
             display: flex;
             flex-direction: column;
-            transition: border-color 0.2s;
+            transition: all 0.2s ease;
         }
 
         .pack-card:hover {
             border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
         .pack-header {
             display: flex;
-            justify-content: space-between;
+            gap: 10px;
             align-items: center;
             margin-bottom: 8px;
+        }
+
+        .pack-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 6px;
+            object-fit: cover;
+            flex-shrink: 0;
+            background: #f1f5f9;
+        }
+
+        .title-area {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            flex-grow: 1;
         }
 
         .pack-title {
@@ -92,24 +109,25 @@
             color: var(--primary);
             white-space: nowrap;
             overflow: hidden;
-            text-overflow: ellipsis; /* 标题过长省略 */
+            text-overflow: ellipsis;
         }
 
         .pack-ver {
             font-size: 11px;
             background: #f1f5f9;
-            padding: 2px 6px;
+            padding: 1px 6px;
             border-radius: 4px;
             color: var(--text-sub);
+            width: fit-content;
+            margin-top: 2px;
         }
 
-        /* 描述 - 严格限制行数 */
         .pack-desc {
             font-size: 13px;
             line-height: 1.5;
             color: #475569;
             margin-bottom: 10px;
-            height: 40px; /* 缩减高度，只显示两行 */
+            height: 40px;
             display: -webkit-box;
             line-clamp: 2;
             -webkit-line-clamp: 2;
@@ -131,7 +149,7 @@
             display: block; 
             white-space: nowrap;
             overflow: hidden;
-            text-overflow: ellipsis; /* 配置信息过长也省略 */
+            text-overflow: ellipsis;
         }
 
         .action-group {
@@ -148,19 +166,48 @@
             text-decoration: none;
             text-align: center;
             border: 1px solid transparent;
+            transition: all 0.2s ease;
         }
 
-        .btn-client { background-color: var(--primary); color: white; }
-        .btn-source { background-color: #fff; color: var(--text-main); border-color: var(--border); }
+        /* 按钮悬停效果 */
+        .btn-client { 
+            background-color: var(--primary); 
+            color: white; 
+        }
+        .btn-client:hover {
+            background-color: var(--primary-hover);
+            box-shadow: 0 2px 6px rgba(74, 144, 226, 0.3);
+        }
+
+        .btn-source { 
+            background-color: #fff; 
+            color: var(--text-main); 
+            border-color: var(--border); 
+        }
+        .btn-source:hover {
+            background-color: #f1f5f9;
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 8px;
+        }
+
+        .java-ver {
+            font-size: 10px;
+            color: #64748b;
+            font-weight: 500;
+        }
 
         .release-date {
             font-size: 10px;
             color: #94a3b8;
-            margin-top: 8px;
-            text-align: right;
         }
 
-        /* 滚动条 */
         .pack-scroll-wrapper::-webkit-scrollbar { height: 4px; }
         .pack-scroll-wrapper::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
     </style>
@@ -203,8 +250,11 @@
                 
                 card.innerHTML = `
                     <div class="pack-header">
-                        <span class="pack-title">${pack.name}</span>
-                        <span class="pack-ver">v${pack.version}</span>
+                        <img class="pack-logo" src="${pack.logo_url}" alt="Logo" onerror="this.src='https://placehold.co/40x40?text=Pack'">
+                        <div class="title-area">
+                            <span class="pack-title">${pack.name}</span>
+                            <span class="pack-ver">v${pack.version}</span>
+                        </div>
                     </div>
                     <div class="pack-desc">${pack.description}</div>
                     <div class="spec-box">
@@ -212,10 +262,13 @@
                         <span class="spec-item" title="${pack.recommend_spec}"><strong>推荐:</strong> ${pack.recommend_spec}</span>
                     </div>
                     <div class="action-group">
-                        <a href="${pack.client_download_url}" class="btn btn-client" target="_blank">下载客户端包</a>
-                        <a href="${pack.source_link}" class="btn btn-source" target="_blank">打开原作网址</a>
+                        <a href="${pack.client_download_url}" class="btn btn-client" target="_blank">下载包</a>
+                        <a href="${pack.source_link}" class="btn btn-source" target="_blank">原作</a>
                     </div>
-                    <div class="release-date">${pack.release_date}</div>
+                    <div class="card-footer">
+                        <span class="java-ver">☕ Java ${pack.java_version}</span>
+                        <span class="release-date">${pack.release_date}</span>
+                    </div>
                 `;
                 packList.appendChild(card);
             });
