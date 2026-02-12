@@ -66,6 +66,14 @@
                 max-width: 100%;
                 box-sizing: border-box;
             }
+
+            html body .pack-desc {
+                    height: 60px !important;      /* 强制允许高度自适应 */
+                    min-height: 40px;
+                    -webkit-line-clamp: 3;       /* 增加允许显示的行数 */
+                    line-clamp: 3;
+                    overflow: visible;            /* 允许内容溢出显示 */
+            }
             
             /* 竖向模式下隐藏底部滚动条轨道 */
             .pack-scroll-wrapper::-webkit-scrollbar {
