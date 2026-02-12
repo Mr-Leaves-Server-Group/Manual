@@ -326,6 +326,30 @@
             color: #94a3b8;
         }
 
+        /* 默认隐藏底部版权/侵权声明 */
+        .footer-notice {
+            display: none;
+            padding: 10px 20px 0px 20px;
+            border-top: 1px solid var(--border);
+            background-color: #fcfcfc;
+            font-size: 12px;
+            color: var(--text-sub);
+            line-height: 1.6;
+        }
+
+        .footer-notice a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* 当屏幕高度大于 450px 时（判定为单独打开），显示该栏目 */
+        @media (min-height: 450px) {
+            .footer-notice {
+                display: block;
+            }
+        }
+
         .pack-scroll-wrapper::-webkit-scrollbar { height: 4px; }
         .pack-scroll-wrapper::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
     </style>
@@ -342,7 +366,15 @@
         </div>
         
         <div class="pack-scroll-wrapper" id="packList"></div>
+        <div class="footer-notice">
+            <p>
+                <strong>版权声明：</strong> 本页面展示的所有模组包均通过官方公开链接获取，内容未经任何修改。
+                若相关内容侵犯了您的权利，请通过邮件联系我们处理：
+                <a href="mailto:mlsg@mr-leaves.com">mlsg@mr-leaves.com</a>
+            </p>
+        </div>
     </div>
+
 
     <script>
         const API_URL = 'https://raw.githubusercontent.com/Mr-Leaves-Server-Group/ModPacks/main/modpacks.json';
