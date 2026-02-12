@@ -176,9 +176,11 @@ Paper的插件可以直接放入**插件文件夹Plugins**里，通常可以从[
 > 5. 等待安装完成，结果可在 **MLSG-LOG/install.log** 日志文件中查看  
 > 6. 可以在下方查看对应模组包的详细信息和客户端下载链接
 
+点击打开 **[菜菜云MLSG - 国产包列表](https://manual.mr-leaves.com/tools/guochan_metadata.html)**，也可以 **分享给好友一块选择** 哦！
+
 <iframe src="/tools/guochan_metadata.html"
     width="100%" 
-    height="370px" 
+    height="375px" 
     style="border: 1px solid #ccc; border-radius: 8px;" 
 >
 </iframe>
