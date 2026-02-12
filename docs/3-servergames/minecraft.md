@@ -178,7 +178,7 @@ Paper的插件可以直接放入**插件文件夹Plugins**里，通常可以从[
 
 <iframe src="/tools/guochan_metadata.html"
     width="100%" 
-    height="335px" 
+    height="370px" 
     style="border: 1px solid #ccc; border-radius: 8px;" 
 >
 </iframe>
