@@ -27,8 +27,11 @@
         .container {
             width: 100%;
             max-width: 800px;
-            background: #fff;
-            padding: 12px 0;
+            background-color: #fff;
+            padding-top: 12px;
+            padding-bottom: 12px;
+            padding-left: 0px;
+            padding-right: 0px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             overflow: hidden;
@@ -53,7 +56,8 @@
                 overflow-x: hidden;
                 overflow-y: visible;
                 gap: 16px;
-                padding: 10px 20px;
+                padding-left: 20px;
+                padding-right: 20px;
             }
 
             .pack-card {
@@ -85,8 +89,9 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 12px;
-            padding: 0 20px;
+            margin-bottom: 7px;
+            padding-left: 20px;
+            padding-right: 20px;
         }
 
         .main-title {
@@ -120,6 +125,36 @@
             padding-right: 20px;
             scroll-snap-type: x proximity; 
             -webkit-overflow-scrolling: touch;
+        }
+
+        /* 滚动条整体高度 */
+        .pack-scroll-wrapper::-webkit-scrollbar { 
+            height: 8px; 
+        }
+
+        /* 滚动条轨道：必须保留背景色才能撑起圆角渲染 */
+        .pack-scroll-wrapper::-webkit-scrollbar-track {
+            background-color: #f1f5f9;
+            border-radius: 10px;
+            /* 左右透明边框，颜色需与外层容器背景色一致以实现“缩进” */
+            border-left: 20px solid #fff;
+            border-right: 20px solid #fff;
+            background-clip: padding-box;
+        }
+
+        /* 滚动条滑块 */
+        .pack-scroll-wrapper::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 10px;
+            /* 间距必须与 track 保持一致 */
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            /* 关键：padding-box 确保背景色在透明边框内侧绘制并遵循圆角 */
+            background-clip: padding-box;
+        }
+
+        .pack-scroll-wrapper::-webkit-scrollbar-thumb:hover {
+            background-color: #94a3b8;
         }
 
         .pack-card {
@@ -165,7 +200,6 @@
             flex-grow: 1;
         }
 
-        /* 第一行：标题 + 支持作者按钮 */
         .title-row {
             display: flex;
             justify-content: space-between;
@@ -205,7 +239,6 @@
             background-color: #fff1f2;
         }
 
-        /* 第二行：版本号 + Mod总数（两端对齐） */
         .info-row {
             display: flex;
             justify-content: space-between;
@@ -214,7 +247,6 @@
             margin-top: 4px;
         }
 
-        /* 统一版本号和Mod数的标签样式 */
         .pack-ver, .mod-count {
             font-size: 11px;
             background-color: #f1f5f9;
@@ -345,15 +377,6 @@
                 display: block;
             }
         }
-
-        .pack-scroll-wrapper::-webkit-scrollbar { 
-            height: 4px; 
-        }
-
-        .pack-scroll-wrapper::-webkit-scrollbar-thumb { 
-            background-color: #e2e8f0; 
-            border-radius: 10px; 
-        }
     </style>
 </head>
 <body>
@@ -376,7 +399,6 @@
             </p>
         </div>
     </div>
-
 
     <script>
         const API_URL = 'https://raw.githubusercontent.com/Mr-Leaves-Server-Group/ModPacks/main/modpacks.json';
@@ -409,7 +431,7 @@
 
                 const modCountHtml = pack.total_mods 
                     ? `<span class="mod-count">${pack.total_mods} Mods</span>`
-                    : '<span></span>'; // 占位符确保两端对齐逻辑正常
+                    : '<span></span>';
                 
                 card.innerHTML = `
                     <div class="pack-header">
