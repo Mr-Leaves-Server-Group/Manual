@@ -24,7 +24,6 @@
             justify-content: center;
         }
 
-        /* 1. 修改 container，让其在竖屏下自适应高度 */
         .container {
             width: 100%;
             max-width: 800px;
@@ -38,7 +37,6 @@
             min-height: fit-content; 
         }
 
-        /* 2. 使用媒体查询处理“直接打开”的情况 */
         @media (min-height: 450px) {
             body {
                 padding: 20px;
@@ -77,16 +75,6 @@
             }
         }
 
-        @media (max-width: 480px) and (min-height: 450px) {
-            .container {
-                box-shadow: none;
-                background: transparent;
-            }
-            .pack-card {
-                background: #fff;
-            }
-        }
-
         .title-group {
             display: flex;
             flex-direction: column;
@@ -99,14 +87,6 @@
             align-items: flex-start;
             margin-bottom: 12px;
             padding: 0 20px;
-        }
-
-        @media (min-height: 450px) {
-            .sub-tip {
-                font-size: 12px;
-                color: var(--primary);
-                opacity: 0.8;
-            }
         }
 
         .main-title {
@@ -134,7 +114,10 @@
             display: flex;
             gap: 12px;
             overflow-x: auto;
-            padding: 5px 20px 10px 20px; 
+            padding-top: 5px;
+            padding-bottom: 10px;
+            padding-left: 20px;
+            padding-right: 20px;
             scroll-snap-type: x proximity; 
             -webkit-overflow-scrolling: touch;
         }
@@ -142,10 +125,12 @@
         .pack-card {
             flex: 0 0 260px;
             scroll-snap-align: none;
-            border: 1px solid var(--border);
+            border-width: 1px;
+            border-style: solid;
+            border-color: var(--border);
             border-radius: 8px;
             padding: 14px;
-            background: #fff;
+            background-color: #fff;
             display: flex;
             flex-direction: column;
             transition: all 0.2s ease;
@@ -170,7 +155,7 @@
             border-radius: 6px;
             object-fit: cover;
             flex-shrink: 0;
-            background: #f1f5f9;
+            background-color: #f1f5f9;
         }
 
         .title-area {
@@ -180,7 +165,7 @@
             flex-grow: 1;
         }
 
-        /* 标题行布局 */
+        /* 第一行：标题 + 支持作者按钮 */
         .title-row {
             display: flex;
             justify-content: space-between;
@@ -198,7 +183,6 @@
             margin-right: 8px;
         }
 
-        /* 支持作者按钮：低调幽灵按钮风格 */
         .btn-support {
             font-size: 10px;
             color: #94a3b8;
@@ -221,15 +205,17 @@
             background-color: #fff1f2;
         }
 
-        /* 版本+Mod数行布局 */
+        /* 第二行：版本号 + Mod总数（两端对齐） */
         .info-row {
             display: flex;
-            gap: 6px;
-            margin-top: 4px;
+            justify-content: space-between;
             align-items: center;
+            width: 100%;
+            margin-top: 4px;
         }
 
-        .pack-ver {
+        /* 统一版本号和Mod数的标签样式 */
+        .pack-ver, .mod-count {
             font-size: 11px;
             background-color: #f1f5f9;
             padding-top: 1px;
@@ -239,11 +225,6 @@
             border-radius: 4px;
             color: var(--text-sub);
             width: fit-content;
-        }
-
-        .mod-count {
-            font-size: 11px;
-            color: #94a3b8;
         }
 
         .pack-desc {
@@ -422,15 +403,13 @@
                 const card = document.createElement('div');
                 card.className = 'pack-card';
                 
-                // 动态构建支持作者按钮链接
                 const supportBtnHtml = pack.support_author_url 
                     ? `<a href="${pack.support_author_url}" class="btn-support" target="_blank">☕ 支持作者</a>`
                     : '';
 
-                // 动态构建 Mod 总数显示
                 const modCountHtml = pack.total_mods 
                     ? `<span class="mod-count">${pack.total_mods} Mods</span>`
-                    : '';
+                    : '<span></span>'; // 占位符确保两端对齐逻辑正常
                 
                 card.innerHTML = `
                     <div class="pack-header">
