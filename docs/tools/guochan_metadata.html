@@ -6,8 +6,12 @@
     <title>菜菜云MLSG - 国产包列表</title>
     <style>
         :root {
-            --primary: #4a90e2;
-            --primary-hover: #357abd;
+            --primary: #3f7fdc;
+            --primary-hover: #3269b6;
+            --accent-pink: #e58ab6;
+            --accent-pink-hover: #d974a6;
+            --secondary: #79a86b;
+            --secondary-hover: #6a995e;
             --bg: #f8f9fa;
             --border: #e2e8f0;
             --text-main: #1e293b;
@@ -309,28 +313,40 @@
             border-style: solid;
             border-color: transparent;
             transition: all 0.2s ease;
+            box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
         }
 
         .btn-client { 
-            background-color: var(--primary); 
+            background-color: var(--accent-pink); 
             color: white; 
+            border-color: rgba(255, 255, 255, 0.35);
         }
 
         .btn-client:hover {
-            background-color: var(--primary-hover);
-            box-shadow: 0 2px 6px rgba(74, 144, 226, 0.3);
+            background-color: var(--accent-pink-hover);
+            box-shadow: 0 2px 6px rgba(244, 114, 182, 0.35);
         }
 
         .btn-source { 
-            background-color: #fff; 
-            color: var(--text-main); 
-            border-color: var(--border); 
+            background-color: var(--secondary);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.35);
         }
 
         .btn-source:hover {
-            background-color: #f1f5f9;
-            border-color: var(--primary);
-            color: var(--primary);
+            background-color: var(--secondary-hover);
+            box-shadow: 0 2px 6px rgba(121, 168, 107, 0.35);
+        }
+
+        .btn-recommend {
+            background-color: var(--primary);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.35);
+        }
+
+        .btn-recommend:hover {
+            background-color: var(--primary-hover);
+            box-shadow: 0 2px 6px rgba(74, 144, 226, 0.3);
         }
 
         .card-footer {
@@ -402,6 +418,7 @@
 
     <script>
         const API_URL = 'https://raw.githubusercontent.com/Mr-Leaves-Server-Group/ModPacks/main/modpacks.json';
+        const STORE_BASE = 'https://mlsg.mr-leaves.com/store/index.php?rp=/store/minecraft/';
         const packList = document.getElementById('packList');
         const statusText = document.getElementById('statusText');
 
@@ -433,6 +450,8 @@
                     ? `<span class="mod-count">${pack.total_mods} Mods</span>`
                     : '<span></span>';
                 
+                const recommendLink = getRecommendLink(pack.recommend_spec);
+
                 card.innerHTML = `
                     <div class="pack-header">
                         <img class="pack-logo" src="${pack.logo_url}" alt="Logo" onerror="this.src='https://placehold.co/40x40?text=Pack'">
@@ -453,8 +472,9 @@
                         <span class="spec-item" title="${pack.recommend_spec}"><strong>推荐:</strong> ${pack.recommend_spec}</span>
                     </div>
                     <div class="action-group">
-                        <a href="${pack.client_download_url}" class="btn btn-client" target="_blank">下载客户端包</a>
-                        <a href="${pack.source_link}" class="btn btn-source" target="_blank">打开原作网站</a>
+                        <a href="${pack.client_download_url}" class="btn btn-client" target="_blank">客户端包</a>
+                        <a href="${pack.source_link}" class="btn btn-source" target="_blank">原作网站</a>
+                        <a href="${recommendLink}" class="btn btn-recommend" target="_blank">一键开服</a>
                     </div>
                     <div class="card-footer">
                         <span class="java-ver">☕ Java ${pack.java_version}</span>
@@ -463,6 +483,17 @@
                 `;
                 packList.appendChild(card);
             });
+        }
+
+        function getRecommendLink(spec) {
+            const text = String(spec || '').toUpperCase();
+            if (text.includes('R5K') || text.includes('至尊')) {
+                return `${STORE_BASE}ryzen5000`;
+            }
+            if (text.includes('R3K') || text.includes('性能')) {
+                return `${STORE_BASE}ryzen3000`;
+            }
+            return `${STORE_BASE}ryzen3000`;
         }
 
         fetchMetadata();
