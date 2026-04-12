@@ -113,10 +113,56 @@
             margin-top: 2px;
         }
 
+        .sub-tip-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 2px;
+        }
+
         #statusText {
             font-size: 12px;
             color: var(--text-sub);
-            margin-top: 3px;
+        }
+
+        .search-input {
+            width: 120px;
+            max-width: 34vw;
+            font-size: 12px;
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 4px 28px 4px 10px;
+            outline: none;
+            box-sizing: border-box;
+            text-align: right;
+        }
+
+        .right-tools {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4px;
+        }
+
+        .search-wrap {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 9px;
+            width: 14px;
+            height: 14px;
+            color: #94a3b8;
+            pointer-events: none;
+        }
+
+        .search-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(63, 127, 220, 0.12);
         }
 
         .pack-scroll-wrapper {
@@ -401,9 +447,20 @@
         <div class="header-bar">
             <div class="title-group">
                 <span class="main-title">菜菜云MLSG - 国产包列表</span>
-                <div class="sub-tip">您只需安装客户端包，服务器端可自动安装！</div>
+                <div class="sub-tip-row">
+                    <div class="sub-tip">您只需安装客户端包，服务器端可自动安装！</div>
+                </div>
             </div>
-            <span id="statusText">正在加载...</span>
+            <div class="right-tools">
+                <div class="search-wrap">
+                    <input id="searchInput" class="search-input" type="text" placeholder="搜索">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"></circle>
+                        <path d="M20 20L16.65 16.65" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                    </svg>
+                </div>
+                <span id="statusText">正在加载...</span>
+            </div>
         </div>
         
         <div class="pack-scroll-wrapper" id="packList"></div>
@@ -421,17 +478,34 @@
         const STORE_BASE = 'https://mlsg.mr-leaves.com/store/index.php?rp=/store/minecraft/';
         const packList = document.getElementById('packList');
         const statusText = document.getElementById('statusText');
+        const searchInput = document.getElementById('searchInput');
+        let allPacks = [];
 
         async function fetchMetadata() {
             try {
                 const response = await fetch(API_URL);
                 if (!response.ok) throw new Error();
                 const data = await response.json();
-                renderPacks(data.modpacks);
+                allPacks = Array.isArray(data.modpacks) ? data.modpacks : [];
+                renderPacks(allPacks);
                 statusText.innerText = `总数: ${data.modpacks.length}`;
             } catch (error) {
                 statusText.innerText = "获取失败";
             }
+        }
+
+        function filterAndRender() {
+            const keyword = String(searchInput.value || '').trim().toLowerCase();
+            if (!keyword) {
+                renderPacks(allPacks);
+                return;
+            }
+            const filtered = allPacks.filter(pack => {
+                const name = String(pack.name || '').toLowerCase();
+                const description = String(pack.description || '').toLowerCase();
+                return name.includes(keyword) || description.includes(keyword);
+            });
+            renderPacks(filtered);
         }
 
         function renderPacks(packs) {
@@ -496,6 +570,7 @@
             return `${STORE_BASE}ryzen3000`;
         }
 
+        searchInput.addEventListener('input', filterAndRender);
         fetchMetadata();
     </script>
 </body>
