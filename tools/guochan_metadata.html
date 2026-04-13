@@ -200,6 +200,39 @@
             }
         }
 
+        body.embed-mode .header-bar {
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 0;
+        }
+
+        body.embed-mode .title-group,
+        body.embed-mode .sub-tip-row,
+        body.embed-mode .right-tools {
+            align-items: initial;
+            text-align: initial;
+        }
+
+        body.embed-mode .search-wrap {
+            justify-content: flex-end;
+        }
+
+        body.embed-mode .search-input {
+            width: 120px;
+            max-width: 34vw;
+            padding: 4px 28px 4px 10px;
+            text-align: right;
+        }
+
+        body.embed-mode .search-input::placeholder {
+            text-align: right;
+        }
+
+        body.embed-mode .search-icon {
+            display: block;
+        }
+
         .pack-scroll-wrapper {
             display: flex;
             gap: 12px;
@@ -514,6 +547,10 @@
         const packList = document.getElementById('packList');
         const statusText = document.getElementById('statusText');
         const searchInput = document.getElementById('searchInput');
+        const isEmbeddedCall = window.self !== window.top;
+        if (isEmbeddedCall) {
+            document.body.classList.add('embed-mode');
+        }
         let allPacks = [];
 
         async function fetchMetadata() {
