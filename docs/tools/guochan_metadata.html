@@ -208,10 +208,18 @@
         }
 
         body.embed-mode .title-group,
-        body.embed-mode .sub-tip-row,
-        body.embed-mode .right-tools {
+        body.embed-mode .sub-tip-row {
             align-items: initial;
             text-align: initial;
+        }
+
+        body.embed-mode .right-tools {
+            align-items: flex-end;
+            text-align: right;
+        }
+
+        body.embed-mode #statusText {
+            text-align: right;
         }
 
         body.embed-mode .search-wrap {
