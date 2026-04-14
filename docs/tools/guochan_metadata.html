@@ -522,9 +522,9 @@
     <div class="container">
         <div class="header-bar">
             <div class="title-group">
-                <span class="main-title">菜菜云MLSG - 国产包列表</span>
+                <span id="mainTitle" class="main-title">菜菜云MLSG - 国产包列表</span>
                 <div class="sub-tip-row">
-                    <div class="sub-tip">您只需安装客户端包，服务器端可自动安装！</div>
+                    <div id="subTip" class="sub-tip">您只需安装客户端包，服务器端可自动安装！</div>
                 </div>
             </div>
             <div class="right-tools">
@@ -555,9 +555,13 @@
         const packList = document.getElementById('packList');
         const statusText = document.getElementById('statusText');
         const searchInput = document.getElementById('searchInput');
+        const mainTitle = document.getElementById('mainTitle');
+        const subTip = document.getElementById('subTip');
         const isEmbeddedCall = window.self !== window.top;
         if (isEmbeddedCall) {
             document.body.classList.add('embed-mode');
+            mainTitle.innerText = '国产包列表';
+            subTip.innerText = '服务器端可自动安装！';
         }
         let allPacks = [];
 
