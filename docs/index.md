@@ -29,7 +29,7 @@
 
 - **[反恐精英  -  Counter-Strike](/3-servergames/cs)**
 
-- **[方舟生存进化 - ARK Survival Evolved](/3-servergames/ark/)**
+- **[方舟进化+飞升 - ARK: Evolved + Ascended](/3-servergames/ark/)**
 
 - **[僵尸毁灭工程  -  Project Zomboid](/3-servergames/pz/)**
 

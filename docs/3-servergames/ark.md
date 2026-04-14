@@ -1,5 +1,5 @@
-# ARK：生存进化（ARK: Survival Evolved）
-这里是关于ARK: Survival Evolved游戏的简介和基础信息。
+# ARK：进化+飞升（ARK: Survival Evolved + Ascended）
+这里是关于 ARK进化+飞升 游戏的简介和基础信息。
 
 ---
 
