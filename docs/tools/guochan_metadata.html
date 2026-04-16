@@ -564,38 +564,75 @@
             subTip.innerText = '服务器端可自动安装！';
         }
         let allPacks = [];
+        let filteredPacks = [];
+        let displayedCount = 0;
+        const BATCH_SIZE = 10;
+        let isLoadingMore = false;
+        let lastTriggerTime = 0;  // 记录上次触发的时间戳
+        const DEBOUNCE_MS = 100;  // 防抖延迟
+        let observerInstance = null;
 
         async function fetchMetadata() {
+            if (allPacks.length > 0) {
+                console.log(`[${new Date().toLocaleTimeString()}] 数据已加载，跳过重复获取`);
+                return;
+            }
+            
             try {
+                console.log(`[${new Date().toLocaleTimeString()}] 开始获取元数据...`);
                 const response = await fetch(API_URL);
                 if (!response.ok) throw new Error();
                 const data = await response.json();
                 allPacks = Array.isArray(data.modpacks) ? data.modpacks : [];
-                renderPacks(allPacks);
+                filteredPacks = allPacks;
+                displayedCount = 0;
+                console.log(`[${new Date().toLocaleTimeString()}] 元数据获取成功，共 ${allPacks.length} 个包`);
+                renderInitialBatch();
                 statusText.innerText = `总数: ${data.modpacks.length}`;
             } catch (error) {
+                console.error(`[${new Date().toLocaleTimeString()}] 元数据获取失败:`, error);
                 statusText.innerText = "获取失败";
             }
         }
 
-        function filterAndRender() {
-            const keyword = String(searchInput.value || '').trim().toLowerCase();
-            if (!keyword) {
-                renderPacks(allPacks);
-                return;
+        function renderInitialBatch() {
+            console.log(`[${new Date().toLocaleTimeString()}] 开始初始加载第一批`);
+            if (observerInstance) {
+                observerInstance.disconnect();
+                observerInstance = null;
             }
-            const filtered = allPacks.filter(pack => {
-                const name = String(pack.name || '').toLowerCase();
-                const description = String(pack.description || '').toLowerCase();
-                return name.includes(keyword) || description.includes(keyword);
-            });
-            renderPacks(filtered);
+            packList.innerHTML = '';
+            displayedCount = 0;
+            lastTriggerTime = 0;
+            renderNextBatch();
         }
 
-        function renderPacks(packs) {
-            packList.innerHTML = '';
-            packs.forEach(pack => {
-                if (!pack.is_active) return;
+        function renderNextBatch() {
+            if (displayedCount >= filteredPacks.length) {
+                console.log(`[${new Date().toLocaleTimeString()}] 所有包已加载完毕`);
+                return;
+            }
+            
+            const now = Date.now();
+            if (now - lastTriggerTime < DEBOUNCE_MS) {
+                console.log(`[${new Date().toLocaleTimeString()}] 防抖：在 ${DEBOUNCE_MS}ms 内重复触发，已拦截`);
+                return;
+            }
+            lastTriggerTime = now;
+            
+            if (isLoadingMore) {
+                console.log(`[${new Date().toLocaleTimeString()}] 正在加载中，跳过重复请求`);
+                return;
+            }
+            
+            isLoadingMore = true;
+            
+            const endIndex = Math.min(displayedCount + BATCH_SIZE, filteredPacks.length);
+            console.log(`[${new Date().toLocaleTimeString()}] 加载第 ${Math.floor(displayedCount / BATCH_SIZE) + 1} 批，索引 ${displayedCount}-${endIndex - 1}`);
+            
+            for (let i = displayedCount; i < endIndex; i++) {
+                const pack = filteredPacks[i];
+                if (!pack.is_active) continue;
 
                 const card = document.createElement('div');
                 card.className = 'pack-card';
@@ -640,7 +677,63 @@
                     </div>
                 `;
                 packList.appendChild(card);
+            }
+            
+            displayedCount = endIndex;
+            isLoadingMore = false;
+            
+            // 设置观察者，滚动到最后一个卡片时加载下一批
+            setupObserver();
+        }
+
+        function setupObserver() {
+            if (observerInstance) {
+                observerInstance.disconnect();
+                observerInstance = null;
+            }
+
+            if (displayedCount >= filteredPacks.length) return;
+
+            const cards = document.querySelectorAll('.pack-card');
+            if (cards.length === 0) return;
+
+            const lastCard = cards[cards.length - 1];
+            console.log(`[${new Date().toLocaleTimeString()}] 设置观察者，观察第 ${cards.length} 个卡片（最后一个）`);
+
+            let isReady = false;
+
+            observerInstance = new IntersectionObserver((entries) => {
+                if (!isReady) return; // 跳过 observe() 调用时的初始同步触发
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && displayedCount < filteredPacks.length) {
+                        console.log(`[${new Date().toLocaleTimeString()}] 滚动到底部，准备加载下一批`);
+                        renderNextBatch();
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0.1
             });
+
+            observerInstance.observe(lastCard);
+
+            // 等下一帧再激活，确保跳过 observe() 的立即触发
+            requestAnimationFrame(() => { isReady = true; });
+        }
+
+        function filterAndRender() {
+            const keyword = String(searchInput.value || '').trim().toLowerCase();
+            if (!keyword) {
+                filteredPacks = allPacks;
+            } else {
+                filteredPacks = allPacks.filter(pack => {
+                    const name = String(pack.name || '').toLowerCase();
+                    const description = String(pack.description || '').toLowerCase();
+                    return name.includes(keyword) || description.includes(keyword);
+                });
+            }
+            lastTriggerTime = 0;  // 搜索时重置防抖时间戳
+            renderInitialBatch();
         }
 
         function getRecommendLink(spec) {
