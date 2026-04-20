@@ -1437,7 +1437,7 @@
 <p>包含最常用的Mod和插件后台：PaperMC，Forge，CurseForge，Spigot</p>
 <hr />
 <h2 id="1">1.推荐配置</h2>
-<p><strong>不同版本差异较大，使用下面的工具，快速选择适合您需求的服务器配置。</strong>  </p>
+<p><strong>使用下面的工具，快速选择适合您需求的服务器配置</strong>  </p>
 <iframe src="/tools/quick_server_selector.html?game=minecraft"
     width="510px" 
     height="370px" 
@@ -1447,8 +1447,9 @@
 
 <h2 id="2">2.后台简介</h2>
 <ul>
-<li><strong>🪵【必填】服务器类型</strong> 选择要运行的服务端核心，这将影响安装脚本的识别逻辑。<br />
-  ⚠️注：切换后需手动删除所有文件并在设置页面点击“重装服务器”。  </li>
+<li><strong>🪵【必填】服务器类型</strong><br />
+<small>见下方的列表，切换不同服务器类型，将影响安装脚本的识别逻辑</small><br />
+<small><strong>⚠️注意：切换后，请手动删除所有文件，并在【设置】分页点击 “重装服务器”</strong></small>  </li>
 </ul>
 <table>
 <thead>
@@ -1463,136 +1464,142 @@
 <tr>
 <td style="text-align: left;"><strong>Vanilla (原版)</strong></td>
 <td style="text-align: left;">极简生存、好友开荒</td>
-<td style="text-align: left;">官方纯净体验，最稳定，性能占用最低</td>
+<td style="text-align: left;">官方纯净体验，最稳定，通常版本最新</td>
 <td style="text-align: left;">不支持</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Paper (插件)</strong></td>
 <td style="text-align: left;">商业服、多人社区</td>
-<td style="text-align: left;">性能优化之王，支持高版本，防作弊强</td>
-<td style="text-align: left;">仅插件 (.jar)</td>
+<td style="text-align: left;">插件门户服，性能占用最低，防作弊强</td>
+<td style="text-align: left;">仅插件</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Forge (模组)</strong></td>
 <td style="text-align: left;">大型模组生存</td>
-<td style="text-align: left;">历史最悠久，模组生态最丰富，兼容性强</td>
-<td style="text-align: left;">大型 Mod</td>
+<td style="text-align: left;">历史悠久，模组生态最丰富，兼容性强</td>
+<td style="text-align: left;">大型模组</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>NeoForge (模组)</strong></td>
 <td style="text-align: left;">1.20.1+ 现代模组服</td>
 <td style="text-align: left;">Forge 的现代化分支，性能与架构更优</td>
-<td style="text-align: left;">现代 Mod</td>
+<td style="text-align: left;">大型模组</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Fabric (模组)</strong></td>
 <td style="text-align: left;">生电、轻量化生存</td>
 <td style="text-align: left;">启动极快，占用内存小，生电玩家首选</td>
-<td style="text-align: left;">轻量 Mod</td>
+<td style="text-align: left;">轻量模组</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>CurseForge (整合包)</strong></td>
 <td style="text-align: left;">国际大作 (如 RLCraft)</td>
 <td style="text-align: left;">自动从CF下载整合包，无需手动上传</td>
-<td style="text-align: left;">完整整合包</td>
+<td style="text-align: left;">预制整合包</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>GuoChan (整合包)</strong></td>
-<td style="text-align: left;">国内流行整合包</td>
-<td style="text-align: left;">预设国内热门包，一键安装，新手友好</td>
-<td style="text-align: left;">完整整合包</td>
+<td style="text-align: left;">国内热门整合包</td>
+<td style="text-align: left;">流行的全中文包，一键安装，新手友好</td>
+<td style="text-align: left;">预制整合包</td>
 </tr>
 </tbody>
 </table>
 <ul>
 <li>
-<p><strong>🔴【高级】服务器 Jar 文件名</strong> 用于运行服务器的核心文件名<br />
-<small>注：默认为 <code>server.jar</code>，通常无需修改，第三方自定义模组包可根据需要修改。</small></p>
+<p><strong>🔴【高级】服务器 Jar 文件名</strong><br />
+<small>注：默认为 <code>server.jar</code>，通常无需修改，第三方自定义模组包可根据需要修改</small></p>
 </li>
 <li>
-<p><strong>⭐️【常用】MC游戏版本</strong> 选择主流版本(1.7.10 - latest)<br />
-<small>注：填写手动版本后此项失效，修改版本后请务必同步更改右上角的 Java 镜像版本。</small></p>
+<p><strong>⭐️【常用】MC游戏版本</strong><br />
+<small>注：填写手动版本后此项失效，修改版本后请务必同步更改右上角的 Java 镜像版本</small></p>
 </li>
 <li>
-<p><strong>🔴【高级】手动游戏版本</strong> 填写不包含在常用列表中的版本（如 1.20.6）<br />
-<small>注：留空不生效，修改版本后请务必同步更改右上角的 Java 镜像版本。</small></p>
+<p><strong>🔴【高级】手动游戏版本</strong><br />
+<small> 填写不包含在常用列表中的版本（如 1.20.6）留空不生效，修改后请务切换右上角 Java镜像版本</small></p>
 </li>
 <li>
-<p><strong>🧩【模组】具体版本号</strong> 用于确定 Loader 版本，请务必与客户端对齐<br />
-<small>填写格式示例：Paper：<code>100</code>，Fabric：<code>0.16.13</code>，Forge：<code>47.4.2</code>，NeoForge：<code>20.4.194</code></small></p>
+<p><strong>🧩【模组】具体版本号</strong> <br />
+<small>必须和客户端一样，填写示例：Paper <code>100</code>|Fabric <code>0.16.13</code>|Forge <code>47.4.2</code>|NeoForge <code>20.4.194</code></small></p>
 </li>
 <li>
-<p><strong>🧩【模组】Fabric版本（Fabric API模组）</strong> 自动安装 API 模组<br />
-<small>Fabric 模式专用。填写格式示例：<code>0.92.0+1.20.1</code></small></p>
+<p><strong>🧩【模组】Fabric版本（API模组）</strong><br />
+<small>自动安装 API 模组，Fabric模式专用。填写格式示例：<code>0.92.0+1.20.1</code></small></p>
 </li>
 <li>
-<p><strong>📦【整合包】CF模组包-Project ID</strong> 填写 CurseForge 模组包项目ID（位于页面右侧）<br />
-<small>例如：RL-Craft 为 <code>285109</code> <a href="#36curseforge">点击查看获取方法</a></small></p>
+<p><strong>📦【整合包】CF模组包-Project ID</strong><br />
+<small>填写 CF模组包 项目ID（位于页面右侧）例如：RL-Craft 为 <code>285109</code> <a href="#36curseforge">点击查看获取方法</a></small></p>
 </li>
 <li>
-<p><strong>📦【整合包】CF模组包-File ID</strong> 填写 CurseForge 模组包文件ID（位于文件URL最后）<br />
-<small>例如：RL-Craft 最新版服务器包为 <code>4612990</code> <a href="#36curseforge">点击查看获取方法</a></small></p>
+<p><strong>📦【整合包】CF模组包-File ID</strong><br />
+<small>填写 CF模组包 文件ID（位于文件URL最后）例如：RL-Craft 最新服务包为 <code>4612990</code> <a href="#36curseforge">点击查看获取方法</a></small></p>
 </li>
 <li>
-<p><strong>📦【整合包】国产模组包-ModPack</strong> 选择预设好的国产整合包服务端<br />
-<small>如《愚者》或《乌托邦》<a href="#37guochan">点击查看模组包列表</a></small></p>
+<p><strong>📦【整合包】国产模组包-ModPack</strong><br />
+<small>选择预设好的国产整合包服务端，如《愚者》或《乌托邦》<a href="#37guochan">点击查看模组包列表</a></small></p>
 </li>
 </ul>
 <p><img alt="后台界面" src="\assets\minecraft\minecraft-egg-backend.png" />  </p>
 <ul>
 <li>
-<p><strong>🎮【游戏】服务器MOTD</strong> 服务器在联机列表显示的简短介绍，部分版本不支持中文，推荐使用英文</p>
+<p><strong>🎮【游戏】服务器MOTD</strong><br />
+<small>服务器在联机列表显示的简短介绍，部分版本不支持中文，推荐使用英文</small></p>
 </li>
 <li>
-<p><strong>🎮【游戏】正版验证</strong> 开关正版验证模式。关闭后离线玩家使用PCL2客户端可进入，但所有玩家皮肤将会失效</p>
+<p><strong>🎮【游戏】正版验证</strong><br />
+<small>开关正版验证模式。关闭后离线玩家使用PCL2客户端可进入，但所有玩家皮肤将会失效</small></p>
 </li>
 <li>
-<p><strong>🎮【游戏】游戏难度</strong> 设置世界难度：peaceful (和平), easy (简单), normal (普通), hard (困难)</p>
+<p><strong>🎮【游戏】游戏难度</strong><br />
+<small>设置世界难度：peaceful (和平), easy (简单), normal (普通), hard (困难)</small></p>
 </li>
 <li>
-<p><strong>🎮【游戏】游戏模式</strong> 设置默认模式：survival (生存), creative (创造), adventure (冒险), spectator (旁观)</p>
+<p><strong>🎮【游戏】游戏模式</strong><br />
+<small>设置默认模式：survival (生存), creative (创造), adventure (冒险), spectator (旁观)</small></p>
 </li>
 <li>
-<p><strong>🎮【游戏】最大玩家数量</strong> 设置服务器最大同时在线人数， 不推荐设置过高</p>
+<p><strong>🎮【游戏】最大玩家数量</strong><br />
+<small>设置服务器最大同时在线人数， 不推荐设置过高</small></p>
 </li>
 <li>
-<p><strong>🎮【游戏】地图种子</strong> 自定义世界生成种子。若填写错误可能导致无法启动<br />
-<small>注：留空则使用随机种子，推荐使用<a href="https://www.chunkbase.com/apps/seed-map">Chunkbase Seed Map</a>查看种子地形。</small></p>
+<p><strong>🎮【游戏】地图种子</strong><br />
+<small>注：留空则使用随机种子，推荐使用<a href="https://www.chunkbase.com/apps/seed-map">Chunkbase Seed Map</a>查看种子地形</small></p>
 </li>
 <li>
-<p><strong>🎮【游戏】允许飞行</strong> 是否允许玩家在生存模式下飞行。模组服建议开启此项</p>
+<p><strong>🎮【游戏】允许飞行</strong><br />
+<small>是否允许玩家在生存模式下飞行。模组服建议开启此项</small></p>
 </li>
 </ul>
 <h2 id="3">3.开服教程</h2>
 <h3 id="31java">3.1.Java版本选择</h3>
-<p><strong>由于MC各类分支较多，请参考游戏版本选择Java版本</strong></p>
+<p><strong>由于MC各类分支较多，请参考游戏版本选择后台的Java版本</strong></p>
 <table>
 <thead>
 <tr>
-<th>Minecraft服务端版本号</th>
-<th>JDK/Java推荐版本</th>
+<th>Minecraft版本号</th>
+<th>Java(JDK) 推荐版本</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>1.7+</td>
+<td>1.7 ~ 1.12.2</td>
 <td>8</td>
 </tr>
 <tr>
-<td>1.12+ ~ 1.15+</td>
-<td>8</td>
-</tr>
-<tr>
-<td>1.16+</td>
+<td>1.16 ~ 1.16.5</td>
 <td>8/11</td>
 </tr>
 <tr>
-<td>1.17+ ~ 1.20+</td>
+<td>1.17 ~ 1.20.5</td>
 <td>17</td>
 </tr>
 <tr>
-<td>1.20.6+</td>
+<td>1.20.6 ~ 1.21.11</td>
 <td>21</td>
+</tr>
+<tr>
+<td>26.1+</td>
+<td>25</td>
 </tr>
 </tbody>
 </table>
@@ -1653,7 +1660,8 @@ Paper的插件可以直接放入<strong>插件文件夹Plugins</strong>里，通
 
 <h3 id="36curseforge">3.6.CurseForge（整合包）</h3>
 <h4 id="361">3.6.1.服务器端自动安装</h4>
-<p><strong>MLSG支持服务器端自动安装，只需用户填入 Project-ID 和 File-ID 服务器就会安装对应服务器端。</strong>  </p>
+<p><strong>✅菜菜云MLSG支持CF模组包的服务器端自动安装</strong><br />
+<strong>ℹ️按照以下教程操作，即可3分钟安装对应服务器端</strong>  </p>
 <blockquote>
 <ol>
 <li>修改 <strong>服务器类型</strong> 为 CurseForge</li>
@@ -1684,7 +1692,8 @@ Paper的插件可以直接放入<strong>插件文件夹Plugins</strong>里，通
 
 <h3 id="37guochan">3.7.GuoChan（国产包）</h3>
 <h4 id="371">3.7.1.服务器端自动安装</h4>
-<p><strong>MLSG支持国产包服务器端自动安装，只需用户选择对应的模组包，服务器就会安装对应服务器端。</strong></p>
+<p><strong>✅菜菜云MLSG支持国产包服务器端自动安装</strong><br />
+<strong>ℹ️按照以下教程操作，即可3分钟安装对应服务器端</strong>  </p>
 <blockquote>
 <ol>
 <li>修改 <strong>服务器类型</strong> 为 GuoChan</li>
@@ -1695,7 +1704,7 @@ Paper的插件可以直接放入<strong>插件文件夹Plugins</strong>里，通
 <li>可以在下方查看对应模组包的详细信息和客户端下载链接</li>
 </ol>
 </blockquote>
-<p>点击打开 <strong><a href="https://manual.mr-leaves.com/tools/guochan_metadata.html">菜菜云MLSG - 国产包列表</a></strong>，也可以 <strong>分享给好友一块选择</strong> 哦！</p>
+<p>点击打开➡ <strong><a href="https://manual.mr-leaves.com/tools/guochan_metadata.html">菜菜云MLSG - 国产包列表</a></strong>，右键复制链接 <strong>分享给好友一块选择</strong> 哦！</p>
 <iframe src="/tools/guochan_metadata.html"
     width="100%" 
     height="375px" 
@@ -1735,19 +1744,19 @@ Paper的插件可以直接放入<strong>插件文件夹Plugins</strong>里，通
 </blockquote>
 <h3 id="42">4.2.模组上手</h3>
 <ul>
-<li>由于模组服对服务器/客户端版本对应要求非常严格，推荐新玩家从Curseforge打包好的模组包开始。<strong><a href="https://curseforge.com/minecraft/modpacks">CurseForge官网 - 模组包列表</a></strong>  </li>
-<li>如果想玩第三方模组包（如MCmod，B站，笔记），需要玩家自己<strong>提供服务器端模组包</strong>，以及自己<strong>分发客户端模组包</strong>，保证所有玩家客户端版本和模组统一。<br />
+<li>由于模组服对服务器/客户端版本对应要求非常严格，推荐新玩家从CF打包好的模组包开始。<strong><a href="https://curseforge.com/minecraft/modpacks">CurseForge官网 - 模组包列表</a></strong>  </li>
+<li>更多其他第三方模组包（如MCmod，B站，笔记），需要玩家自己<strong>提供服务器端模组包</strong>，以及自己<strong>分发客户端模组包</strong>，且需保证所有玩家客户端版本和模组统一。<br />
 <br></li>
 </ul>
 <h2 id="5">5.地图载入/生成速度</h2>
 <ul>
-<li><strong>地图载入（已经探索的区域）</strong>主要和内存大小有关，如果内存不够大，已经生成的地图则会载入很慢，一般8G足以，16G-24G最优，大内存一般3-5倍速飞行都会非常流畅的载入已经生成的地图。 </li>
-<li><strong>游戏生成（未探索过的区域）</strong>和CPU有关系，绝大部分例如Paper和Spigot后端都支持多核心的地图渲染，多核心会显著提升地图生成速度。但对于绝大多数模组服务器通常没有帮助。</li>
-<li>模组服务器（通常地图生成都是单核心渲染），所以都会很慢，可以使用对应版本的pregen模组来预生成地图，以提升玩家体验。（部分版本可能只能在客户端运行，请在客户端运行后上传地图到后台） 
+<li><strong>地图载入（已经探索的区域）</strong>主要和内存大小有关，如果内存不够大，已经生成的地图则会载入很慢，一般8G足以，16G-24G最优，<strong>大内存对 倍速/飞行 会有显著提升</strong>。 </li>
+<li><strong>游戏生成（未探索过的区域）</strong>和CPU有关系，绝大部分例如Paper和Spigot后端都支持多核心的地图渲染，多核心会显著提升地图生成速度。但对于多数模组服务器通常没有帮助。</li>
+<li><strong>模组服务器（单核心地图生成）</strong>都会很慢，可以使用对应版本的 <strong><a href="https://www.mcmod.cn/class/6239.html">Chunky模组/插件</a></strong> 来预生成地图，以提升玩家体验。
 <br></li>
 </ul>
 <h2 id="6">6.游戏指令和权限</h2>
-<p><strong>在后台输入所有指令时</strong>，<strong>前面不需要加斜杠 <code>/</code></strong>，如下图所示 <code>/op 玩家游戏名称</code>，<strong>后台直接输入 <code>op 玩家游戏名称</code> 即可</strong>，<strong>游戏内则需要正常输入 <code>/op 玩家游戏名称</code> （带斜杠）</strong>。游戏内输入指令时，按下Tab键可以自动补全指令。<strong>更多指令请参考<a href="https://minecraft.fandom.com/zh/wiki/%E5%91%BD%E4%BB%A4">MC官方Wiki</a></strong>。</p>
+<p><strong>在后台输入所有指令时</strong>，<strong>前面不需要加斜杠 <code>/</code></strong>，如下图所示 <code>/op 玩家游戏名称</code>，<strong>后台直接输入 <code>op 玩家游戏名称</code> 即可</strong>。<strong>游戏内则需要正常输入 <code>/op 玩家游戏名称</code> （带斜杠）</strong>。游戏内输入指令时，按下Tab键可以自动补全指令。<strong>更多指令请参考<a href="https://minecraft.fandom.com/zh/wiki/%E5%91%BD%E4%BB%A4">MC官方Wiki</a></strong>。</p>
 <ul>
 <li>赋予玩家OP/管理员（指令权限）：<code>/op 玩家游戏名称</code></li>
 <li>显示全部可用指令：<code>/help</code></li>
@@ -1768,6 +1777,8 @@ Paper的插件可以直接放入<strong>插件文件夹Plugins</strong>里，通
 <li><code>allow-flight</code>：是否允许飞行，默认false，如果有加装飞行模组，修改为true</li>
 <li><code>view-distance</code>：视距，默认10，建议设置为8-12，过大会导致服务器卡顿</li>
 <li><code>max-players</code>：最大玩家数量，默认20，建议设置为10-20，过大会导致服务器卡顿</li>
+<li><code>keep-inventory</code>：死亡是否掉落物品，默认false，改成true后玩家死亡会保留物品</li>
+<li><code>motd</code>：服务器MOTD，在联机列表显示的服务器简介，部分版本不支持中文，建议使用英文</li>
 </ul>
 <h2 id="8">8.快速版本查询器</h2>
 <iframe src="/tools/fast_version_search.html"
@@ -1797,7 +1808,7 @@ Paper的插件可以直接放入<strong>插件文件夹Plugins</strong>里，通
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年4月16日 03:13:29 UTC">2026年4月16日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年4月20日 17:23:29 UTC">2026年4月20日</span>
   </span>
 
     
