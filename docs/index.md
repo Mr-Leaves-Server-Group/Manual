@@ -17,32 +17,40 @@
 - **[Steam在线检查](/2-serveradvanced/steamcheck)**
 
 ## 3.游戏教程
-- **[我的世界  -  Minecraft](/3-servergames/minecraft)**
+- **常用游戏**
+    - **[我的世界  -  Minecraft](/3-servergames/minecraft)**
 
-- **[幻兽帕鲁  -  Palworld](/3-servergames/palworld/)**
+    - **[幻兽帕鲁  -  Palworld](/3-servergames/palworld/)**
 
-- **[饥荒联机版  -  Don't Starve Together](/3-servergames/dontstarve/)**
+    - **[饥荒联机版  -  Don't Starve](/3-servergames/dontstarve/)**
 
-- **[腐蚀  -  Rust](/3-servergames/rust/)**
+- **末日生存**
+    - **[腐蚀  -  Rust](/3-servergames/rust/)**
 
-- **[英灵神殿  -  Valheim](/3-servergames/valheim/)**
+    - **[僵尸毁灭工程  -  Project Zomboid](/3-servergames/pz/)**
 
-- **[反恐精英  -  Counter-Strike](/3-servergames/cs)**
+    - **[七日杀  -  7 Days to Die](/3-servergames/7dd/)**   
 
-- **[方舟进化+飞升 - ARK: Evolved + Ascended](/3-servergames/ark/)**
+    - **[僵尸末日  -  DayZ](/3-servergames/dayz/)**
 
-- **[僵尸毁灭工程  -  Project Zomboid](/3-servergames/pz/)**
+- **开放世界**
+    - **[方舟：进化+飞升  -  ARK](/3-servergames/ark/)**
 
-- **[森林之子  -  Son of The Forest](/3-servergames/sof/)**
+    - **[森林之子  -  Son of The Forest](/3-servergames/sof/)**
 
-- **[雨中冒险2  -  Risk of Rain 2](/3-servergames/ror2/)**
+    - **[英灵神殿  -  Valheim](/3-servergames/valheim/)**
 
-- **[七日杀  -  7 Days to Die](/3-servergames/7dd/)**   
+- **其他类型**
+
+    - **[反恐精英  -  Counter-Strike](/3-servergames/cs)**
+
+    - **[雨中冒险2  -  Risk of Rain 2](/3-servergames/ror2/)**
 <br>
 
 ## 4.来源声明
-本文档基于 [翼龙中国](https://github.com/pterodactyl-china/panel) 面板而撰写，同样适用于 [Pterodactyl原版](https://github.com/pterodactyl/panel) 面板，主要为经验总结  
-游戏预设除面板自带外，均来自以下开源Repo：[最全的主Repo](https://github.com/pelican-eggs)，[较小的一个Repo](https://github.com/DEVBenSon/pterodactyl-eggs/tree/main)  
+
+- 本文档基于 [翼龙中国](https://github.com/pterodactyl-china/panel) 面板而撰写，同样适用于 [Pterodactyl原版](https://github.com/pterodactyl/panel) 面板，主要为经验总结  
+- 游戏预设基于 [Pelican Eggs](https://github.com/pelican-eggs) 开发，并结合了我们自己的经验进行调整，适用于大多数国人玩家的习惯和需求，且部分预设可能与原版有所不同，增加了更多自动化功能，减少了玩家的操作难度。
 <br>
 
 ## 5.参与贡献
@@ -50,6 +58,11 @@
 ![Alt](https://repobeats.axiom.co/api/embed/81e2b3adffbcc57a8f45adf431415d12eabb8b48.svg "实时数据")  
 <br>
 
-## 6.客服Discord
-如果有更多问题，您可以在Discord发布工单，48小时内会有客服帮助您解决问题。
+## 6.联系客服
+如果有更多问题，您可以在以下几个渠道联系客服：
+
+1. **[后台提交工单（48小时回复）](https://mlsg.mr-leaves.com/store/submitticket.php)**
+2. **[加入官方Discord（玩家互助）](https://discord.gg/8Zs5m9v6)**
+3. **[添加技术客服微信（72小时回复）](/wechat)**
+
 <iframe src="https://discord.com/widget?id=1140740078008795259&theme=dark" width="100%" height="350" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>

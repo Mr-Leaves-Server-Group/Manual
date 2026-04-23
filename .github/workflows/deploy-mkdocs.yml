@@ -28,6 +28,7 @@ jobs:
         pip install mkdocs
         pip install mkdocs-material
         pip install mkdocs-git-revision-date-localized-plugin
+        pip install mkdocs-open-in-new-tab
 
     - name: Build Project
       run: mkdocs build --verbose

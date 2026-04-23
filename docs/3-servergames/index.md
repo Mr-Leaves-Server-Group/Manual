@@ -5,7 +5,7 @@
 
 - **[幻兽帕鲁  -  Palworld](/3-servergames/palworld/)**
 
-- **[饥荒联机版  -  Don't Starve Together](/3-servergames/dontstarve/)**
+- **[饥荒联机版  -  Don't Starve](/3-servergames/dontstarve/)**
 
 - **[腐蚀  -  Rust](/3-servergames/rust/)**
 
@@ -13,7 +13,7 @@
 
 - **[反恐精英  -  Counter-Strike](/3-servergames/cs)**
 
-- **[方舟进化+飞升 - ARK: Evolved + Ascended](/3-servergames/ark/)**
+- **[方舟：进化+飞升  -  ARK](/3-servergames/ark/)**
 
 - **[僵尸毁灭工程  -  Project Zomboid](/3-servergames/pz/)**
 
@@ -21,7 +21,7 @@
 
 - **[雨中冒险2  -  Risk of Rain 2](/3-servergames/ror2/)**
 
-- **[七日杀  -  7 Days to Die](/3-servergames/7dd/)**
+- **[七日杀  -  7 Days to Die](/3-servergames/7dd/)**   
 
 ## 2.配置选择
 您可以使用下面的工具，快速选择适合您需求的服务器配置。也可以点击<a href="/tools/quick_server_selector.html" target="_blank">这里打开新页面使用</a> 。
