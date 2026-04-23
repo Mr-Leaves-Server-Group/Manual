@@ -83,6 +83,6 @@
 
 1. **[后台提交工单（48小时回复）](https://mlsg.mr-leaves.com/store/submitticket.php)**
 2. **[加入官方Discord（玩家互助）](https://discord.gg/8Zs5m9v6)**
-3. **[添加技术客服微信（72小时回复）](/wechat)**
+3. **[添加技术客服微信（72小时回复）](/service)**
 
 <iframe src="https://discord.com/widget?id=1140740078008795259&theme=dark" width="100%" height="350" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>

@@ -3,18 +3,19 @@ site_name: 菜菜云MLSG - 开服教程
 site_description: "菜菜云开服中文教程，涵盖服务器基础操作、进阶功能和游戏预设，助您轻松管理游戏服务器。"
 site_url: https://manual.mr-leaves.com
 nav:
-  - 🏠 1.首页索引: index.md
-  - 🪙 2.官网下单: https://mlsg.mr-leaves.com
-  - ⚙️ 3.管理后台: https://panel.mr-leaves.com
-  - 📘 4.基本操作: 1-serverbasics.md
-  - 🚀 5.进阶操作:
+  - 🏠 首页索引: index.md
+  - 🪙 官网下单: https://mlsg.mr-leaves.com
+  - ⚙️ 管理后台: https://panel.mr-leaves.com
+  - 📘 基本操作: 1-serverbasics.md
+  - 🚀 进阶操作:
       - 2-serveradvanced/index.md
+      - 服务器配置升级: 2-serveradvanced/upgrade.md
       - 邀请子用户管理: 2-serveradvanced/subuser.md
       - 重装游戏服务器: 2-serveradvanced/reinstall.md
       - 创建服务器计划: 2-serveradvanced/plan.md
       - SFTP传输大文件: 2-serveradvanced/filetransfer.md
       - Steam公开检查: 2-serveradvanced/steamcheck.md
-  - 🎮 6.游戏教程: 
+  - 🎮 游戏教程: 
       - 3-servergames/index.md
       - 我的世界（Minecraft）: 3-servergames/minecraft.md
       - 幻兽帕鲁（Palworld）: 3-servergames/palworld.md
@@ -38,8 +39,9 @@ nav:
       - 雨中冒险2（RoR2）: 3-servergames/ror2.md
       - SCP秘密实验室（SCP:SL）: 3-servergames/scpsl.md
       - 战术小队（Squad）: 3-servergames/squad.md
-  - ❓ 7.常见问题: faq.md
-  - ℹ️ 8.关于我们: about.md
+  - ❓ 常见问题: faq.md
+  - ℹ️ 关于我们: about.md
+  - 📞 联系客服: contact.md
 
 theme:
   name: "material"
@@ -98,7 +100,7 @@ extra:
       link: https://discord.gg/jYHzsy4hAB
       name: 客服Discord
     - icon: fontawesome/brands/weixin
-      link: /wechat
+      link: /contact
       name: 客服微信
   generator: false
 copyright: Copyright &copy;  2026 MLSG

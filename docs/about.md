@@ -20,4 +20,4 @@
 关于业务方面的问题可以访问我们的[公司网站](https://mr-leaves.com/)，服务器相关问题也可以联系我们的[Discord客服](https://discord.gg/jYHzsy4hAB)，您也可以加入我们的[游戏Discord](https://discord.gg/xeSWhGqtU6)频道，组队，体验和分享更多游戏周边。
 
 ---
-©2023 Mr.Leaves Electronics and Networking, Inc. All rights reserved.
+©2026 Mr.Leaves Electronics and Networking, Inc. All rights reserved.
