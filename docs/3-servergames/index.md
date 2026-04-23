@@ -1,27 +1,54 @@
 # 游戏教程
 
 ## 1.快速索引
-- **[我的世界  -  Minecraft](/3-servergames/minecraft)**
+- **常用游戏**
+    - **[我的世界  -  Minecraft](/3-servergames/minecraft)**
 
-- **[幻兽帕鲁  -  Palworld](/3-servergames/palworld/)**
+    - **[幻兽帕鲁  -  Palworld](/3-servergames/palworld/)**
 
-- **[饥荒联机版  -  Don't Starve](/3-servergames/dontstarve/)**
+    - **[饥荒联机版  -  Don't Starve](/3-servergames/dontstarve/)**
 
-- **[腐蚀  -  Rust](/3-servergames/rust/)**
+- **末日生存**
+    - **[腐蚀  -  Rust](/3-servergames/rust/)**
 
-- **[英灵神殿  -  Valheim](/3-servergames/valheim/)**
+    - **[僵尸毁灭工程  -  Project Zomboid](/3-servergames/pz/)**
 
-- **[反恐精英  -  Counter-Strike](/3-servergames/cs)**
+    - **[七日杀  -  7 Days to Die](/3-servergames/7dd/)**   
 
-- **[方舟：进化+飞升  -  ARK](/3-servergames/ark/)**
+    - **[僵尸末日  -  DayZ](/3-servergames/dayz/)**
 
-- **[僵尸毁灭工程  -  Project Zomboid](/3-servergames/pz/)**
+    - **[人性末日  -  HumanitZ](/3-servergames/humanitz/)**
 
-- **[森林之子  -  Son of The Forest](/3-servergames/sof/)**
+- **开放世界**
+    - **[方舟：进化+飞升  -  ARK](/3-servergames/ark/)**
 
-- **[雨中冒险2  -  Risk of Rain 2](/3-servergames/ror2/)**
+    - **[流放者柯南  -  Conan Exiles](/3-servergames/conan/)**
 
-- **[七日杀  -  7 Days to Die](/3-servergames/7dd/)**   
+    - **[森林之子  -  Son of The Forest](/3-servergames/sof/)**
+
+    - **[英灵神殿  -  Valheim](/3-servergames/valheim/)**
+
+    - **[夜族崛起  -  V Rising](/3-servergames/vrising/)**
+
+- **其他类型**
+
+    - **[反恐精英  -  Counter-Strike](/3-servergames/cs)**
+
+    - **[异星工场  -  Factorio](/3-servergames/factorio/)**
+
+    - **[非生物因素  -  Abiotic Factor](/3-servergames/abioticfactor/)**
+
+    - **[幸福工厂  -  Satisfactory](/3-servergames/satisfactory/)**
+
+    - **[太空狼人杀  -  Among Us](/3-servergames/amongus/)**
+
+    - **[武装突袭3  -  Arma 3](/3-servergames/arma3/)**
+
+    - **[雨中冒险2  -  Risk of Rain 2](/3-servergames/ror2/)**
+
+    - **[SCP秘密实验室  -  SCP:SL](/3-servergames/scpsl/)**
+
+    - **[战术小队  -  Squad](/3-servergames/squad/)**
 
 ## 2.配置选择
 您可以使用下面的工具，快速选择适合您需求的服务器配置。也可以点击<a href="/tools/quick_server_selector.html" target="_blank">这里打开新页面使用</a> 。

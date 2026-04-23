@@ -33,18 +33,38 @@
 
     - **[僵尸末日  -  DayZ](/3-servergames/dayz/)**
 
+    - **[人性末日  -  HumanitZ](/3-servergames/humanitz/)**
+
 - **开放世界**
     - **[方舟：进化+飞升  -  ARK](/3-servergames/ark/)**
+
+    - **[流放者柯南  -  Conan Exiles](/3-servergames/conan/)**
 
     - **[森林之子  -  Son of The Forest](/3-servergames/sof/)**
 
     - **[英灵神殿  -  Valheim](/3-servergames/valheim/)**
 
+    - **[夜族崛起  -  V Rising](/3-servergames/vrising/)**
+
 - **其他类型**
 
     - **[反恐精英  -  Counter-Strike](/3-servergames/cs)**
 
+    - **[异星工场  -  Factorio](/3-servergames/factorio/)**
+
+    - **[非生物因素  -  Abiotic Factor](/3-servergames/abioticfactor/)**
+
+    - **[幸福工厂  -  Satisfactory](/3-servergames/satisfactory/)**
+
+    - **[太空狼人杀  -  Among Us](/3-servergames/amongus/)**
+
+    - **[武装突袭3  -  Arma 3](/3-servergames/arma3/)**
+
     - **[雨中冒险2  -  Risk of Rain 2](/3-servergames/ror2/)**
+
+    - **[SCP秘密实验室  -  SCP:SL](/3-servergames/scpsl/)**
+
+    - **[战术小队  -  Squad](/3-servergames/squad/)**
 <br>
 
 ## 4.来源声明
