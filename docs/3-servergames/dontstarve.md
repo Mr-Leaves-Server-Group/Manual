@@ -19,10 +19,10 @@
 **首次设置服务器，请仔细阅读以下内容**  
 
 ### 2.1.生成服务器Token
-获取一个服务器Token，用于服主身份识别，模组下载等，Token生成网址: [Klei Account](https://accounts.klei.com/account/game/servers?game=DontStarveTogether)  
+获取一个服务器Token，用于服主识别/模组下载，Token生成网址➡  **[克雷官网 - Klei Account](https://accounts.klei.com/account/game/servers?game=DontStarveTogether){target=_blank}**  
 
 ### 2.2.填入服务器Token
-将获取到的Token填在服务器后台的变量栏里, 为避免没能刷入文件内：  
+**将获取到的Token填在服务器后台的[【启动】](/1-serverbasics/){target=_blank}分页变量栏里**, 为避免没能刷入文件内：  
 将Token填在 `/home/container/DoNotStarveTogether/config/server/cluster_token.txt`  
 
 ![Token设置](/assets/dontstrave/token-setup.png)  
@@ -44,9 +44,9 @@
 
 > 3. 在本地找到配置文件 **`leveldataoverride.lua`** （刚创建的世界生成的对应配置文件）
 
-> 4. 把主世界和地洞两个 **`leveldataoverride.lua`** 上传到服务器对应文件夹（Master和Caves）
+> 4. 把主世界和地洞**各一个** **`leveldataoverride.lua`** 上传到服务器对应文件夹（Master和Caves）
   
-**⚠️注意：同文件主世界/洞穴各一个，内容不同。原本 `leveldataoverride.lua` 是客户端专用，`worldgenoverride.lua` 是服务器专用，功能基本一样，现在服务器已可读取前者，故删除后者即可**  
+**⚠️注意：同文件主世界/洞穴各一个，内容不同。原本 `leveldataoverride.lua` 客户端专用，`worldgenoverride.lua` 服务器专用，功能一样，现服务器已可读取前者，故删除后者即可**  
 
 ### 2.5.启用/配置MOD
 > 1. 文件 **`modoverrides.lua`** 控制mod开启和设置
@@ -55,7 +55,7 @@
 
 > 3. 在本地找到配置文件 **`modoverrides.lua`** （刚创建的世界生成的对应配置文件）
 
-> 4. 把主世界和地洞两个 **`modoverrides.lua`** 上传到服务器对应文件夹（Master和Caves）
+> 4. 把主世界和地洞**各一个** **`modoverrides.lua`** 上传到服务器对应文件夹（Master和Caves）
   
 **⚠️注意：同文件主世界/洞穴各一个，且内容不同。由于该配置文件为全英文，模组设置参数名称和游戏内不一样，强烈建议在客户端操作修改mod的配置，不推荐在服务器端手动修改**   
 
@@ -121,16 +121,18 @@
 > 10. 看到提示 `Exiting foreground`
 > 11. 点击右侧 **停止** 按钮 关闭服务器
 
+<br>
+
 ## 4.重置服务器（世界）
 
 推荐在游戏内使用 **ESC菜单的重置世界功能**，或在游戏后台使用指令 `c_regenerateworld()`  
-回到原生模式最新版本，请在 `文件` 页面勾选删除所有文件，然后在 `设置` 页面点击重装服务器
+回到原生模式最新版本，请在 `文件` 页面勾选删除所有文件，然后在 `设置` 页面点击重装服务器  
 <br>
 
 
 ## 5.服务器指令（作弊）
 
-**服务器后台输入指令位置，[请看本页](/1-serverbasics/#21)（部分指令需要在服务器后台使用）**  
+**服务器后台输入指令位置，[请看本页](/1-serverbasics/)（部分指令需要在服务器后台使用）**  
 **游戏内使用指令：按下 `~` 键（ESC下面的键），或 `shift + ~` 键打开控制台**  
 **（游戏内使用指令需管理员/房主身份，且确保控制台显示为remote模式）**  
 
@@ -152,9 +154,12 @@
 更多指令推荐参考[灰机Wiki的指令列表](https://dontstarve.huijiwiki.com/wiki/%E6%95%99%E7%A8%8B/%E5%B8%B8%E7%94%A8%E6%8E%A7%E5%88%B6%E5%8F%B0%E6%8C%87%E4%BB%A4)  
 <br>
 
-
 ## 6.模组配置器（高级）
-用于快速手动编辑模组的配置文件，**不提供添加MOD的功能**，添加MOD强烈建议在客户端操作，以避免MOD兼容性问题，**也不提供添加MOD设置的功能**，因为太容易导致报错。**如果您是新手，强烈不推荐使用该模组编辑器，不正确的操作会导致服务器崩溃，或者模组无法使用。**可以直接在下方的窗口使用，也可以点击<a href="/tools/dst_mod_edit.html" target="_blank">使用网页版模组编辑器(全屏)</a>。  
+手动编辑模组配置文件，**无法添加Mod和Mod参数**，因为太容易导致报错，强烈建议[用客户端添加](/3-servergames/dontstarve/#25mod)。  
+  
+**🔴警告：如果您是新手，强烈不推荐使用，不正确的操作会导致服务器崩溃，或模组不加载。**  
+  
+✅直接在下方的窗口使用，全屏打开点击➡ <a href="/tools/dst_mod_edit.html" target="_blank">饥荒Mod配置编辑器</a>。  
 <iframe src="/tools/dst_mod_edit.html" 
     width="100%" 
     height="1000" 

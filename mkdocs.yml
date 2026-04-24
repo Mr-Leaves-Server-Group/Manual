@@ -1,32 +1,47 @@
-site_name: MLSG中文手册
+site_name: 菜菜云MLSG - 开服教程
 ##site_favicon: "docs/favicon.ico"
-site_description: "MLSG翼龙面板-中文开服手册"
+site_description: "菜菜云开服中文教程，涵盖服务器基础操作、进阶功能和游戏预设，助您轻松管理游戏服务器。"
 site_url: https://manual.mr-leaves.com
 nav:
-  - 1.手册索引: index.md
-  - 2.注册登录: 0-serversignup.md
-  - 3.基本操作: 1-serverbasics.md
-  - 4.进阶操作:
+  - 🏠 首页索引: index.md
+  - 🪙 官网下单: https://mlsg.mr-leaves.com
+  - ⚙️ 管理后台: https://panel.mr-leaves.com
+  - 📘 基本操作: 1-serverbasics.md
+  - 🚀 进阶操作:
       - 2-serveradvanced/index.md
+      - 服务器配置升级: 2-serveradvanced/upgrade.md
       - 邀请子用户管理: 2-serveradvanced/subuser.md
       - 重装游戏服务器: 2-serveradvanced/reinstall.md
       - 创建服务器计划: 2-serveradvanced/plan.md
       - SFTP传输大文件: 2-serveradvanced/filetransfer.md
       - Steam公开检查: 2-serveradvanced/steamcheck.md
-  - 5.游戏教程: 
+  - 🎮 游戏教程: 
       - 3-servergames/index.md
       - 我的世界（Minecraft）: 3-servergames/minecraft.md
       - 幻兽帕鲁（Palworld）: 3-servergames/palworld.md
       - 饥荒联机版（Dont Strave）: 3-servergames/dontstarve.md
-      - 腐蚀/部落（Rust）: 3-servergames/rust.md
-      - 森林之子（Son of Forest）: 3-servergames/sof.md
-      - 方舟生存进化（ARK）: 3-servergames/ark.md
-      - 雨中冒险2（RoR2）: 3-servergames/ror2.md
-      - 英灵神殿（Valheim）: 3-servergames/valheim.md
-      - 反恐精英（Counter Strike）: 3-servergames/cs.md
       - 僵毁（Project Zombiod）: 3-servergames/pz.md
-      - 七日杀（7 Days to Die）: 3-servergames/7dd.md
-  - 6.关于我们: about.md
+      - 腐蚀/部落（Rust）: 3-servergames/rust.md
+      - 七日杀（7 Days to Die）: 3-servergames/7dtd.md
+      - 方舟进化+飞升（ARK）: 3-servergames/ark.md
+      - 僵尸末日（DayZ）: 3-servergames/dayz.md
+      - 人性末日（HumanitZ）: 3-servergames/humanitz.md
+      - 英灵神殿（Valheim）: 3-servergames/valheim.md
+      - 夜族崛起（V Rising）: 3-servergames/vrising.md
+      - 流放者柯南（Conan Exiles）: 3-servergames/conan.md
+      - 森林/森林之子（TF/SoTF）: 3-servergames/sof.md
+      - 异星工场（Factorio）: 3-servergames/factorio.md
+      - 非生物因素（Abiotic Factor）: 3-servergames/abioticfactor.md
+      - 反恐精英（CSGO/CS2）: 3-servergames/cs.md
+      - 幸福工厂（Satisfactory）: 3-servergames/satisfactory.md
+      - 太空狼人杀（Among Us）: 3-servergames/amongus.md
+      - 武装突袭3（Arma 3）: 3-servergames/arma3.md
+      - 雨中冒险2（RoR2）: 3-servergames/ror2.md
+      - SCP秘密实验室（SCP:SL）: 3-servergames/scpsl.md
+      - 战术小队（Squad）: 3-servergames/squad.md
+  - ❓ 常见问题: faq.md
+  - ℹ️ 关于我们: about.md
+  - 📞 联系客服: contact.md
 
 theme:
   name: "material"
@@ -51,6 +66,7 @@ plugins:
   - tags
   - git-revision-date-localized:
       locale: zh
+  - open-in-new-tab
 
 extra_css:
   - style/extra.css
@@ -73,17 +89,19 @@ extra:
           data: 0
           note: >- 
             感谢您的反馈！帮助我们改进文档，您可以参与我们的<a href="https://github.com/Mr-Leaves-Server-Group/Manual" target="_blank" rel="noopener">Github项目</a>提供更多改进。
-    
-    social:
+  social:
     - icon: fontawesome/brands/github
-      link: https://github.com/KenRen98/MLSG-Manual-Pages
+      link: https://github.com/Mr-Leaves-Server-Group/Manual
+      name: GitHub
     - icon: fontawesome/brands/linkedin 
       link: https://www.linkedin.com/in/dexuan-ren-b41a9258/
+      name: LinkedIn
     - icon: fontawesome/brands/discord
       link: https://discord.gg/jYHzsy4hAB
-
+      name: 客服Discord
+    - icon: fontawesome/brands/weixin
+      link: /contact
+      name: 客服微信
   generator: false
-  
-
-copyright: Copyright &copy;  2024 MLSG
+copyright: Copyright &copy;  2026 MLSG
 

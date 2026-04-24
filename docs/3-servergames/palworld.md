@@ -17,12 +17,12 @@
 ## 2.开服教程
 
 控制游戏各类参数的 **配置文件** 可以在如下位置找到  
-**⚠️注意：是服务器后台的[【文件】](/1-serverbasics/#2)分页里，不是客户端**
+**⚠️注意：是服务器后台的[【文件】](/1-serverbasics/){target=_blank}分页里，不是客户端**
 <hr>
 **性能原版服（Linux版）**  
-```/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini```  
+```/home/container/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini```  
 **模组扩展服（Windows版）**  
-```/Pal/Saved/Config/WindowsServer/PalWorldSettings.ini```
+```/home/container/Pal/Saved/Config/WindowsServer/PalWorldSettings.ini```
 <hr>
 
 **请按照以下步骤配置服务器：**  
@@ -34,7 +34,7 @@
 > 3. **不会可以看下方的图文教程**  
 
 <br>
-✅点击使用➡ **[幻兽帕鲁Palworld 服务器配置工具](https://pal-conf.bluefissure.com/)**  
+✅点击使用➡ **[幻兽帕鲁Palworld 服务器配置工具](https://pal-conf.bluefissure.com/){target=_blank}**  
 
 **⚠️注意：每次修改务必 ➡关闭服务器修改，改完再启动服务器**  
 
@@ -54,7 +54,7 @@
 
 ## 3.管理指令
 **要使用控制台指令**，**请在游戏内输入`/adminpassword <Admin密码>`**，见下图：  
-**⚠️注意：修改管理员密码请在后台[【启动】](/1-serverbasics/#2)分页，修改 `管理员密码` 值**  
+**⚠️注意：修改管理员密码请在后台[【启动】](/1-serverbasics/){target=_blank}分页，修改 `管理员密码` 值**  
 
 <div align="center"><img src="/assets/palworld/enter_password.png" alt="管理员登陆"></div>
 <div align="center"><strong>管理员登陆指令</strong></div>  
@@ -99,7 +99,7 @@
 
 > 1. 在**[Steam创意工坊](https://steamcommunity.com/app/1623730/workshop/)**上找想要的模组，**复制模组ID（链接里最后的数字）**
 
-> 2. 在**服务器后台[【启动】](/1-serverbasics/#2)分页**的底部找到变量 **`模组列表`**
+> 2. 在**服务器后台[【启动】](/1-serverbasics/){target=_blank}分页**的底部找到变量 **`模组列表`**
 
 > 3. 输入模组ID，用英文逗号 **","** 分隔多个模组ID，**回车后重启服务器**
 
@@ -150,7 +150,7 @@
 - **如果要下载整个存档**，**压缩整个文件夹并下载压缩文件**，见下图：  
 
 <div align="center"><img src="/assets/palworld/pal_backup_1.png" alt="存档文件夹"></div>
-<div align="center"><strong>打开<a href="/1-serverbasics/#2" target="_blank">【备份】</a>分页，创建备份</strong></div>  
+<div align="center"><strong>打开<a href="/1-serverbasics/" target="_blank">【备份】</a>分页，创建备份</strong></div>  
 
 <div style="height:20px"></div>  <!-- 完美间距 -->
 
