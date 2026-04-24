@@ -29,7 +29,7 @@
 
     - **[僵尸毁灭工程  -  Project Zomboid](/3-servergames/pz/)**
 
-    - **[七日杀  -  7 Days to Die](/3-servergames/7dd/)**   
+    - **[七日杀  -  7 Days to Die](/3-servergames/7dtd/)**   
 
     - **[僵尸末日  -  DayZ](/3-servergames/dayz/)**
 
