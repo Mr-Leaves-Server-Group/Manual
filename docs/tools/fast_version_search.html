@@ -134,9 +134,13 @@
             statusText.innerText = "获取中...";
             try {
                 if (project === 'paper') {
-                    const res = await fetch('https://api.papermc.io/v2/projects/paper');
+                    // 新 API 地址
+                    const res = await fetch('https://fill.papermc.io/v3/projects/paper');
                     const data = await res.json();
-                    populateVersions(data.versions.reverse());
+                    // 新结构：提取所有子版本并扁平化
+                    let allVersions = [];
+                    Object.values(data.versions).forEach(vList => allVersions = allVersions.concat(vList));
+                    populateVersions(allVersions);
                 } 
                 else if (project === 'forge') {
                     const res = await fetch('https://maven.minecraftforge.net/net/minecraftforge/forge/maven-metadata.xml');
@@ -182,10 +186,10 @@
             try {
                 let builds = [];
                 if (project === 'paper') {
-                    const res = await fetch(`https://api.papermc.io/v2/projects/paper/versions/${version}`);
+                    const res = await fetch(`https://fill.papermc.io/v3/projects/paper/versions/${version}`);
                     const data = await res.json();
-                    builds = data.builds.reverse();
-                } 
+                    builds = data.builds;
+                }
                 else if (project === 'forge') {
                     builds = rawData[version] || [];
                 }
