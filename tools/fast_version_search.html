@@ -140,7 +140,7 @@
                     // 新结构：提取所有子版本并扁平化
                     let allVersions = [];
                     Object.values(data.versions).forEach(vList => allVersions = allVersions.concat(vList));
-                    populateVersions(allVersions.reverse());
+                    populateVersions(allVersions);
                 } 
                 else if (project === 'forge') {
                     const res = await fetch('https://maven.minecraftforge.net/net/minecraftforge/forge/maven-metadata.xml');
@@ -186,12 +186,10 @@
             try {
                 let builds = [];
                 if (project === 'paper') {
-                    // 新 API 获取 builds
-                    const res = await fetch(`https://fill.papermc.io/v3/projects/paper/versions/${version}/builds`);
+                    const res = await fetch(`https://fill.papermc.io/v3/projects/paper/versions/${version}`);
                     const data = await res.json();
-                    // 提取 build 号
-                    builds = data.builds.map(item => item.build);
-                } 
+                    builds = data.builds;
+                }
                 else if (project === 'forge') {
                     builds = rawData[version] || [];
                 }
