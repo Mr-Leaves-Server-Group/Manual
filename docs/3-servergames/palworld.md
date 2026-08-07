@@ -16,13 +16,29 @@
 
 ## 2.开服教程
 
-控制游戏各类参数的 **配置文件** 可以在如下位置找到  
-**⚠️注意：是服务器后台的[【文件】](/1-serverbasics/){target=_blank}分页里，不是客户端**
+### 2.1 参数修改
+
+**在【启动】分页里修改参数**，见下图：  
+支持绝大部分参数修改，**不支持的参数请参考下方教程手动修改配置文件**
+<div align="center"><img src="/assets/palworld/palworld_config.png" alt="启动参数"></div>
+
+**⚠️注意：修改参数后务必 ➡重启服务器，才能生效**  
+**✅温馨提醒：在这里修改的参数，会自动覆盖配置文件里的对应设置**  
+<br>
+
+### 2.2 其他参数
+
+**很少用的参数** 在**【启动】**分页没有列出，手动修改请参考下方教程：  
+
 <hr>
+控制游戏各类参数的 **配置文件** 可以在如下位置找到  
+
 **性能原版服（Linux版）**  
 ```/home/container/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini```  
 **模组扩展服（Windows版）**  
 ```/home/container/Pal/Saved/Config/WindowsServer/PalWorldSettings.ini```
+
+**⚠️注意：是服务器后台的[【文件】](/1-serverbasics/){target=_blank}分页里，不是客户端**
 <hr>
 
 **请按照以下步骤配置服务器：**  
