@@ -1,90 +1,71 @@
 # 基本操作
 
-**✅点击立刻打开服务器后台➡ [菜菜云MLSG服务器管理后台](https://panel.mr-leaves.com/){target=_blank}**  
-后台基本操作的简单教程，具体每个不同游戏的教程图文，请查看后续教程。
+**✅点击打开服务器后台➡ [菜菜云MLSG服务器管理后台](https://panel.mr-leaves.com/){target=_blank}**  
+本页说明后台每个功能的用途；具体每个游戏的图文教程请看后续章节。
 
 ---
 
 ## 1.仪表盘
 
-仪表盘区域会显示您所有的服务器，包括一些基本信息。正在安装中的服务器部分功能无法访问。  
-**注：服务器安装/重装完成后会有邮件通知，无需一直刷新等待。**  
-![服务器仪表盘](\assets\1.0\header.png)  
+这里列出全部的服务器，点卡片即可进入对应操作界面。  
+安装中的服务器部分功能不可用；**安装完成后系统会发邮件**，无需一直刷新。  
+![服务器仪表盘](/assets/1.0/header.png)  
+
 <div style="height:10px"></div>  <!-- 完美间距 -->
 
 ## 2.操作页面
 
-在仪表盘里面点击对应需要操作的服务器，即可进入对应的服务器操作界面。  
+进入服务器后，左侧就是功能导航。
 
-### <center>2.1.控制台</center>
-<center>核心功能操作区域</center>
-![控制台](\assets\1.0\controll-page.png)  
+### 2.1.控制台
+开机/关机/重启、实时日志、命令输入、资源占用  
+![控制台](/assets/1.0/console.png)  
 
 <div style="height:10px"></div>  <!-- 完美间距 -->
-### <center>2.2.文件页</center>
-<center>文件管理和传输</center>
-<center>（小于100M且少于50个文件）</center>
-![文件页](\assets\1.0\file-page.png)  
+### 2.2.游戏参数
+启动命令与服务器变量都在这里（启动命令由我们维护，变量可自己改）  
+![游戏参数](/assets/1.0/startup.png)
+<div align="center"><strong>🪵必填 / ⭐️常用 / 🧩模组 / 📦整合包 / 🎮游戏 / ⚙️网络 / 🔴高级 / ⚠️警告</strong><br><strong>⚠️用【一键安装】装核心或整合包时，变量会被自动改写，不要同时手动修改。</strong></div>
+
+<div style="height:10px"></div>  <!-- 完美间距 -->
+### 2.3.文件管理
+在线浏览、上传、编辑服务器文件（单次不超过 100M、50 个文件）  
+![文件管理](/assets/1.0/files.png)
 <div align="center"><strong>注：超过50个文件，或超过100M请使用<a href="/2-serveradvanced/filetransfer/">该教程</a>传输文件</strong></div>
 
 <div style="height:10px"></div>  <!-- 完美间距 -->
-### <center>2.3.数据库</center>
-<center>用于为服务器创建专用数据库表</center>
-<center>由于该功能利用率太低，暂未为其制作教程，请期待后续补充</center>  
+### 2.4.数据备份
+创建与还原备份（请在服务器关闭状态下创建）  
+![数据备份](/assets/1.0/backups.png)  
 
 <div style="height:10px"></div>  <!-- 完美间距 -->
-### <center>2.4.计划页</center>
-<center>创建周期性计划</center>
-<center>（指令，备份，重启等）</center>
-![计划页](\assets\1.0\plan-page.png)  
-
-  <center>定义计划</center>
-![计划页1](\assets\1.0\plan-step1.png)  
-
-  <center>创建任务</center>
-![计划页2](\assets\1.0\plan-step2.png)  
+### 2.5.网络端口
+查看可用端口（第一个通常就是连接端口）  
+![网络端口](/assets/1.0/network.png)  
 
 <div style="height:10px"></div>  <!-- 完美间距 -->
-### <center>2.5.子用户</center>
-<center>邀请子用户使用后台</center>
-<center>（也需要启用2FA才能操作后台）</center>
-![子用户](\assets\1.0\subuser-page.png)  
-
-  <center>子用户权限设置</center>
-![子用户1](\assets\1.0\subuser-step1.png)  
+### 2.6.计划任务
+定时执行指令、备份、重启  
+![计划任务](/assets/1.0/schedules.png)  
 
 <div style="height:10px"></div>  <!-- 完美间距 -->
-### <center>2.6.备份页</center>
-<center>服务器备份和还原</center>
-<center>（请务必在服务器关闭状态下创建备份）</center>
-![创建备份](\assets\1.0\backup-page.png)  
-
-  <center>创建备份</center>
-![创建备份](\assets\1.0\backup-step1.png)  
-
-  <center>还原备份</center>
-![创建备份](\assets\1.0\backup-step2.png)  
+### 2.7.高级设置
+SFTP 连接信息、重装服务器  
+![高级设置](/assets/1.0/settings.png)  
 
 <div style="height:10px"></div>  <!-- 完美间距 -->
-### <center>2.7.网络页</center>
-<center>查看和管理可用端口</center>
-<center>（首选端口通常为服务器连接端口）</center>
-![网络页](\assets\1.0\network-page.png)  
+### 2.8.邀请用户
+邀请其他人一起管理服务器（对方需要开启 2FA）  
+![邀请用户](/assets/1.0/subusers.png)  
 
 <div style="height:10px"></div>  <!-- 完美间距 -->
-### <center>2.8.启动页</center>
-<center>启动命令和变量管理</center>
-<center>（编辑启动命令请联系管理员）</center>
-![启动页](\assets\1.0\boot-page.png)  
+### 2.9.操作记录
+谁在什么时候做了什么，都在这里  
+![操作记录](/assets/1.0/activity.png)  
 
 <div style="height:10px"></div>  <!-- 完美间距 -->
-### <center>2.9.设置页</center>
-<center>连接SFTP/重装服务器</center>
-<center>（具体教程请阅读进阶操作）</center>
-![设置页](\assets\1.0\setting-page.png)  
-
-<div style="height:10px"></div>  <!-- 完美间距 -->
-### <center>2.10.日志页</center>
-<center>服务器操作日志</center>
-<center>（电源/命令/文件/备份等操作记录）</center>
-![设置页](\assets\1.0\record-page.png)  
+### 2.10.系统日志
+安装 / 启动 / 关机 / 模组 的完整脚本日志（开服失败、模组下载失败先看这里）  
+![系统日志](/assets/1.0/syslogs.png)
+<div align="center"><strong>✅日志可点击分页切换</strong></div>
+<div align="center"><strong>⚠️报错请整段复制给客服，不要只截最后一行。</strong></div>

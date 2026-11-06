@@ -15,7 +15,7 @@
 ## 2.后台简介
 - **🪵【必填】服务器类型**  
 <small>见下方的列表，切换不同服务器类型，将影响安装脚本的识别逻辑</small>  
-<small>**⚠️注意：切换后，请手动删除所有文件，并在【设置】分页点击 “重装服务器”**</small>  
+<small>**⚠️注意：切换后，请手动删除所有文件，并在【高级设置】分页点击 “重装服务器”（更推荐直接用【一键安装】，见 3.1）**</small>  
 
 | 服务器类型 | 适用场景 | 核心特点 | 插件/模组支持 |
 | :--- | :--- | :--- | :--- |
@@ -43,15 +43,15 @@
 <small>自动安装 API 模组，Fabric模式专用。填写格式示例：`0.92.0+1.20.1`</small>
 
 - **📦【整合包】CF模组包-Project ID**  
-<small>填写 CF模组包 项目ID（位于页面右侧）例如：RL-Craft 为 `285109` <a href="#36curseforge">点击查看获取方法</a></small>
+<small>填写 CF模组包 项目ID（位于页面右侧）例如：RL-Craft 为 `285109` <a href="#37curseforge">点击查看获取方法</a></small>
 
 - **📦【整合包】CF模组包-File ID**  
-<small>填写 CF模组包 文件ID（位于文件URL最后）例如：RL-Craft 最新服务包为 `4612990` <a href="#36curseforge">点击查看获取方法</a></small>
+<small>填写 CF模组包 文件ID（位于文件URL最后）例如：RL-Craft 最新服务包为 `4612990` <a href="#37curseforge">点击查看获取方法</a></small>
 
 - **📦【整合包】国产模组包-ModPack**  
-<small>选择预设好的国产整合包服务端，如《愚者》或《乌托邦》<a href="#37guochan">点击查看模组包列表</a></small>
+<small>选择预设好的国产整合包服务端，如《愚者》或《乌托邦》<a href="#38guochan">点击查看模组包列表</a></small>
 
-![后台界面](\assets\minecraft\minecraft-egg-backend.png)  
+![后台界面](/assets/minecraft/minecraft-egg-backend.png)  
 
 - **🎮【游戏】服务器MOTD**  
 <small>服务器在联机列表显示的简短介绍，部分版本不支持中文，推荐使用英文</small>
@@ -75,11 +75,45 @@
 <small>是否允许玩家在生存模式下飞行。模组服建议开启此项</small>
 
 ## 3.开服教程
-### 3.1.Java版本选择
+
+### 3.1.一键安装（推荐）
+
+**✅首选：左侧【一键安装】，选好核心与版本即可。**
+
+**核心快切（Vanilla / Paper / Forge / NeoForge / Fabric）：**
+
+> 1. 打开左侧 **一键安装**
+> 2. **核心选择**：选需要的服务端核心
+> 3. **核心版本**：选择 MC 版本（列表来自官方接口实时拉取，首次加载约需 2 秒）
+> 4. **具体版本**：Paper / Forge 选 build 号；NeoForge / Fabric 没有二级版本，直接沿用核心版本
+> 5. 点 **一键安装**，在弹窗里核对核心版本与具体版本
+> 6. 点 **开始安装**，等待完成，结束后会自动跳回控制台
+
+**🔴警告：安装前请先到【数据备份】建一份备份。**
+
+![核心快切](/assets/minecraft/oneclick-core-1.png)  
+
+**国产整合包（GuoChan）：**
+
+> 1. 在【一键安装】下方的卡片列表里，按名称或描述搜索
+> 2. 卡片上直接能看到：核心与 MC 版本、整合包版本、模组数量、推荐配置、Java 版本
+> 3. 需要客户端包就点卡片上的 **客户端包** 按钮下载
+> 4. 点 **一键安装** → 弹窗三步确认 → **开始安装**
+> 5. 装完游戏版本与 Java 已自动匹配，不需要再去【游戏参数】改任何变量
+
+**ℹ️卡片按钮显示"未登记"= 这个整合包还没绑定到本服务器，请联系客服开通，或用 3.8 的手动方案。**
+
+**✅安装结束后到【系统日志】→ 安装日志 看结果；失败时请把整段日志发给客服。**
+
+**ℹ️ 下面的 3.2 ~ 3.8 是"手动指定参数 + 重装"的备选方案，只在需要固定某个 build、使用列表里没有的版本、或一键安装不可用时使用。**
+
+![整合包卡片列表](/assets/minecraft/oneclick-pack-1.png)  
+
+### 3.2.Java版本选择
 **由于MC各类分支较多，请参考游戏版本选择后台的Java版本**
 
 | Minecraft版本号                  | Java(JDK) 推荐版本 |
-| ------------------------------- | ---------------- |
+| --- | --- |
 | 1.7 ~ 1.12.2                    | 8                |
 | 1.16 ~ 1.16.5                   | 8/11             |
 | 1.17 ~ 1.20.5                   | 17               |
@@ -87,7 +121,7 @@
 | 26.1+                           | 25               |
 <hr/>
 
-### 3.2.Vanilla（原版）
+### 3.3.Vanilla（原版）
 
 - **原版优化不是很好，通常建议使用Paper，除非是最新版**  
 但需要注意Paper默认关闭了部分游戏特性，来防止服务器卡顿
@@ -96,12 +130,12 @@
 
 <hr/>
   
-### 3.3.Paper（插件）
+### 3.4.Paper（插件）
 > 1. 修改 **服务器类型** 为 Paper
 > 2. 修改 **MC游戏版本** 和 **具体版本号（选填）** 参数
-> 3. 参考 **[Java版本选择](#31java)**，在右上角，选择正确的Java
-> 4. 打开 **设置** 分页，点击 **重新安装服务器**
-> 5. 等待安装完成，结果可在 **MLSG-LOG/install.log** 日志文件中查看
+> 3. 参考 **[Java版本选择](#32java)**，在右上角，选择正确的Java
+> 4. 打开 **高级设置** 分页，点击 **重新安装服务器**
+> 5. 等待安装完成，结果可在 **【系统日志】→ 安装日志** 中查看
 
 **注：可以使用底部的[快速版本查询工具](#8)来查询对应版本的Paper版本号**  
 
@@ -110,73 +144,73 @@ Paper的插件可以直接放入**插件文件夹Plugins**里，通常可以从[
 
 <hr/>
 
-### 3.4.Neo/Forge（模组）
+### 3.5.Neo/Forge（模组）
 > 1. 修改 **服务器类型** 为 Forge 或 NeoForge
 > 2. 修改 **MC游戏版本** 和 **具体版本号（选填）** 参数
-> 3. 参考 **[Java版本选择](#31java)**，在右上角，选择正确的Java
-> 4. 打开 **设置** 分页，点击 **重新安装服务器**
-> 5. 等待安装完成，结果可在 **MLSG-LOG/install.log** 日志文件中查看
+> 3. 参考 **[Java版本选择](#32java)**，在右上角，选择正确的Java
+> 4. 打开 **高级设置** 分页，点击 **重新安装服务器**
+> 5. 等待安装完成，结果可在 **【系统日志】→ 安装日志** 中查看
 
 **注：可以使用底部的[快速版本查询工具](#8)来查询对应版本的Forge/NeoForge版本号**  
 
 <hr/>
 
-### 3.5.Fabric（模组）
+### 3.6.Fabric（模组）
 > 1. 修改 **服务器类型** 为 Fabric
 > 2. 修改 **MC游戏版本** 和 **具体版本号（选填）** 参数
 > 3. 【可选】修改 **Fabric版本（Fabric API模组）** 参数，自动安装 Fabric API 模组
-> 4. 参考 **[Java版本选择](#31java)**，在右上角，选择正确的Java
-> 5. 打开 **设置** 分页，点击 **重新安装服务器**
-> 6. 等待安装完成，结果可在 **MLSG-LOG/install.log** 日志文件中查看
+> 4. 参考 **[Java版本选择](#32java)**，在右上角，选择正确的Java
+> 5. 打开 **高级设置** 分页，点击 **重新安装服务器**
+> 6. 等待安装完成，结果可在 **【系统日志】→ 安装日志** 中查看
 
 **注：可以使用底部的[快速版本查询工具](#8)来查询对应版本的Fabric版本号**  
 
 <hr/>
 
-### 3.6.CurseForge（整合包）
-#### 3.6.1.服务器端自动安装  
+### 3.7.CurseForge（整合包）
+#### 3.8.1.服务器端  
 **✅菜菜云MLSG支持CF模组包的服务器端自动安装**  
 **ℹ️按照以下教程操作，即可3分钟安装对应服务器端**  
 
 > 1. 修改 **服务器类型** 为 CurseForge
 > 2. 按照下图在CurseForge官网找到对应的 **Project ID** 和 **File ID**
 > 3. 填写 **CF模组包-Project ID** 和 **CF模组包-File ID** 参数
-> 4. 参考 **[Java版本选择](#31java)**，在右上角，选择正确的Java
-> 5. 打开 **设置** 分页，点击 **重新安装服务器**
-> 6. 等待安装完成，结果可在 **MLSG-LOG/install.log** 日志文件中查看 
+> 4. 参考 **[Java版本选择](#32java)**，在右上角，选择正确的Java
+> 5. 打开 **高级设置** 分页，点击 **重新安装服务器**
+> 6. 等待安装完成，结果可在 **【系统日志】→ 安装日志** 中查看 
 
 <hr/>
 
 **[CurseForge模组包列表](https://curseforge.com/minecraft/modpacks)，Project-ID在对应模组包主页右侧找到**  
 **File-ID则在，具体文件页面的顶部URL最后部分（服务器必须要Server Pack的File-ID）**  
-![CurseForge-IDs](\assets\minecraft\curseforge-1.png)
-![CurseForge-IDs](\assets\minecraft\curseforge-2.png)
-![CurseForge-IDs](\assets\minecraft\curseforge-3.png)
-![CurseForge-IDs](\assets\minecraft\curseforge-4.png)  
+![CurseForge-IDs](/assets/minecraft/curseforge-1.png)
+![CurseForge-IDs](/assets/minecraft/curseforge-2.png)
+![CurseForge-IDs](/assets/minecraft/curseforge-3.png)
+![CurseForge-IDs](/assets/minecraft/curseforge-4.png)  
 
 <hr/>
 
-#### 3.6.2.客户端安装模组包  
+#### 3.8.2.客户端包  
 **客户端使用CurseForge教程如下，同样以上面的ATM9为例：**  
 
 点击[CurseForge官网](https://www.curseforge.com/download/app)下载客户端安装器，下载完成后，搜索并安装对应的模组包  
-![CurseForge客户端下载](\assets\minecraft\curseforge-client.png)
-![CurseForge安装模组包](\assets\minecraft\curseforge-modpack.png)
-![CurseForge其他功能](\assets\minecraft\curseforge-demo.png)  
+![CurseForge客户端下载](/assets/minecraft/curseforge-client.png)
+![CurseForge安装模组包](/assets/minecraft/curseforge-modpack.png)
+![CurseForge其他功能](/assets/minecraft/curseforge-demo.png)  
 
 <hr/>
 
-### 3.7.GuoChan（国产包）
-#### 3.7.1.服务器端自动安装
+### 3.8.GuoChan（国产包）
+#### 3.8.1.服务器端
 
 **✅菜菜云MLSG支持国产包服务器端自动安装**  
 **ℹ️按照以下教程操作，即可3分钟安装对应服务器端**  
 
 > 1. 修改 **服务器类型** 为 GuoChan
 > 2. 选择 **国产模组包-服务端** 参数
-> 3. 参考 **[Java版本选择](#31java)**，在右上角，选择正确的Java
-> 4. 打开 **设置** 分页，点击 **重新安装服务器**
-> 5. 等待安装完成，结果可在 **MLSG-LOG/install.log** 日志文件中查看  
+> 3. 参考 **[Java版本选择](#32java)**，在右上角，选择正确的Java
+> 4. 打开 **高级设置** 分页，点击 **重新安装服务器**
+> 5. 等待安装完成，结果可在 **【系统日志】→ 安装日志** 中查看  
 > 6. 可以在下方查看对应模组包的详细信息和客户端下载链接
 
 点击打开➡ **[菜菜云MLSG - 国产包列表](https://manual.mr-leaves.com/tools/guochan_metadata.html)**，右键复制链接 **分享给好友一块选择** 哦！
@@ -190,7 +224,7 @@ Paper的插件可以直接放入**插件文件夹Plugins**里，通常可以从[
 
 <hr/>
 
-#### 3.7.2.客户端安装模组包
+#### 3.8.2.客户端包
 **使用PCL2客户端安装国产包教程如下，同样以《愚者》为例：**
 
 > 1. 下载PCL2客户端，点击 **[下载链接](/assets/minecraft/PCL2-2.13.1.1-20260816.exe)** 下载
@@ -202,9 +236,9 @@ Paper的插件可以直接放入**插件文件夹Plugins**里，通常可以从[
 
 > 0.感谢PCL2的原作开发者，点击 **[支持作者](https://afdian.com/a/LTCat)** 为作者发电
 
-![PCL2客户端下载](\assets\minecraft\PCL2-1.png)
-![PCL2版本选择](\assets\minecraft\PCL2-2.png)
-![PCL2安装模组包](\assets\minecraft\PCL2-3.png)
+![PCL2客户端下载](/assets/minecraft/PCL2-1.png)
+![PCL2版本选择](/assets/minecraft/PCL2-2.png)
+![PCL2安装模组包](/assets/minecraft/PCL2-3.png)
 
 ## 4.模组相关
 ### 4.1.安装模组
@@ -230,6 +264,22 @@ Paper的插件可以直接放入**插件文件夹Plugins**里，通常可以从[
 <br>
 
 ## 6.游戏指令和权限
+
+**✅首选：直接打开左侧【快捷指令】，图形化管理玩家。**  
+**（后台没显示【快捷指令】的服务器，请用下面的指令方式）**
+
+> 1. **玩家列表**：点选一个玩家，卡片会标出 `已封禁` / `黑名单` / `白名单` 状态
+> 2. **管理权限**：给选中玩家授予或撤销 OP
+> 3. **游戏模式**：生存 / 创造 / 冒险 / 旁观，一键切换
+> 4. **传送玩家**：把选中玩家传送到另一名玩家身边
+> 5. **封禁 / 白名单**：禁止或恢复进入、加入或移出白名单
+> 6. **世界操作**：发送广播、世界时间（白天/正午/夜晚/午夜）、天气（晴/雨/雷）、死亡掉落开关、重新生成世界
+
+**⚠️注意：快捷指令改完后需要重启服务器才会生效。**
+
+![快捷指令-玩家管理](/assets/minecraft/quickcmd-1.png)  
+
+**ℹ️备选：直接在控制台输指令。**  
 **在后台输入所有指令时**，**前面不需要加斜杠 `/`**，如下图所示 `/op 玩家游戏名称`，**后台直接输入 `op 玩家游戏名称` 即可**。**游戏内则需要正常输入 `/op 玩家游戏名称` （带斜杠）**。游戏内输入指令时，按下Tab键可以自动补全指令。**更多指令请参考[MC官方Wiki](https://minecraft.fandom.com/zh/wiki/%E5%91%BD%E4%BB%A4)**。
 
 - 赋予玩家OP/管理员（指令权限）：`/op 玩家游戏名称`
@@ -239,9 +289,8 @@ Paper的插件可以直接放入**插件文件夹Plugins**里，通常可以从[
 - 更改生物破坏权限：`/gamerule mobGriefing true/false`  
 - 死亡掉落物品：`/gamerule keepInventory true/false`
 
-![MC指令](\assets\minecraft\op1.png)
-![MC指令](\assets\minecraft\op2.png)
-
+![MC指令](/assets/minecraft/op1.png)
+![MC指令](/assets/minecraft/op2.png)
 
 ## 7.服务器属性设置
 **服务器属性设置文件 `server.properties`，可以在后台的文件管理器中找到，可调整的参数如下：**  
@@ -257,6 +306,7 @@ Paper的插件可以直接放入**插件文件夹Plugins**里，通常可以从[
 - `motd`：服务器MOTD，在联机列表显示的服务器简介，部分版本不支持中文，建议使用英文
 
 ## 8.快速版本查询器
+**ℹ️说明：使用【一键安装】的核心快切时，版本列表已经内置并实时拉取，本工具只在"手动指定参数"的备选流程里需要。**  
 <iframe src="/tools/fast_version_search.html"
     width="100%" 
     height="250px" 
