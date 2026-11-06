@@ -6,7 +6,6 @@
 ---
 
 ## 1.基础功能
-- **[注册和登录](/0-serversignup)**
 - **[控制台教程](/1-serverbasics)**
 
 ## 2.进阶功能
@@ -74,7 +73,7 @@
 <br>
 
 ## 5.参与贡献
-如果您也想贡献您的知识，可以加入我们的 [Github Repo](https://github.com/Mr-Leaves-Server-Group/Manual) 参与贡献代码或者知识！
+如果您也想贡献您的知识，可以加入我们的 [Github Repo](https://github.com/Mr-Leaves-Server-Group/Manual) 参与贡献代码或者知识！  
 ![Alt](https://repobeats.axiom.co/api/embed/81e2b3adffbcc57a8f45adf431415d12eabb8b48.svg "实时数据")  
 <br>
 
@@ -83,6 +82,6 @@
 
 1. **[后台提交工单（48小时回复）](https://mlsg.mr-leaves.com/store/submitticket.php)**
 2. **[加入官方Discord（玩家互助）](https://discord.gg/8Zs5m9v6)**
-3. **[添加技术客服微信（72小时回复）](/service)**
+3. **[添加技术客服微信（72小时回复）](/contact/)**
 
 <iframe src="https://discord.com/widget?id=1140740078008795259&theme=dark" width="100%" height="350" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>

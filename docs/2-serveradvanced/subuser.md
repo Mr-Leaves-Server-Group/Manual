@@ -3,20 +3,22 @@
 
 ---
 
-## 1.打开子用户界面
-![管理界面](\assets\2.0\subuser-1.png)
+## 1.打开邀请用户界面
+（左侧菜单现在的名字是 **【邀请用户】**，原名"子用户"）  
+![管理界面](/assets/2.0/subuser-1.png)
 <br>
 
 ## 2.邀请并填入权限
-![邀请界面](\assets\2.0\subuser-2.png)
+![邀请界面](/assets/2.0/subuser-2.png)
 <br>
 
-## 3.子用户注册登录
-将[MLSG注册登录教程](https://manual.mr-leaves.com/0-serversignup/)发送给子用户引导其完成帐户设置
+## 3.子用户登录后台
+请让子用户在收到的邮件链接里完成密码设置，在 [【MLSG管理后台】](https://panel.mr-leaves.com/){target=_blank} 登录  
+即可看到您共享的服务器，可以点击下方复制链接分享
 
 <!-- Display the link and button in a flexbox container -->
 <div class="copy-container">
-    <code>https://manual.mr-leaves.com/0-serversignup/</code>
+    <code>https://panel.mr-leaves.com/</code>
     <button class="copy-btn" onclick="copyToClipboard()">点我复制链接</button>
 </div>
 <div id="notification" class="notification">链接已复制</div>
@@ -69,7 +71,7 @@ code {
 <script>
 function copyToClipboard() {
     const el = document.createElement('textarea');
-    el.value = 'https://manual.mr-leaves.com/0-serversignup/';
+    el.value = 'https://panel.mr-leaves.com/';
     document.body.appendChild(el);
     el.select();
     document.execCommand('copy');

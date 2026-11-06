@@ -6,3 +6,11 @@
 :root {
     --md-text-font: "OPlusSans3"; 
 }
+
+/* 图片下方的说明文字紧贴图片：去掉图片所在段落的底部外边距，并消除行内图片的基线空隙 */
+.md-typeset p:has(> img) {
+    margin-bottom: 0;
+}
+.md-typeset img {
+    vertical-align: bottom;
+}

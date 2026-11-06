@@ -18,8 +18,8 @@
 
 ### 2.1 参数修改
 
-**在【启动】分页里修改参数**，见下图：  
-支持绝大部分参数修改，**不支持的参数请参考下方教程手动修改配置文件**
+**在【游戏参数】分页里修改参数**，见下图：  
+支持绝大部分参数修改，**不支持的参数请参考下方教程手动修改配置文件**  
 <div align="center"><img src="/assets/palworld/palworld_config.png" alt="启动参数"></div>
 
 **⚠️注意：修改参数后务必 ➡重启服务器，才能生效**  
@@ -28,7 +28,7 @@
 
 ### 2.2 其他参数
 
-**很少用的参数** 在**【启动】**分页没有列出，手动修改请参考下方教程：  
+**很少用的参数** 在**【游戏参数】**分页没有列出，手动修改请参考下方教程：  
 
 <hr>
 控制游戏各类参数的 **配置文件** 可以在如下位置找到  
@@ -38,7 +38,7 @@
 **模组扩展服（Windows版）**  
 ```/home/container/Pal/Saved/Config/WindowsServer/PalWorldSettings.ini```
 
-**⚠️注意：是服务器后台的[【文件】](/1-serverbasics/){target=_blank}分页里，不是客户端**
+**⚠️注意：是服务器后台的[【文件管理】](/1-serverbasics/){target=_blank}分页里，不是客户端**
 <hr>
 
 **请按照以下步骤配置服务器：**  
@@ -57,12 +57,10 @@
 <div align="center"><img src="/assets/palworld/configer.png" alt="配置生成器"></div>
 <div align="center"><strong>使用配置生成器</strong></div>  
 <div align="center"><strong>只需调整 游戏内设置 & 高级设置 即可</strong></div>  
-
 <div style="height:20px"></div>  <!-- 完美间距 -->
 
 <div align="center"><img src="/assets/palworld/configer-result.png" alt="配置生成器"></div>
 <div align="center"><strong>拷贝生成的代码</strong></div>  
-
 <div style="height:20px"></div>  <!-- 完美间距 -->
 
 <div align="center"><img src="/assets/palworld/setting.png" alt="配置文件位置"></div>
@@ -70,11 +68,10 @@
 
 ## 3.管理指令
 **要使用控制台指令**，**请在游戏内输入`/adminpassword <Admin密码>`**，见下图：  
-**⚠️注意：修改管理员密码请在后台[【启动】](/1-serverbasics/){target=_blank}分页，修改 `管理员密码` 值**  
+**⚠️注意：修改管理员密码请在后台[【游戏参数】](/1-serverbasics/){target=_blank}分页，修改 `管理员密码` 值**  
 
 <div align="center"><img src="/assets/palworld/enter_password.png" alt="管理员登陆"></div>
 <div align="center"><strong>管理员登陆指令</strong></div>  
-
 <div style="height:20px"></div>  <!-- 完美间距 -->
 
 <div align="center"><img src="/assets/palworld/password_success.png" alt="管理员登陆成功"></div>
@@ -84,7 +81,7 @@
 **控制台指令，如下**  
 
 | 指令语法                            | 指令说明                           |
-|------------------------------------|-------------------------------------------------|
+| --- | --- |
 | `/Shutdown [Seconds] [Message Text]` | 此命令将在指定秒数延迟过后，带有指定消息关闭服务器。    |
 | `/DoExit`                            | 使用此命令立即停止服务器。                        |
 | `/Broadcast [Message Text]`          | 从服务器向所有连接的玩家广播一条消息。              |
@@ -96,26 +93,34 @@
 | `/Info`                               | 显示有关服务器的信息。                             |
 | `/Save`                               | 此命令强制保存世界数据。                          |
 
-
-## 3.加入游戏
+## 4.加入游戏
 **要加入独立服务器**，**请按照以下流程**，见下图：
 
 <div align="center"><img src="/assets/palworld/connect1.png" alt="连接服务器"></div>
 <div align="center"><strong>选择加入专用服务器</strong></div>
-
 <div style="height:20px"></div>  <!-- 完美间距 -->
 
 <div align="center"><img src="/assets/palworld/connect2.png" alt="连接服务器"></div>
 <div align="center"><strong>输入地址，并点“连接”</strong></div>
 <br>
 
-## 4.安装模组
+## 5.安装模组
 
-**安装模组请按照以下流程：**  
+**✅首选：左侧【模组安装】直接搜创意工坊。**
+
+> 1. 打开左侧 **模组安装**
+> 2. 搜索框输入模组名或 ID（支持标题 / id，输入后自动搜索）
+> 3. 勾选要装的模组并添加，已装过的会标 **已添加**
+> 4. 下方"模组列表"会实时回显当前生效的模组 ID
+> 5. **重启服务器**，脚本会自动下载安装
+
+![模组安装-搜索](/assets/palworld/steammod-1.png)  
+
+**ℹ️备选：手动在【游戏参数】里填 `模组列表` 变量，流程如下：**  
 
 > 1. 在**[Steam创意工坊](https://steamcommunity.com/app/1623730/workshop/)**上找想要的模组，**复制模组ID（链接里最后的数字）**
 
-> 2. 在**服务器后台[【启动】](/1-serverbasics/){target=_blank}分页**的底部找到变量 **`模组列表`**
+> 2. 在**服务器后台[【游戏参数】](/1-serverbasics/){target=_blank}分页**的底部找到变量 **`模组列表`**
 
 > 3. 输入模组ID，用英文逗号 **","** 分隔多个模组ID，**回车后重启服务器**
 
@@ -132,23 +137,21 @@
 
 <div align="center"><img src="/assets/palworld/pal_mod_0_0.png" alt="Steam创意工坊"></div>
 <div align="center"><strong>在<a href="https://steamcommunity.com/app/1623730/workshop/" target="_blank">Steam创意工坊</a>找Mod</strong></div>
-
 <div style="height:20px"></div>  <!-- 完美间距 -->
 
 <div align="center"><img src="/assets/palworld/pal_mod_0_1.png" alt="具体模组页面"></div>
 <div align="center"><strong>获取链接里的模组ID</strong></div>  
-
 <div style="height:20px"></div>  <!-- 完美间距 -->
 
 <div align="center"><img src="/assets/palworld/pal_mod_1.png" alt="后台模组列表"></div>
 <div align="center"><strong>在后台填写所有模组ID</strong></div>  
 
-## 5.已知BUG
+## 6.已知BUG
 **存档损坏无法修复，请格外注意会丢档的BUG**  
 <small>***️⃣无效设置：官方说这个设置没有效果，可能是留着未来用**</small>  
 
 | 已知问题                           | 解决方法 / 当前状态         |
-|---------------------------------------------|-----------------------|
+| --- | --- |
 | 独立服务器，直接连接无法输入密码              | 已修复    |
 | 工会中玩家退出，会导致其他未退出玩家烂档     | 已修复            |
 | 独立服务器，无法在游戏列表显示服务器          | 已修复            |
@@ -159,20 +162,17 @@
 | 使用近期连接过的列表加入，会提示创建角色 | 已修复          |
 | 各种卡地形，看起来像是服务器卡顿          | 请以Server FPS为准       |
 
-
-## 6.存档位置
+## 7.存档位置
 **存档文件位置：`/home/container/Pal` 里的 `Saved` 文件夹**  
 
 - **如果要下载整个存档**，**压缩整个文件夹并下载压缩文件**，见下图：  
 
 <div align="center"><img src="/assets/palworld/pal_backup_1.png" alt="存档文件夹"></div>
-<div align="center"><strong>打开<a href="/1-serverbasics/" target="_blank">【备份】</a>分页，创建备份</strong></div>  
-
+<div align="center"><strong>打开<a href="/1-serverbasics/" target="_blank">【数据备份】</a>分页，创建备份</strong></div>  
 <div style="height:20px"></div>  <!-- 完美间距 -->
 
 <div align="center"><img src="/assets/palworld/pal_backup_2.png" alt="压缩存档文件夹"></div>
 <div align="center"><strong>可以不输入任何东西，点备份</strong></div>
-
 <div style="height:20px"></div>  <!-- 完美间距 -->
 
 <div align="center"><img src="/assets/palworld/pal_backup_3.png" alt="下载压缩文件"></div>
@@ -183,7 +183,7 @@
 - **如果想保存设置，但删除存档，可以删除`Saved/SaveGames`文件夹**
 <br>
 
-## 7.存档转换
+## 8.存档转换
 该游戏**小四人存档，Linux存档，Windows存档互不相通**，需要转换存档才能使用。  
 **⚠️注：该操作非常复杂，且存在存档损坏风险，不推荐使用。强烈推荐联系客服完成**
 
