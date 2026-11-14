@@ -551,6 +551,9 @@
 
     <script>
         const API_URL = 'https://raw.githubusercontent.com/Mr-Leaves-Server-Group/ModPacks/main/modpacks.json';
+        /* 图标统一按模组包 id 命名（<id>.webp），与数据文件同一仓库的 logo/ 目录 */
+        const LOGO_BASE = 'https://raw.githubusercontent.com/Mr-Leaves-Server-Group/ModPacks/main/logo/';
+        const LOGO_FALLBACK = 'https://placehold.co/40x40?text=Pack';
         const STORE_BASE = 'https://mlsg.mr-leaves.com/store/index.php?rp=/store/minecraft/';
         const packList = document.getElementById('packList');
         const statusText = document.getElementById('statusText');
@@ -649,7 +652,7 @@
 
                 card.innerHTML = `
                     <div class="pack-header">
-                        <img class="pack-logo" src="${pack.logo_url}" alt="Logo" onerror="this.src='https://placehold.co/40x40?text=Pack'">
+                        <img class="pack-logo" src="${getLogoUrl(pack)}" alt="Logo" onerror="this.onerror=null;this.src='${LOGO_FALLBACK}'">
                         <div class="title-area">
                             <div class="title-row">
                                 <span class="pack-title" title="${pack.name}">${pack.name}</span>
@@ -734,6 +737,14 @@
             }
             lastTriggerTime = 0;  // 搜索时重置防抖时间戳
             renderInitialBatch();
+        }
+
+        function getLogoUrl(pack) {
+            /* 按 id 拼路径：logo/<id>.webp，例如 1001 -> .../logo/1001.webp */
+            if (!pack || pack.id === undefined || pack.id === null || pack.id === '') {
+                return LOGO_FALLBACK;
+            }
+            return `${LOGO_BASE}${pack.id}.webp`;
         }
 
         function getRecommendLink(spec) {
